@@ -24,6 +24,14 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.Register();
             }
+
+            if (ServerConfig.Instance.Recipe_SnowGlobe) {
+                Recipe recipe = Recipe.Create(ItemID.SnowGlobe);
+                recipe.AddIngredient(ItemID.SnowBlock, 20);
+                recipe.AddIngredient(ItemID.Glass, 20);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.Register();
+            }
         }
     }
 }

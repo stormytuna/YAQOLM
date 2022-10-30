@@ -14,5 +14,10 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("15 Hallowed Bar\n10 Soul of Light\n5 Soul of Sight")]
         [DefaultValue(true)]
         public bool Recipe_RodOfDiscord { get; set; }
+
+        [Label("[i:602] Snow Globe")]
+        [Tooltip("20 Snow Block\n20 Glass")]
+        [DefaultValue(true)]
+        public bool Recipe_SnowGlobe { get; set; }
     }
 }
