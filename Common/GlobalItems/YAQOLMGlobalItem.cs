@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
+using YAQOLM.Common.Players;
 
 namespace YAQOLM.Common.GlobalItems {
     // Just using a generic global item class here since there's a few little things we need to do
@@ -24,6 +25,21 @@ namespace YAQOLM.Common.GlobalItems {
         public override void UpdateEquip(Item item, Player player) {
             if (item.type == ItemID.Goggles && ItemConfig.Instance.GogglesGiveNightVision) {
                 player.AddBuff(BuffID.NightOwl, 2);
+            }
+        }
+
+        public override string IsArmorSet(Item head, Item body, Item legs) {
+            if (head.type == ItemID.RainHat && body.type == ItemID.RainCoat && ItemConfig.Instance.RainArmorSetBonus) {
+                return "RainArmor";
+            }
+
+            return base.IsArmorSet(head, body, legs);
+        }
+
+        public override void UpdateArmorSet(Player player, string set) {
+            if (set == "RainArmor") {
+                player.setBonus = "8% increased damage and 5% increased critical strike chance";
+                player.GetModPlayer<ArmorSetPlayer>().rainArmor = true;
             }
         }
     }

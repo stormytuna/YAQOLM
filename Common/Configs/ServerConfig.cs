@@ -51,6 +51,11 @@ namespace YAQOLM.Common.Configs {
         [Label("[i:37] Goggles grant Night Owl")]
         [DefaultValue(true)]
         public bool GogglesGiveNightVision { get; set; }
+
+        [Label("[i:1136] Rain Armor set bonus")]
+        [Tooltip("8% increased damage and 5% increased critical chance when exposed to rain")]
+        [DefaultValue(true)]
+        public bool RainArmorSetBonus { get; set; }
     }
 
     [Label("Miscellaneous Configs")]
