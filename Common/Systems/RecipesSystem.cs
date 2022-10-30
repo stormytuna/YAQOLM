@@ -68,6 +68,8 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddIngredient(ItemID.LavaBucket, 8);
                 recipe.AddTile(TileID.CrystalBall);
                 recipe.Register();
+
+                // TODO: Add bottomless honey and shimmer buckets when 1.4.4 is here
             }
         }
     }
