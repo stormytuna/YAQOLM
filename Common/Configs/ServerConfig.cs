@@ -29,5 +29,10 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("2 Apprentice Bait -> 1 Journeyman Bait\n2 Journeyman Bait -> 1 Master Bait")]
         [DefaultValue(true)]
         public bool Recipe_Bait { get; set; }
+
+        [Label("[i:3031] Bottomless Buckets")]
+        [Tooltip("8 of any fluid bucket -> 1 of that fluids bottomless bucket")]
+        [DefaultValue(true)]
+        public bool Recipe_BottomlessBuckets { get; set; }
     }
 }

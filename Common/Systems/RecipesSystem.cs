@@ -57,6 +57,18 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddTile(TileID.Solidifier);
                 recipe.Register();
             }
+
+            if (ServerConfig.Instance.Recipe_BottomlessBuckets) {
+                Recipe recipe = Recipe.Create(ItemID.BottomlessBucket);
+                recipe.AddIngredient(ItemID.WaterBucket, 8);
+                recipe.AddTile(TileID.CrystalBall);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.BottomlessLavaBucket);
+                recipe.AddIngredient(ItemID.LavaBucket, 8);
+                recipe.AddTile(TileID.CrystalBall);
+                recipe.Register();
+            }
         }
     }
 }
