@@ -1,0 +1,3 @@
+displayName = YAQOLM - Yet Another Quality of Life Mod
+author = stormytuna
+version = 0.1
