@@ -35,4 +35,18 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool BottomlessBuckets { get; set; }
     }
+
+    [Label("Miscellaneous Configs")]
+    public class MiscConfig : ModConfig {
+        public static MiscConfig Instance;
+
+        public override ConfigScope Mode => ConfigScope.ServerSide;
+
+        [Header("Misc")]
+
+        [Label("[i:780] Steampunker sells all vanilla solutions")]
+        [Tooltip("Can't sell modded solutions here to avoid progression breaking with modded biomes")]
+        [DefaultValue(true)]
+        public bool SteampunkerSolutions { get; set; }
+    }
 }
