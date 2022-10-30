@@ -3,8 +3,8 @@ using Terraria.ModLoader.Config;
 
 namespace YAQOLM.Common.Configs {
     [Label("Recipe Configs")]
-    public class RecipeConfig : ModConfig {
-        public static RecipeConfig Instance;
+    public class ServerConfig : ModConfig {
+        public static ServerConfig Instance;
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
@@ -34,13 +34,8 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("8 of any fluid bucket -> 1 of that fluids bottomless bucket")]
         [DefaultValue(true)]
         public bool BottomlessBuckets { get; set; }
-    }
 
-    [Label("Item Configs")]
-    public class ItemConfig : ModConfig {
-        public static ItemConfig Instance;
 
-        public override ConfigScope Mode => ConfigScope.ServerSide;
 
         [Header("Items")]
 
@@ -56,13 +51,7 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("8% increased damage and 5% increased critical chance when exposed to rain")]
         [DefaultValue(true)]
         public bool RainArmorSetBonus { get; set; }
-    }
 
-    [Label("Miscellaneous Configs")]
-    public class MiscConfig : ModConfig {
-        public static MiscConfig Instance;
-
-        public override ConfigScope Mode => ConfigScope.ServerSide;
 
         [Header("Misc")]
 
