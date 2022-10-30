@@ -21,7 +21,7 @@ namespace YAQOLM.Common.Systems {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.Recipe_RodOfDiscord) {
+            if (RecipeConfig.Instance.RodOfDiscord) {
                 Recipe recipe = Recipe.Create(ItemID.RodofDiscord);
                 recipe.AddIngredient(ItemID.HallowedBar, 15);
                 recipe.AddIngredient(ItemID.SoulofLight, 10);
@@ -30,7 +30,7 @@ namespace YAQOLM.Common.Systems {
                 recipe.Register();
             }
 
-            if (ServerConfig.Instance.Recipe_SnowGlobe) {
+            if (RecipeConfig.Instance.SnowGlobe) {
                 Recipe recipe = Recipe.Create(ItemID.SnowGlobe);
                 recipe.AddIngredient(ItemID.SnowBlock, 20);
                 recipe.AddIngredient(ItemID.Glass, 20);
@@ -38,7 +38,7 @@ namespace YAQOLM.Common.Systems {
                 recipe.Register();
             }
 
-            if (ServerConfig.Instance.Recipe_MoneyTrough) {
+            if (RecipeConfig.Instance.MoneyTrough) {
                 Recipe recipe = Recipe.Create(ItemID.MoneyTrough);
                 recipe.AddIngredient(ItemID.PiggyBank);
                 recipe.AddRecipeGroup(evilBarRecipeGroup, 6);
@@ -46,7 +46,7 @@ namespace YAQOLM.Common.Systems {
                 recipe.Register();
             }
 
-            if (ServerConfig.Instance.Recipe_Bait) {
+            if (RecipeConfig.Instance.Bait) {
                 Recipe recipe = Recipe.Create(ItemID.JourneymanBait);
                 recipe.AddIngredient(ItemID.ApprenticeBait, 2);
                 recipe.AddTile(TileID.Solidifier);
@@ -58,7 +58,7 @@ namespace YAQOLM.Common.Systems {
                 recipe.Register();
             }
 
-            if (ServerConfig.Instance.Recipe_BottomlessBuckets) {
+            if (RecipeConfig.Instance.BottomlessBuckets) {
                 Recipe recipe = Recipe.Create(ItemID.BottomlessBucket);
                 recipe.AddIngredient(ItemID.WaterBucket, 8);
                 recipe.AddTile(TileID.CrystalBall);
