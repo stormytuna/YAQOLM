@@ -41,6 +41,21 @@ namespace YAQOLM.Common.Configs {
         public bool BottomlessBuckets { get; set; }
 
 
+        /* ================ */
+        /*      DROPS       */
+        /* ================ */
+
+        [Header("Drops")]
+
+        [Label("[i:1309] King Slime drops Slime Staff")]
+        [Tooltip("20% chance in Classic, 25% chance in expert")]
+        [DefaultValue(true)]
+        public bool KingSlimeDropsSlimeStaff { get; set; }
+
+
+        /* ================ */
+        /*      ITEMS       */
+        /* ================ */
 
         [Header("Items")]
 

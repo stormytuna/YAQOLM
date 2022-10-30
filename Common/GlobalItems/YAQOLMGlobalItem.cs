@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
@@ -12,6 +13,12 @@ namespace YAQOLM.Common.GlobalItems {
             if (item.type == ItemID.WoodGreaves && ServerConfig.Instance.WoodGreavesDefense) {
                 item.defense = 1;
                 return;
+            }
+        }
+
+        public override void ModifyItemLoot(Item item, ItemLoot itemLoot) {
+            if (item.type == ItemID.KingSlimeBossBag && ServerConfig.Instance.KingSlimeDropsSlimeStaff) {
+                itemLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 4));
             }
         }
 
