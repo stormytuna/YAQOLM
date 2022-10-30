@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
 namespace YAQOLM.Common.Configs {
@@ -8,8 +9,10 @@ namespace YAQOLM.Common.Configs {
 
         [SeparatePage]
         [Header("Recipes")]
+
         [Label("Rod of Discord")]
-        [Tooltip("15[i:1225] 10[i:520] 3[i:549]")]
+        [Tooltip("15 [i:1225] 10 [i:520] 3 [i:549]")]
+        [DefaultValue(true)]
         public bool Recipe_RodOfDiscord { get; set; }
     }
 }
