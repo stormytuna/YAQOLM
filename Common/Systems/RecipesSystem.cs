@@ -21,6 +21,8 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddIngredient(ItemID.HallowedBar, 15);
                 recipe.AddIngredient(ItemID.SoulofLight, 10);
                 recipe.AddIngredient(ItemID.SoulofSight, 5);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.Register();
             }
         }
     }
