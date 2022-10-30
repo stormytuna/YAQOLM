@@ -11,7 +11,7 @@ namespace YAQOLM.Common.Configs {
         [Header("Recipes")]
 
         [Label("Rod of Discord")]
-        [Tooltip("15 [i:1225] 10 [i:520] 3 [i:549]")]
+        [Tooltip("15 Hallowed Bar\n10 Soul of Light\n5 Soul of Sight")]
         [DefaultValue(true)]
         public bool Recipe_RodOfDiscord { get; set; }
     }
