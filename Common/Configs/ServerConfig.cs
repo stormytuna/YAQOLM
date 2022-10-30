@@ -53,7 +53,7 @@ namespace YAQOLM.Common.Configs {
         [Header("Drops")]
 
         [Label("[i:1309] King Slime drops Slime Staff")]
-        [Tooltip("20% chance in Classic, 25% chance in expert")]
+        [Tooltip("20% chance in Classic, 25% chance in Expert")]
         [DefaultValue(true)]
         public bool KingSlimeDropsSlimeStaff { get; set; }
 
