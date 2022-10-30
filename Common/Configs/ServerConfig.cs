@@ -19,5 +19,10 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("20 Snow Block\n20 Glass")]
         [DefaultValue(true)]
         public bool Recipe_SnowGlobe { get; set; }
+
+        [Label("[i:3213] Money Trough")]
+        [Tooltip("1 Piggy Bank\n6 Demonite/Crimtane Bar")]
+        [DefaultValue(true)]
+        public bool Recipe_MoneyTrough { get; set; }
     }
 }
