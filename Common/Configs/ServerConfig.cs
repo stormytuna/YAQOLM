@@ -57,6 +57,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool KingSlimeDropsSlimeStaff { get; set; }
 
+        [Label("[i:3212] Sharks drop Sharktooth Necklace")]
+        [Tooltip("4% chance")]
+        [DefaultValue(true)]
+        public bool SharksDropSharktoothNecklace { get; set; }
+
 
         /* ================ */
         /*      ITEMS       */
