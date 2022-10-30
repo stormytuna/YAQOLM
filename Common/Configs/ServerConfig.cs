@@ -36,6 +36,19 @@ namespace YAQOLM.Common.Configs {
         public bool BottomlessBuckets { get; set; }
     }
 
+    [Label("Item Configs")]
+    public class ItemConfig : ModConfig {
+        public static ItemConfig Instance;
+
+        public override ConfigScope Mode => ConfigScope.ServerSide;
+
+        [Header("Items")]
+
+        [Label("[i:729] Wood Greaves have 1 defense")]
+        [DefaultValue(true)]
+        public bool WoodGreavesDefense { get; set; }
+    }
+
     [Label("Miscellaneous Configs")]
     public class MiscConfig : ModConfig {
         public static MiscConfig Instance;
