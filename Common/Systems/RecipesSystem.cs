@@ -2,6 +2,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using Terraria;
 using YAQOLM.Common.Configs;
+using Microsoft.Xna.Framework;
 
 namespace YAQOLM.Common.Systems {
     public class RecipesSystem : ModSystem {
@@ -42,6 +43,18 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddIngredient(ItemID.PiggyBank);
                 recipe.AddRecipeGroup(evilBarRecipeGroup, 6);
                 recipe.AddTile(TileID.DemonAltar);
+                recipe.Register();
+            }
+
+            if (ServerConfig.Instance.Recipe_Bait) {
+                Recipe recipe = Recipe.Create(ItemID.JourneymanBait);
+                recipe.AddIngredient(ItemID.ApprenticeBait, 2);
+                recipe.AddTile(TileID.Solidifier);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.MasterBait);
+                recipe.AddIngredient(ItemID.JourneymanBait, 2);
+                recipe.AddTile(TileID.Solidifier);
                 recipe.Register();
             }
         }

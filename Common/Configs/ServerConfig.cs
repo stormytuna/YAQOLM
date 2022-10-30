@@ -24,5 +24,10 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("1 Piggy Bank\n6 Demonite/Crimtane Bar")]
         [DefaultValue(true)]
         public bool Recipe_MoneyTrough { get; set; }
+
+        [Label("[i:2676] Bait")]
+        [Tooltip("2 Apprentice Bait -> 1 Journeyman Bait\n2 Journeyman Bait -> 1 Master Bait")]
+        [DefaultValue(true)]
+        public bool Recipe_Bait { get; set; }
     }
 }
