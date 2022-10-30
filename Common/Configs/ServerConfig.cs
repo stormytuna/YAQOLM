@@ -8,6 +8,11 @@ namespace YAQOLM.Common.Configs {
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+
+        /* ================ */
+        /*     RECIPES      */
+        /* ================ */
+
         [Header("Recipes")]
 
         [Label("[i:1326] Rod of Discord")]
@@ -52,6 +57,10 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool RainArmorSetBonus { get; set; }
 
+
+        /* ================ */
+        /*       MISC       */
+        /* ================ */
 
         [Header("Misc")]
 

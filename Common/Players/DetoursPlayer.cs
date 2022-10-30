@@ -6,14 +6,14 @@ namespace YAQOLM.Common.Players {
     public class DetoursPlayer : ModPlayer {
         public override void Load() {
             // Subscribing in Load
-            if (MiscConfig.Instance.MoreAnglerLoot) {
+            if (ServerConfig.Instance.MoreAnglerLoot) {
                 On.Terraria.Player.GetAnglerReward += Player_GetAnglerReward;
             }
         }
 
         public override void Unload() {
             // Unsubscribing in Unload
-            if (MiscConfig.Instance.MoreAnglerLoot) {
+            if (ServerConfig.Instance.MoreAnglerLoot) {
                 On.Terraria.Player.GetAnglerReward -= Player_GetAnglerReward;
             }
         }

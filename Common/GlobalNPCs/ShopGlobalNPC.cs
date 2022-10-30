@@ -18,7 +18,7 @@ namespace YAQOLM.Common.GlobalNPCs {
         };
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot) {
-            if (type == NPCID.Steampunker && MiscConfig.Instance.SteampunkerSolutions) {
+            if (type == NPCID.Steampunker && ServerConfig.Instance.SteampunkerSolutions) {
                 List<Item> inventory = shop.item.ToList(); // Easier to insert into lists
 
                 Item firstSolution = inventory.FirstOrDefault(i => i.ammo == AmmoID.Solution);
