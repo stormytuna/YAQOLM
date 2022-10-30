@@ -8,16 +8,24 @@ namespace YAQOLM.Common.Systems {
     public class RecipesSystem : ModSystem {
         // Recipe groups 
         public static RecipeGroup evilBarRecipeGroup;
+        public static RecipeGroup moonLordWeaponRecipeGroup;
+        public static RecipeGroup moonLordItemRecipeGroup;
 
         public override void Unload() {
             // Set all recipe groups to null
             evilBarRecipeGroup = null;
+            moonLordWeaponRecipeGroup = null;
+            moonLordItemRecipeGroup = null;
         }
 
         public override void AddRecipeGroups() {
             // Initialise our recipe groups
             evilBarRecipeGroup = new(() => "Any Evil Bar", ItemID.DemoniteBar, ItemID.CrimtaneBar);
             RecipeGroup.RegisterGroup("YAQOLM:EvilBar", evilBarRecipeGroup);
+            moonLordWeaponRecipeGroup = new(() => "Any Moon Lord weapon", ItemID.Meowmere, ItemID.Terrarian, ItemID.StarWrath, ItemID.SDMG, ItemID.LastPrism, ItemID.LunarFlareBook, ItemID.RainbowCrystalStaff, ItemID.MoonlordTurretStaff, ItemID.Celeb2);
+            RecipeGroup.RegisterGroup("YAQOLM:MoonLordWeapon", moonLordWeaponRecipeGroup);
+            moonLordItemRecipeGroup = new(() => "Any Moon Lord item", ItemID.MeowmereMinecart, ItemID.PortalGun, ItemID.GravityGlobe, ItemID.SuspiciousLookingTentacle, ItemID.LongRainbowTrailWings);
+            RecipeGroup.RegisterGroup("YAQOLM:MoonLordItem", moonLordItemRecipeGroup);
         }
 
         public override void AddRecipes() {
@@ -70,6 +78,18 @@ namespace YAQOLM.Common.Systems {
                 recipe.Register();
 
                 // TODO: Add bottomless honey and shimmer buckets when 1.4.4 is here
+            }
+
+            if (ServerConfig.Instance.LuminiteSmeltingRecipes) {
+                Recipe recipe = Recipe.Create(ItemID.LunarBar, 8);
+                recipe.AddRecipeGroup(moonLordWeaponRecipeGroup);
+                recipe.AddTile(TileID.LunarCraftingStation);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.LunarBar, 5);
+                recipe.AddRecipeGroup(moonLordItemRecipeGroup);
+                recipe.AddTile(TileID.LunarCraftingStation);
+                recipe.Register();
             }
         }
     }

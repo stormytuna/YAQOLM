@@ -40,6 +40,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool BottomlessBuckets { get; set; }
 
+        [Label("[i:3031] Moon Lord drops to Luminite Bars")]
+        [Tooltip("Any weapon -> 8 Luminite Bar\nAnything else -> 5 Luminite Bar")]
+        [DefaultValue(true)]
+        public bool LuminiteSmeltingRecipes { get; set; }
+
 
         /* ================ */
         /*      DROPS       */
