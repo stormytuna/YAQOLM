@@ -47,6 +47,10 @@ namespace YAQOLM.Common.Configs {
         [Label("[i:729] Wood Greaves have 1 defense")]
         [DefaultValue(true)]
         public bool WoodGreavesDefense { get; set; }
+
+        [Label("[i:37] Goggles grant Night Owl")]
+        [DefaultValue(true)]
+        public bool GogglesGiveNightVision { get; set; }
     }
 
     [Label("Miscellaneous Configs")]
