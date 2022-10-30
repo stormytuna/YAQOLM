@@ -48,5 +48,10 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("Can't sell modded solutions here to avoid progression breaking with modded biomes")]
         [DefaultValue(true)]
         public bool SteampunkerSolutions { get; set; }
+
+        [Label("[i:2294] More angler quest loot")]
+        [Tooltip("Can't sell modded solutions here to avoid progression breaking with modded biomes")]
+        [DefaultValue(true)]
+        public bool MoreAnglerLoot { get; set; }
     }
 }
