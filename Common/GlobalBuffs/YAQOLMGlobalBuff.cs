@@ -14,8 +14,8 @@ namespace YAQOLM.Common.Buffs {
                 }
 
                 // Do our stuff
-                player.GetDamage(DamageClass.Melee) += 0.08f;
-                player.GetAttackSpeed(DamageClass.Melee) += 0.08f;
+                player.GetDamage(DamageClass.Melee) += 0.12f;
+                player.GetAttackSpeed(DamageClass.Melee) += 0.12f;
 
                 return;
             }
@@ -34,7 +34,7 @@ namespace YAQOLM.Common.Buffs {
 
         public override void ModifyBuffTip(int type, ref string tip, ref int rare) {
             if (type == BuffID.Sharpened && ServerConfig.Instance.BuffStationChanges) {
-                tip = "8% increased melee damage and melee speed";
+                tip = "12% increased melee damage and melee speed";
                 return;
             }
 

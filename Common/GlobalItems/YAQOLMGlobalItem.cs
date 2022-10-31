@@ -32,7 +32,7 @@ namespace YAQOLM.Common.GlobalItems {
 
             if (item.type == ItemID.SharpeningStation && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
-                tip.Text = "Increases melee damage and melee swing speed by 10%";
+                tip.Text = "Increases melee damage and melee swing speed by 12%";
             }
 
             if (item.type == ItemID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
