@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
@@ -22,11 +19,28 @@ namespace YAQOLM.Common.Buffs {
 
                 return;
             }
+
+            if (type == BuffID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
+                // Undo what vanilla does
+                player.ammoBox = false;
+
+                // Do our stuff
+                player.GetDamage(DamageClass.Ranged) += 0.15f;
+                player.GetModPlayer<BuffStationPlayer>().ammoBox = true;
+
+                return;
+            }
         }
 
         public override void ModifyBuffTip(int type, ref string tip, ref int rare) {
             if (type == BuffID.Sharpened && ServerConfig.Instance.BuffStationChanges) {
                 tip = "8% increased melee damage and melee speed";
+                return;
+            }
+
+            if (type == BuffID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
+                tip = "15% increased ranged damage and 40% chance to not consume ammo";
+                return;
             }
         }
     }

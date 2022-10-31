@@ -34,6 +34,11 @@ namespace YAQOLM.Common.GlobalItems {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
                 tip.Text = "Increases melee damage and melee swing speed by 10%";
             }
+
+            if (item.type == ItemID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
+                var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
+                tip.Text = "Increases ranged damage by 15% and reduces ammo usage by 40%";
+            }
         }
 
         public override void UpdateEquip(Item item, Player player) {
