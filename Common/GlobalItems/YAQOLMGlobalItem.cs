@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
@@ -26,6 +27,12 @@ namespace YAQOLM.Common.GlobalItems {
             if (item.type == ItemID.Goggles && ServerConfig.Instance.GogglesGiveNightVision) {
                 var tip = tooltips.FindLast(t => t.Mod == "Terraria");
                 tip.Text += "\nGrants Night Owl";
+                return;
+            }
+
+            if (item.type == ItemID.SharpeningStation && ServerConfig.Instance.BuffStationChanges) {
+                var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
+                tip.Text = "Increases melee damage and melee swing speed by 10%";
             }
         }
 
