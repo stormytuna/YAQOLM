@@ -32,15 +32,18 @@ namespace YAQOLM.Common.GlobalItems {
 
             if (item.type == ItemID.SharpeningStation && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
-                tip.Text = "Increases melee damage and melee swing speed by 12%";
+                tip.Text = "Right click to increase melee damage and melee swing speed by 12%";
             }
 
             if (item.type == ItemID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
-                tip.Text = "Increases ranged damage by 15% and reduces ammo usage by 40%";
+                tip.Text = "Right click to increase ranged damage by 15% and reduce ammo usage by 40%";
             }
 
             if (item.type == ItemID.CrystalBall && ServerConfig.Instance.BuffStationChanges) {
+                var tip = tooltips.LastOrDefault(t => t.Mod == "Terraria");
+                tip.Text += "\nRight click to increase magic damage by 10% and reduce mana usage by 8%";
+            }
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
                 tip.Text = "Increases magic damage by 10% and reduces mana usage by 8%";
             }
