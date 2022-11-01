@@ -1,9 +1,9 @@
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria;
-using YAQOLM.Common.Configs;
 using System.Collections.Generic;
 using System.Linq;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Common.GlobalNPCs {
     public class ShopGlobalNPC : GlobalNPC {
@@ -38,10 +38,13 @@ namespace YAQOLM.Common.GlobalNPCs {
                     if (solution == null) {
                         solution = new();
                         solution.SetDefaults(solutionId);
+                        Main.LocalPlayer.GetItemExpectedPrice(solution, out int _, out int price);
+                        price = (int)((float)price * Main.LocalPlayer.currentShoppingSettings.PriceAdjustment);
+                        solution.shopCustomPrice = price;
                         inventory.Insert(index, solution);
                         index++;
                         nextSlot++;
-                    } 
+                    }
                     // If steampunker is selling this solution, move it
                     else {
                         inventory.Remove(solution);
