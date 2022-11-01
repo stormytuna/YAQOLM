@@ -44,8 +44,10 @@ namespace YAQOLM.Common.GlobalItems {
                 var tip = tooltips.LastOrDefault(t => t.Mod == "Terraria");
                 tip.Text += "\nRight click to increase magic damage by 10% and reduce mana usage by 8%";
             }
+
+            if (item.type == ItemID.BewitchingTable && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
-                tip.Text = "Increases magic damage by 10% and reduces mana usage by 8%";
+                tip.Text = "Right click to increase number of minions and sentries and increase minion damage by 15%";
             }
         }
 

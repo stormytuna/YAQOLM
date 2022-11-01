@@ -42,6 +42,14 @@ namespace YAQOLM.Common.Buffs {
 
                 return;
             }
+
+            if (type == BuffID.Bewitched && ServerConfig.Instance.BuffStationChanges) {
+                // Do our stuff, technically compounding on vanilla 
+                player.GetDamage(DamageClass.Summon) += 0.15f;
+                player.maxTurrets += 1;
+
+                return;
+            }
         }
 
         public override void ModifyBuffTip(int type, ref string tip, ref int rare) {
@@ -57,6 +65,11 @@ namespace YAQOLM.Common.Buffs {
 
             if (type == BuffID.Clairvoyance && ServerConfig.Instance.BuffStationChanges) {
                 tip = "10% increased magic damage and 8% reduced mana usage";
+                return;
+            }
+
+            if (type == BuffID.Bewitched && ServerConfig.Instance.BuffStationChanges) {
+                tip = "Increased max number of minions and sentries and 15% increased minion damage";
                 return;
             }
         }
