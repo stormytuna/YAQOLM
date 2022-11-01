@@ -41,6 +41,7 @@ namespace YAQOLM.Common.GlobalNPCs {
                         Main.LocalPlayer.GetItemExpectedPrice(solution, out int _, out int price);
                         price = (int)((float)price * Main.LocalPlayer.currentShoppingSettings.PriceAdjustment);
                         solution.shopCustomPrice = price;
+                        solution.value = price;
                         inventory.Insert(index, solution);
                         index++;
                         nextSlot++;

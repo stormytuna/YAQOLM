@@ -345,6 +345,10 @@ namespace ThreatOfPrecipitation {
 
             // Add our item since it isn't here
             item = ContentSamples.ItemsByType[itemType];
+            Main.LocalPlayer.GetItemExpectedPrice(item, out int _, out int price);
+            price = (int)((float)price * Main.LocalPlayer.currentShoppingSettings.PriceAdjustment);
+            item.shopCustomPrice = price;
+            item.value = price;
             inventory.Insert(index, item);
             nextSlot++;
 
