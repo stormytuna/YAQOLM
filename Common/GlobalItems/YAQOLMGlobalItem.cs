@@ -39,6 +39,11 @@ namespace YAQOLM.Common.GlobalItems {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
                 tip.Text = "Increases ranged damage by 15% and reduces ammo usage by 40%";
             }
+
+            if (item.type == ItemID.CrystalBall && ServerConfig.Instance.BuffStationChanges) {
+                var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
+                tip.Text = "Increases magic damage by 10% and reduces mana usage by 8%";
+            }
         }
 
         public override void UpdateEquip(Item item, Player player) {

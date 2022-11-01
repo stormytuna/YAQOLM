@@ -30,6 +30,18 @@ namespace YAQOLM.Common.Buffs {
 
                 return;
             }
+
+            if (type == BuffID.Clairvoyance && ServerConfig.Instance.BuffStationChanges) {
+                // Undo what vanilla does
+                player.GetCritChance(DamageClass.Magic) -= 2;
+                player.statManaMax2 -= 20;
+
+                // Do our stuff, technically compounding on vanilla 
+                player.GetDamage(DamageClass.Magic) += 0.05f;
+                player.manaCost -= 0.06f;
+
+                return;
+            }
         }
 
         public override void ModifyBuffTip(int type, ref string tip, ref int rare) {
@@ -40,6 +52,11 @@ namespace YAQOLM.Common.Buffs {
 
             if (type == BuffID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
                 tip = "15% increased ranged damage and 40% chance to not consume ammo";
+                return;
+            }
+
+            if (type == BuffID.Clairvoyance && ServerConfig.Instance.BuffStationChanges) {
+                tip = "10% increased magic damage and 8% reduced mana usage";
                 return;
             }
         }
