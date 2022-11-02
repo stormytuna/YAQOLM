@@ -5,6 +5,7 @@ namespace YAQOLM {
     public class YAQOLM : Mod {
         public override void Load() {
             AddToggle("Mods.YAQOLM.Config.WarpedMirror", "Warped Mirror", ModContent.ItemType<WarpedMirror>(), "ffffff");
+            AddToggle("Mods.YAQOLM.Config.MysticMirror", "Mystic Mirror", ModContent.ItemType<MysticMirror>(), "ffffff");
         }
 
         private void AddToggle(string toggle, string name, int item, string color) {

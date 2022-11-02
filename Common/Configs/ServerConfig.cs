@@ -8,6 +8,17 @@ namespace YAQOLM.Common.Configs {
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        /* ================ */
+        /*   NEW CONTENT    */
+        /* ================ */
+
+        [Header("New Content")]
+
+        [Label("$Mods.YAQOLM.Config.WarpedMirror")]
+        [Tooltip("Returns you to where you died")]
+        [DefaultValue(true)]
+        public bool WarpedMirror { get; set; }
+
         [Label("$Mods.YAQOLM.Config.MysticMirror")]
         [Tooltip("Acts as a return potion")]
         [DefaultValue(true)]
