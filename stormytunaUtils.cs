@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
-using Terraria.ID;
 using Terraria.Localization;
 
 namespace ThreatOfPrecipitation {
@@ -344,12 +343,8 @@ namespace ThreatOfPrecipitation {
             }
 
             // Add our item since it isn't here
-            item = ContentSamples.ItemsByType[itemType];
-            Main.LocalPlayer.GetItemExpectedPrice(item, out int _, out int price);
-            price = (int)((float)price * Main.LocalPlayer.currentShoppingSettings.PriceAdjustment);
-            item.shopCustomPrice = price;
-            item.value = price;
-            inventory.Insert(index, item);
+            inventory.Insert(index, new(itemType));
+            inventory[index].isAShopItem = true;
             nextSlot++;
 
             shop.item = inventory.ToArray();

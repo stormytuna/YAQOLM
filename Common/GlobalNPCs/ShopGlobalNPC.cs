@@ -36,13 +36,8 @@ namespace YAQOLM.Common.GlobalNPCs {
                     }
                     // If steampunker isnt already selling this solution, insert it
                     if (solution == null) {
-                        solution = new();
-                        solution.SetDefaults(solutionId);
-                        Main.LocalPlayer.GetItemExpectedPrice(solution, out int _, out int price);
-                        price = (int)((float)price * Main.LocalPlayer.currentShoppingSettings.PriceAdjustment);
-                        solution.shopCustomPrice = price;
-                        solution.value = price;
-                        inventory.Insert(index, solution);
+                        inventory.Insert(index, new(solutionId));
+                        inventory[index].isAShopItem = true;
                         index++;
                         nextSlot++;
                     }
