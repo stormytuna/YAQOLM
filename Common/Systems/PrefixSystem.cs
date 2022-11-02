@@ -72,9 +72,13 @@ namespace YAQOLM.Common.Systems {
         }
 
         public static void ApplyBestPrefix(ref Item item) {
+            ApplyPrefix(ref item, BestPrefix(item));
+        }
+
+        public static void ApplyPrefix(ref Item item, int prefix) {
             bool favorited = item.favorited;
             item.netDefaults(item.netID);
-            item.Prefix(BestPrefix(item));
+            item.Prefix(prefix);
             item.position = Main.LocalPlayer.Center;
             item.favorited = favorited;
             PopupText.NewText(PopupTextContext.ItemReforge, item, item.stack, true);
