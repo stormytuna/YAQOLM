@@ -45,6 +45,10 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool LuminiteSmeltingRecipes { get; set; }
 
+        [Label("[i:2201] Beetle Armor doesn't require Turtle Armor")]
+        [Tooltip("The number of Beetle Husks required is increased to compensate")]
+        [DefaultValue(true)]
+        public bool BeetleArmorOnlyBeetle { get; set; }
 
         /* ================ */
         /*      DROPS       */

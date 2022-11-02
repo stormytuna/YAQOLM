@@ -15,6 +15,7 @@ namespace YAQOLM.Common.Systems {
             evilBarRecipeGroup = null;
             moonLordWeaponRecipeGroup = null;
             moonLordItemRecipeGroup = null;
+            beetleArmor = null;
         }
 
         public override void AddRecipeGroups() {
@@ -89,6 +90,42 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddRecipeGroup(moonLordItemRecipeGroup);
                 recipe.AddTile(TileID.LunarCraftingStation);
                 recipe.Register();
+            }
+
+            if (ServerConfig.Instance.BeetleArmorOnlyBeetle) {
+                Recipe recipe = Recipe.Create(ItemID.BeetleHelmet);
+                recipe.AddIngredient(ItemID.BeetleHusk, 6);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.BeetleLeggings);
+                recipe.AddIngredient(ItemID.BeetleHusk, 9);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.BeetleScaleMail);
+                recipe.AddIngredient(ItemID.BeetleHusk, 12);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.BeetleShell);
+                recipe.AddIngredient(ItemID.BeetleHusk, 12);
+                recipe.AddTile(TileID.MythrilAnvil);
+                recipe.Register();
+            }
+        private int[] beetleArmor = new int[] {
+            ItemID.BeetleHelmet,
+            ItemID.BeetleLeggings,
+            ItemID.BeetleScaleMail,
+            ItemID.BeetleShell
+        };
+        public override void PostAddRecipes() {
+            if (ServerConfig.Instance.BeetleArmorOnlyBeetle) {
+                for (int i = 0; i < Main.recipe.Length; i++) {
+                    if (beetleArmor.Contains(Main.recipe[i].createItem.type) && Main.recipe[i].requiredItem.Count > 1) {
+                        Main.recipe[i].DisableRecipe();
+                    }
+                }
             }
         }
     }
