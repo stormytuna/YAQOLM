@@ -111,6 +111,17 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool SteampunkerSolutions { get; set; }
 
+        [Label("[i:2873] Dye Trader sells Strange Plant dyes")]
+        [Tooltip("Depending on moon phase to not spam out the shop")]
+        [DefaultValue(true)]
+        public bool DyeTraderSellsSusDyes { get; set; }
+
+        /* ================ */
+        /*       MISC       */
+        /* ================ */
+
+        [Header("Misc")]
+
         [Label("[i:2294] More angler quest loot")]
         [DefaultValue(true)]
         public bool MoreAnglerLoot { get; set; }
