@@ -111,5 +111,9 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("Buff stations provide 10% increased damage and a class specific buff")]
         [DefaultValue(true)]
         public bool BuffStationChanges { get; set; }
+
+        [Label("[i:997] Bulk extratination")]
+        [DefaultValue(true)]
+        public bool BulkExtractinate { get; set; }
     }
 }
