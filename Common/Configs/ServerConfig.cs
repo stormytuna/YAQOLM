@@ -100,12 +100,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool CheaperSolutions { get; set; }
 
-
         /* ================ */
-        /*       MISC       */
+        /*       NPCS       */
         /* ================ */
 
-        [Header("Misc")]
+        [Header("NPCs")]
 
         [Label("[i:780] Steampunker sells all vanilla solutions")]
         [Tooltip("Can't sell modded solutions here to avoid progression breaking with modded biomes")]
