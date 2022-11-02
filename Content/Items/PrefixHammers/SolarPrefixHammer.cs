@@ -21,7 +21,10 @@ namespace YAQOLM.Content.Items.PrefixHammers {
 
         public override void AddRecipes() {
             CreateRecipe()
-                .AddIngredient(ItemID.FragmentSolar, 3)
+                .AddIngredient(ItemID.FragmentSolar, 1)
+                .AddIngredient(ItemID.FragmentVortex, 1)
+                .AddIngredient(ItemID.FragmentNebula, 1)
+                .AddIngredient(ItemID.FragmentStardust, 1)
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }
