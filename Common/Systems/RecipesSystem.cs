@@ -18,6 +18,8 @@ namespace YAQOLM.Common.Systems {
             moonLordWeaponRecipeGroup = null;
             moonLordItemRecipeGroup = null;
             beetleArmor = null;
+            oreTypes = null;
+            barTypes = null;
         }
 
         public override void AddRecipeGroups() {
