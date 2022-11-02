@@ -50,6 +50,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool BeetleArmorOnlyBeetle { get; set; }
 
+        [Label("[i:20] Pre Hardmode bars are cheaper at a Hardmode forge")]
+        [DefaultValue(true)]
+        public bool CheaperOre { get; set; }
+
+
         /* ================ */
         /*      DROPS       */
         /* ================ */
