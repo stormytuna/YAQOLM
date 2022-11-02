@@ -91,6 +91,10 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool RainArmorSetBonus { get; set; }
 
+        [Label("[i:780] Cheaper solutions")]
+        [DefaultValue(true)]
+        public bool CheaperSolutions { get; set; }
+
 
         /* ================ */
         /*       MISC       */

@@ -15,6 +15,11 @@ namespace YAQOLM.Common.GlobalItems {
                 item.defense = 1;
                 return;
             }
+
+            if (item.ammo == AmmoID.Solution && ServerConfig.Instance.CheaperSolutions) {
+                item.value = 5;
+                return;
+            }
         }
 
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot) {
