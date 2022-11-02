@@ -4,11 +4,13 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
+using YAQOLM.Content.Items;
 
 namespace YAQOLM.Common.Systems {
     public class RecipesSystem : ModSystem {
         // Recipe groups 
         public static RecipeGroup magicMirrorRecipeGroup;
+        public static RecipeGroup horseshoeBalloonRecipeGroup;
         public static RecipeGroup evilBarRecipeGroup;
         public static RecipeGroup evilMaterialRecipeGroup;
         public static RecipeGroup moonLordWeaponRecipeGroup;
@@ -17,6 +19,7 @@ namespace YAQOLM.Common.Systems {
         public override void Unload() {
             // Set stuff to null
             magicMirrorRecipeGroup = null;
+            horseshoeBalloonRecipeGroup = null;
             evilBarRecipeGroup = null;
             evilMaterialRecipeGroup = null;
             moonLordWeaponRecipeGroup = null;
@@ -30,6 +33,8 @@ namespace YAQOLM.Common.Systems {
             // Initialise our recipe groups
             magicMirrorRecipeGroup = new(() => "Any Magic Mirror", ItemID.MagicMirror, ItemID.IceMirror);
             RecipeGroup.RegisterGroup("YAQOLM:MagicMirror", magicMirrorRecipeGroup);
+            horseshoeBalloonRecipeGroup = new(() => "Any Horseshoe Balloon", ItemID.BlueHorseshoeBalloon, ItemID.WhiteHorseshoeBalloon, ItemID.YellowHorseshoeBalloon, ItemID.BalloonHorseshoeFart, ItemID.BalloonHorseshoeHoney, ItemID.BalloonHorseshoeSharkron);
+            RecipeGroup.RegisterGroup("YAQOLM:HorseshoeBalloon", horseshoeBalloonRecipeGroup);
             evilBarRecipeGroup = new(() => "Any Evil Bar", ItemID.DemoniteBar, ItemID.CrimtaneBar);
             RecipeGroup.RegisterGroup("YAQOLM:EvilBar", evilBarRecipeGroup);
             evilMaterialRecipeGroup = new(() => "Any Evil Material", ItemID.ShadowScale, ItemID.TissueSample);
@@ -194,6 +199,38 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddIngredient(ItemID.Hellstone, 2);
                 recipe.AddIngredient(ItemID.Obsidian);
                 recipe.AddTile(TileID.AdamantiteForge);
+                recipe.Register();
+            }
+
+            if (ServerConfig.Instance.GoldenHorseshoeBalloon) {
+                Recipe recipe = Recipe.Create(ItemID.BlueHorseshoeBalloon);
+                recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
+                recipe.AddTile(TileID.TinkerersWorkbench);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.WhiteHorseshoeBalloon);
+                recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
+                recipe.AddTile(TileID.TinkerersWorkbench);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.YellowHorseshoeBalloon);
+                recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
+                recipe.AddTile(TileID.TinkerersWorkbench);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.BalloonHorseshoeFart);
+                recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
+                recipe.AddTile(TileID.TinkerersWorkbench);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.BalloonHorseshoeHoney);
+                recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
+                recipe.AddTile(TileID.TinkerersWorkbench);
+                recipe.Register();
+
+                recipe = Recipe.Create(ItemID.BalloonHorseshoeSharkron);
+                recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
+                recipe.AddTile(TileID.TinkerersWorkbench);
                 recipe.Register();
             }
         }
