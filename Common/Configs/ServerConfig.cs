@@ -40,6 +40,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool BottomlessBuckets { get; set; }
 
+        [Label("[i:3031] Magic Mirror")]
+        [Tooltip("10 Iron/Lead Bar\n5 Glass")]
+        [DefaultValue(true)]
+        public bool MagicMirror { get; set; }
+
         [Label("[i:3467] Moon Lord drops to Luminite Bars")]
         [Tooltip("Any weapon -> 8 Luminite Bar\nAnything else -> 5 Luminite Bar")]
         [DefaultValue(true)]

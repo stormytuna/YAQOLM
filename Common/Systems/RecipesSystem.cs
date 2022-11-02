@@ -82,6 +82,14 @@ namespace YAQOLM.Common.Systems {
                 // TODO: Add bottomless honey and shimmer buckets when 1.4.4 is here
             }
 
+            if (ServerConfig.Instance.MagicMirror) {
+                Recipe recipe = Recipe.Create(ItemID.MagicMirror);
+                recipe.AddRecipeGroup(RecipeGroupID.IronBar, 10);
+                recipe.AddIngredient(ItemID.Glass, 5);
+                recipe.AddTile(TileID.DemonAltar);
+                recipe.Register();
+            }
+
             if (ServerConfig.Instance.LuminiteSmeltingRecipes) {
                 Recipe recipe = Recipe.Create(ItemID.LunarBar, 8);
                 recipe.AddRecipeGroup(moonLordWeaponRecipeGroup);
