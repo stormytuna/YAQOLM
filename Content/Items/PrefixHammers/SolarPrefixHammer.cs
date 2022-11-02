@@ -35,6 +35,14 @@ namespace YAQOLM.Content.Items.PrefixHammers {
 
         public override void RightClick(Player player) {
             PrefixSystem.ApplyBestPrefix(ref player.inventory[player.selectedItem]);
+
+            // Dusty dust
+            for (int i = 0; i < 40; i++) {
+                Dust d = Dust.NewDustDirect(player.position, player.width, player.height, DustID.DesertTorch, 0f, 0f, 150, default, 1.3f);
+                d.noLight = true;
+                d.velocity *= 10f;
+                d.noGravity = true;
+            }
         }
     }
 }
