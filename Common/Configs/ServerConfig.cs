@@ -8,6 +8,11 @@ namespace YAQOLM.Common.Configs {
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
+        [Label("$Mods.YAQOLM.Config.MysticMirror")]
+        [Tooltip("Acts as a return potion")]
+        [DefaultValue(true)]
+        public bool MysticMirror { get; set; }
+
 
         /* ================ */
         /*     RECIPES      */

@@ -8,13 +8,17 @@ using YAQOLM.Common.Configs;
 namespace YAQOLM.Common.Systems {
     public class RecipesSystem : ModSystem {
         // Recipe groups 
+        public static RecipeGroup magicMirrorRecipeGroup;
         public static RecipeGroup evilBarRecipeGroup;
+        public static RecipeGroup evilMaterialRecipeGroup;
         public static RecipeGroup moonLordWeaponRecipeGroup;
         public static RecipeGroup moonLordItemRecipeGroup;
 
         public override void Unload() {
             // Set stuff to null
+            magicMirrorRecipeGroup = null;
             evilBarRecipeGroup = null;
+            evilMaterialRecipeGroup = null;
             moonLordWeaponRecipeGroup = null;
             moonLordItemRecipeGroup = null;
             beetleArmor = null;
@@ -24,8 +28,12 @@ namespace YAQOLM.Common.Systems {
 
         public override void AddRecipeGroups() {
             // Initialise our recipe groups
+            magicMirrorRecipeGroup = new(() => "Any Magic Mirror", ItemID.MagicMirror, ItemID.IceMirror);
+            RecipeGroup.RegisterGroup("YAQOLM:MagicMirror", magicMirrorRecipeGroup);
             evilBarRecipeGroup = new(() => "Any Evil Bar", ItemID.DemoniteBar, ItemID.CrimtaneBar);
             RecipeGroup.RegisterGroup("YAQOLM:EvilBar", evilBarRecipeGroup);
+            evilMaterialRecipeGroup = new(() => "Any Evil Material", ItemID.ShadowScale, ItemID.TissueSample);
+            RecipeGroup.RegisterGroup("YAQOLM:EvilMaterial", evilMaterialRecipeGroup);
             moonLordWeaponRecipeGroup = new(() => "Any Moon Lord weapon", ItemID.Meowmere, ItemID.Terrarian, ItemID.StarWrath, ItemID.SDMG, ItemID.LastPrism, ItemID.LunarFlareBook, ItemID.RainbowCrystalStaff, ItemID.MoonlordTurretStaff, ItemID.Celeb2);
             RecipeGroup.RegisterGroup("YAQOLM:MoonLordWeapon", moonLordWeaponRecipeGroup);
             moonLordItemRecipeGroup = new(() => "Any Moon Lord item", ItemID.MeowmereMinecart, ItemID.PortalGun, ItemID.GravityGlobe, ItemID.SuspiciousLookingTentacle, ItemID.LongRainbowTrailWings);
