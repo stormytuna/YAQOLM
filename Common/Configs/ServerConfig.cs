@@ -107,7 +107,7 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool MoreAnglerLoot { get; set; }
 
-        [Label("[i:2294] Buff station changes")]
+        [Label("[i:3198] Buff station changes")]
         [Tooltip("Buff stations provide 10% increased damage and a class specific buff")]
         [DefaultValue(true)]
         public bool BuffStationChanges { get; set; }
