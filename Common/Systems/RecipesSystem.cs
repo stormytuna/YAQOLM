@@ -1,8 +1,7 @@
-using Terraria.ModLoader;
-using Terraria.ID;
 using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
-using Microsoft.Xna.Framework;
 
 namespace YAQOLM.Common.Systems {
     public class RecipesSystem : ModSystem {
