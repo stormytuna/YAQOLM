@@ -34,6 +34,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool FlowerOfTheJungle { get; set; }
 
+        [Label("$Mods.YAQOLM.Config.PrefixHammers")]
+        [Tooltip("Right click to apply a given prefix to your held item")]
+        [DefaultValue(true)]
+        public bool PrefixHammers { get; set; }
+
 
         /* ================ */
         /*     RECIPES      */

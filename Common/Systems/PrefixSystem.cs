@@ -1,0 +1,84 @@
+using System.Linq;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace YAQOLM.Common.Systems {
+    public static class PrefixSystem {
+        private static readonly int[] itemsWithLegendary2 = new int[] {
+            ItemID.Terrarian,
+            ItemID.CopperShortsword,
+            ItemID.Gladius,
+            ItemID.GoldShortsword,
+            ItemID.IronShortsword,
+            ItemID.LeadShortsword,
+            ItemID.PlatinumShortsword,
+            ItemID.Ruler,
+            ItemID.SilverShortsword,
+            ItemID.TinShortsword,
+            ItemID.TragicUmbrella,
+            ItemID.TungstenShortsword,
+            ItemID.Umbrella
+        };
+
+        private static int BestPrefix(Item item) {
+            // Items with no knockback
+            if (item.knockBack <= 0f) {
+                return PrefixID.Demonic;
+            }
+
+            // Tools
+            if (item.pick > 0 || item.axe > 0 || item.hammer > 0) {
+                return PrefixID.Light;
+            }
+
+            // Shortswords and terrarian
+            if (itemsWithLegendary2.Contains(item.type)) {
+                return PrefixID.Legendary2;
+            }
+
+            // Whips and melee weapons that are swung
+            if ((item.CountsAsClass(DamageClass.Melee) && item.useStyle == ItemUseStyleID.Swing) || item.DamageType == DamageClass.SummonMeleeSpeed) {
+                return PrefixID.Legendary;
+            }
+
+            // Other melee weapons
+            if (item.CountsAsClass(DamageClass.Melee)) {
+                return PrefixID.Godly;
+            }
+
+            // Other ranged weapons
+            if (item.CountsAsClass(DamageClass.Ranged)) {
+                return PrefixID.Unreal;
+            }
+
+            // Other magic weapons
+            if (item.CountsAsClass(DamageClass.Magic)) {
+                return PrefixID.Mythical;
+            }
+
+            // Other summon weapons
+            if (item.CountsAsClass(DamageClass.Summon)) {
+                return PrefixID.Ruthless;
+            }
+
+            // Default will just be zealous
+            return PrefixID.Zealous;
+        }
+
+        public static bool ItemHasBestPrefix(Item item) {
+            return item.prefix == BestPrefix(item);
+        }
+
+        public static void ApplyBestPrefix(ref Item item) {
+            bool favorited = item.favorited;
+            item.netDefaults(item.netID);
+            item.Prefix(BestPrefix(item));
+            item.position = Main.LocalPlayer.Center;
+            item.favorited = favorited;
+            PopupText.NewText(PopupTextContext.ItemReforge, item, item.stack, true);
+            SoundEngine.PlaySound(SoundID.Item37);
+        }
+    }
+}
