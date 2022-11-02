@@ -29,6 +29,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool GoldenHorseshoeBalloon { get; set; }
 
+        [Label("$Mods.YAQOLM.Config.FlowerOfTheJungle")]
+        [Tooltip("Summons Plantera")]
+        [DefaultValue(true)]
+        public bool FlowerOfTheJungle { get; set; }
+
 
         /* ================ */
         /*     RECIPES      */
