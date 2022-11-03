@@ -169,5 +169,9 @@ namespace YAQOLM.Common.Configs {
         [Label("[i:166] Bombs explode tiles you could mine")]
         [DefaultValue(true)]
         public bool BetterBombTiles { get; set; }
+
+        [Label("[i:166] Bombs explode walls even when unexposed")]
+        [DefaultValue(true)]
+        public bool BetterBombWalls { get; set; }
     }
 }
