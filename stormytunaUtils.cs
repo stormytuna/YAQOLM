@@ -5,7 +5,7 @@ using System.Linq;
 using Terraria;
 using Terraria.Localization;
 
-namespace ThreatOfPrecipitation {
+namespace YAQOLM {
     public static class stormytunaUtils {
 
         /// <summary>Gets a list of NPCs within the range of that position</summary>
