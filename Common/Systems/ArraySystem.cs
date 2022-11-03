@@ -64,6 +64,15 @@ namespace YAQOLM.Common.Systems {
             ItemID.Umbrella
         };
 
+        private static int[] _indestructibleTiles = new int[] {
+            TileID.DemonAltar,
+            TileID.Dressers,
+            TileID.LihzahrdAltar,
+            TileID.Mannequin,
+            TileID.Womannequin,
+            TileID.HatRack
+        };
+
         public static int[] SolutionIds { get => _solutionIds; }
 
         public static int[] BarTypes { get => _barTypes; }
@@ -73,6 +82,8 @@ namespace YAQOLM.Common.Systems {
         public static int[] BeetleArmor { get => _beetleArmor; }
 
         public static int[] ItemsWithLegendary2 { get => itemsWithLegendary2; }
+
+        public static int[] IndestructibleTiles { get => _indestructibleTiles; }
 
         public override void Unload() {
             _solutionIds = null;

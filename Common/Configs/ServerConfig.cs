@@ -165,5 +165,9 @@ namespace YAQOLM.Common.Configs {
         [Label("[i:997] Bulk extratination")]
         [DefaultValue(true)]
         public bool BulkExtractinate { get; set; }
+
+        [Label("[i:166] Bombs explode tiles you could mine")]
+        [DefaultValue(true)]
+        public bool BetterBombTiles { get; set; }
     }
 }
