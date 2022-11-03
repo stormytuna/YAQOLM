@@ -6,22 +6,6 @@ using Terraria.ModLoader;
 
 namespace YAQOLM.Common.Systems {
     public static class PrefixSystem {
-        private static readonly int[] itemsWithLegendary2 = new int[] {
-            ItemID.Terrarian,
-            ItemID.CopperShortsword,
-            ItemID.Gladius,
-            ItemID.GoldShortsword,
-            ItemID.IronShortsword,
-            ItemID.LeadShortsword,
-            ItemID.PlatinumShortsword,
-            ItemID.Ruler,
-            ItemID.SilverShortsword,
-            ItemID.TinShortsword,
-            ItemID.TragicUmbrella,
-            ItemID.TungstenShortsword,
-            ItemID.Umbrella
-        };
-
         private static int BestPrefix(Item item) {
             // Items with no knockback
             if (item.knockBack <= 0f) {
@@ -34,7 +18,7 @@ namespace YAQOLM.Common.Systems {
             }
 
             // Shortswords and terrarian
-            if (itemsWithLegendary2.Contains(item.type)) {
+            if (ArraySystem.ItemsWithLegendary2.Contains(item.type)) {
                 return PrefixID.Legendary2;
             }
 

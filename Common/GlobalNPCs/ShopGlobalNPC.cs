@@ -4,20 +4,12 @@ using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThreatOfPrecipitation;
 using YAQOLM.Common.Configs;
+using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Common.GlobalNPCs {
     public class ShopGlobalNPC : GlobalNPC {
         public override bool InstancePerEntity => true;
-
-        private readonly int[] solutionIds = new int[] {
-            ItemID.GreenSolution,
-            ItemID.PurpleSolution,
-            ItemID.RedSolution,
-            ItemID.BlueSolution,
-            ItemID.DarkBlueSolution
-        };
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot) {
             if (type == NPCID.Steampunker && ServerConfig.Instance.SteampunkerSolutions) {
@@ -29,8 +21,8 @@ namespace YAQOLM.Common.GlobalNPCs {
                     index = inventory.IndexOf(firstSolution) + 1;
                 }
 
-                for (int i = 0; i < solutionIds.Length; i++) {
-                    int solutionId = solutionIds[i];
+                for (int i = 0; i < ArraySystem.SolutionIds.Length; i++) {
+                    int solutionId = ArraySystem.SolutionIds[i];
                     Item solution = inventory.FirstOrDefault(i => i.type == solutionId);
                     // Edge case - solution we found is our first solution, just continue in this case
                     if (solution == firstSolution) {

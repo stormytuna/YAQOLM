@@ -235,48 +235,13 @@ namespace YAQOLM.Common.Systems {
             }
         }
 
-        private int[] barTypes = new int[] {
-            ItemID.CopperBar,
-            ItemID.TinBar,
-            ItemID.IronBar,
-            ItemID.LeadBar,
-            ItemID.SilverBar,
-            ItemID.TungstenBar,
-            ItemID.GoldBar,
-            ItemID.PlatinumBar,
-            ItemID.MeteoriteBar,
-            ItemID.DemoniteBar,
-            ItemID.CrimtaneBar,
-            ItemID.HellstoneBar
-        };
 
-        private int[] oreTypes = new int[] {
-            ItemID.CopperOre,
-            ItemID.TinOre,
-            ItemID.IronOre,
-            ItemID.LeadOre,
-            ItemID.SilverOre,
-            ItemID.TungstenOre,
-            ItemID.GoldOre,
-            ItemID.PlatinumOre,
-            ItemID.Meteorite,
-            ItemID.DemoniteOre,
-            ItemID.CrimtaneOre,
-            ItemID.Hellstone
-        };
-
-        private int[] beetleArmor = new int[] {
-            ItemID.BeetleHelmet,
-            ItemID.BeetleLeggings,
-            ItemID.BeetleScaleMail,
-            ItemID.BeetleShell
-        };
 
         public override void PostAddRecipes() {
             if (ServerConfig.Instance.CheaperOre) {
                 for (int i = 0; i < Main.recipe.Length; i++) {
                     Recipe recipe = Main.recipe[i];
-                    if (barTypes.Contains(recipe.createItem.type) && !recipe.requiredTile.Contains(TileID.AdamantiteForge) && oreTypes.Contains(recipe.requiredItem[0].type)) {
+                    if (ArraySystem.BarTypes.Contains(recipe.createItem.type) && !recipe.requiredTile.Contains(TileID.AdamantiteForge) && ArraySystem.OreTypes.Contains(recipe.requiredItem[0].type)) {
                         recipe.AddCondition(NetworkText.FromLiteral("Pre Hardmode Furnace"), r => !Main.LocalPlayer.adjTile[TileID.AdamantiteForge]);
                     }
                 }
@@ -284,7 +249,7 @@ namespace YAQOLM.Common.Systems {
 
             if (ServerConfig.Instance.BeetleArmorOnlyBeetle) {
                 for (int i = 0; i < Main.recipe.Length; i++) {
-                    if (beetleArmor.Contains(Main.recipe[i].createItem.type) && Main.recipe[i].requiredItem.Count > 1) {
+                    if (ArraySystem.BeetleArmor.Contains(Main.recipe[i].createItem.type) && Main.recipe[i].requiredItem.Count > 1) {
                         Main.recipe[i].DisableRecipe();
                     }
                 }
