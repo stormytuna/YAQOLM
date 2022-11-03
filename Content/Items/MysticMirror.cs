@@ -29,7 +29,7 @@ namespace YAQOLM.Content.Items {
 
         public override void AddRecipes() {
             CreateRecipe()
-                .AddRecipeGroup(RecipesSystem.magicMirrorRecipeGroup)
+                .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
                 .AddIngredient(ItemID.SoulofLight, 8)
                 .AddIngredient(ItemID.SoulofNight, 8)
                 .AddTile(TileID.MythrilAnvil)

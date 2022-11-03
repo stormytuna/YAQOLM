@@ -7,7 +7,7 @@ using YAQOLM.Common.Configs;
 using YAQOLM.Content.Items;
 
 namespace YAQOLM.Common.Systems {
-    public class RecipesSystem : ModSystem {
+    public class RecipeSystem : ModSystem {
         // Recipe groups 
         public static RecipeGroup magicMirrorRecipeGroup;
         public static RecipeGroup horseshoeBalloonRecipeGroup;

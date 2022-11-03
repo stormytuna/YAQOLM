@@ -30,9 +30,9 @@ namespace YAQOLM.Content.Items {
 
         public override void AddRecipes() {
             CreateRecipe()
-                .AddRecipeGroup(RecipesSystem.magicMirrorRecipeGroup)
-                .AddRecipeGroup(RecipesSystem.evilMaterialRecipeGroup, 8)
-                .AddRecipeGroup(RecipesSystem.evilBarRecipeGroup, 5)
+                .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
+                .AddRecipeGroup(RecipeSystem.evilMaterialRecipeGroup, 8)
+                .AddRecipeGroup(RecipeSystem.evilBarRecipeGroup, 5)
                 .AddTile(TileID.DemonAltar)
                 .Register();
         }

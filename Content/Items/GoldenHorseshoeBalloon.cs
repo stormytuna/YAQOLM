@@ -25,7 +25,7 @@ namespace YAQOLM.Content.Items {
 
         public override void AddRecipes() {
             CreateRecipe()
-                .AddRecipeGroup(RecipesSystem.horseshoeBalloonRecipeGroup)
+                .AddRecipeGroup(RecipeSystem.horseshoeBalloonRecipeGroup)
                 .AddTile(TileID.TinkerersWorkbench)
                 .Register();
         }
