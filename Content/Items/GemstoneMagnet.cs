@@ -34,7 +34,7 @@ namespace YAQOLM.Content.Items {
     // Using a player class as UpdateInventory doesn't run in void bag yet // TODO: fix this in 1.4.4
     public class GemstoneMagnetPlayer : ModPlayer {
         public override void PostUpdateMiscEffects() {
-            if (Player.HasItemInInventories(ModContent.ItemType<GemstoneMagnet>())) {
+            if (Player.HasItemInInventories(ModContent.ItemType<GemstoneMagnet>(), out _)) {
                 Player.treasureMagnet = true;
             }
         }

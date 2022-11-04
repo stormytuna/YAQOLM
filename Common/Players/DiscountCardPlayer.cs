@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 namespace YAQOLM.Common.Players {
     public class DiscountCardPlayer : ModPlayer {
         public override void UpdateEquips() {
-            if (Player.HasItemInInventories(ItemID.DiscountCard, true, true, true, true)) {
+            if (Player.HasItemInInventories(ItemID.DiscountCard, out _, true, true, true, true)) {
                 Player.discount = true;
             }
         }

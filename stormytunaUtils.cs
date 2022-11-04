@@ -358,42 +358,47 @@ namespace YAQOLM {
         /// <param name="checkDefendersForge">If set to true, this will search the defenders forge</param>
         /// <param name="checkVoidBag">If set to true, this wil search the void bag</param>
         /// <returns>Returns true when an item is found, returns false otherwise</returns>
-        public static bool HasItemInInventories(this Player player, int itemType, bool checkPiggyBank = false, bool checkSafe = false, bool checkDefendersForge = false, bool checkVoidBag = true) {
-            bool hasItem = player.HasItem(itemType);
+        public static bool HasItemInInventories(this Player player, int itemType, out Item item, bool checkPiggyBank = false, bool checkSafe = false, bool checkDefendersForge = false, bool checkVoidBag = true) {
+            item = null;
 
-            if (!hasItem && checkPiggyBank) {
-                foreach (Item item in player.bank.item) {
-                    if (item.type == itemType) {
-                        hasItem = true;
-                    }
+            //bool hasItem = player.HasItem(itemType); // Manually check inventory since we want to out an item 
+
+            foreach (Item i in player.inventory) {
+                if (i.type == itemType) {
+                    item = i;
+                    return true;
                 }
             }
 
-            if (!hasItem && checkSafe) {
-                foreach (Item item in player.bank2.item) {
-                    if (item.type == itemType) {
-                        hasItem = true;
-                    }
+            foreach (Item i in player.bank.item) {
+                if (i.type == itemType) {
+                    item = i;
+                    return true;
                 }
             }
 
-            if (!hasItem && checkDefendersForge) {
-                foreach (Item item in player.bank3.item) {
-                    if (item.type == itemType) {
-                        hasItem = true;
-                    }
+            foreach (Item i in player.bank2.item) {
+                if (i.type == itemType) {
+                    item = i;
+                    return true;
                 }
             }
 
-            if (!hasItem && checkVoidBag) {
-                foreach (Item item in player.bank4.item) {
-                    if (item.type == itemType) {
-                        hasItem = true;
-                    }
+            foreach (Item i in player.bank3.item) {
+                if (i.type == itemType) {
+                    item = i;
+                    return true;
                 }
             }
 
-            return hasItem;
+            foreach (Item i in player.bank4.item) {
+                if (i.type == itemType) {
+                    item = i;
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
