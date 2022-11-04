@@ -29,6 +29,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool GemstoneMagnet { get; set; }
 
+        [Label("$Mods.YAQOLM.Config.MagnificentMagnet")]
+        [Tooltip("A Gemstone Magnet upgrade that allows you to pull all items to you")]
+        [DefaultValue(true)]
+        public bool MagnificentMagnet { get; set; }
+
         [Label("$Mods.YAQOLM.Config.GoldenHorseshoeBalloon")]
         [Tooltip("Crafted from and into every horseshoe balloon")]
         [DefaultValue(true)]
