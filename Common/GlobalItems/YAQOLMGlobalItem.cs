@@ -22,6 +22,11 @@ namespace YAQOLM.Common.GlobalItems {
                 return;
             }
 
+            if (item.type == ItemID.Wire && ServerConfig.Instance.CheaperWire) {
+                item.value = 5;
+                return;
+            }
+
             if (item.type == ItemID.PinkGel && ServerConfig.Instance.PinkGelIsAmmo) {
                 item.ammo = AmmoID.Gel;
                 item.consumable = true;
