@@ -24,6 +24,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool MysticMirror { get; set; }
 
+        [Label("$Mods.YAQOLM.Config.GemstoneMagnet")]
+        [Tooltip("A Treasure Magnet upgrade that works in your inventory")]
+        [DefaultValue(true)]
+        public bool GemstoneMagnet { get; set; }
+
         [Label("$Mods.YAQOLM.Config.GoldenHorseshoeBalloon")]
         [Tooltip("Crafted from and into every horseshoe balloon")]
         [DefaultValue(true)]
