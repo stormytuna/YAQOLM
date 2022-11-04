@@ -1,0 +1,13 @@
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace YAQOLM.Common.Players {
+    public class DiscountCardPlayer : ModPlayer {
+        public override void UpdateEquips() {
+            if (Player.HasItemInInventories(ItemID.DiscountCard, true, true, true, true)) {
+                Player.discount = true;
+            }
+        }
+    }
+}

@@ -135,6 +135,10 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool PinkGelIsAmmo { get; set; }
 
+        [Label("[i:854] Discount Card works from inventory and banks")]
+        [DefaultValue(true)]
+        public bool DiscountCard { get; set; }
+
         /* ================ */
         /*       NPCS       */
         /* ================ */

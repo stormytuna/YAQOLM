@@ -80,6 +80,12 @@ namespace YAQOLM.Common.GlobalItems {
                 tip.Text = "When used as ammo, your weapon deals 20% more damage\n" + temp;
                 return;
             }
+
+            if (item.type == ItemID.DiscountCard && ServerConfig.Instance.DiscountCard) {
+                var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
+                tip.Text += "\nWorks while in your inventory or banks";
+                return;
+            }
         }
 
         public override void UpdateEquip(Item item, Player player) {
