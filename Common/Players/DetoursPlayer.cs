@@ -6,7 +6,7 @@ namespace YAQOLM.Common.Players {
     public class DetoursPlayer : ModPlayer {
         public override void Load() {
             // Subscribing in Load
-            if (ServerConfig.Instance.MoreAnglerLoot) {
+            if (ServerConfig.Instance.MoreAnglerLoot || ServerConfig.Instance.AnglerResetsImmediately) {
                 On.Terraria.Player.GetAnglerReward += Player_GetAnglerReward;
             }
             if (ServerConfig.Instance.BulkExtractinate) {
@@ -16,7 +16,7 @@ namespace YAQOLM.Common.Players {
 
         public override void Unload() {
             // Unsubscribing in Unload
-            if (ServerConfig.Instance.MoreAnglerLoot) {
+            if (ServerConfig.Instance.MoreAnglerLoot || ServerConfig.Instance.AnglerResetsImmediately) {
                 On.Terraria.Player.GetAnglerReward -= Player_GetAnglerReward;
             }
             if (ServerConfig.Instance.BulkExtractinate) {
@@ -25,10 +25,19 @@ namespace YAQOLM.Common.Players {
         }
 
         private void Player_GetAnglerReward(On.Terraria.Player.orig_GetAnglerReward orig, Player self, NPC angler) {
-            // Just gives us double loot from anglerg
-            orig(self, angler);
-            self.anglerQuestsFinished++;
-            orig(self, angler);
+            // Just gives us double loot from angler
+            if (ServerConfig.Instance.MoreAnglerLoot) {
+                orig(self, angler);
+                self.anglerQuestsFinished++;
+                orig(self, angler);
+            }
+            else {
+                orig(self, angler);
+            }
+
+            if (ServerConfig.Instance.AnglerResetsImmediately) {
+                Main.AnglerQuestSwap();
+            }
         }
 
         private void Player_ExtractinatorUse(On.Terraria.Player.orig_ExtractinatorUse orig, Player self, int extractType) {

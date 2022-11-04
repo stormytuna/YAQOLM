@@ -165,6 +165,10 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool MoreAnglerLoot { get; set; }
 
+        [Label("[i:2294] Angler quest resets immediately")]
+        [DefaultValue(true)]
+        public bool AnglerResetsImmediately { get; set; }
+
         [Label("[i:3198] Buff station changes")]
         [Tooltip("Buff stations provide 10% increased damage and a class specific buff")]
         [DefaultValue(true)]
