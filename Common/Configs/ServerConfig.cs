@@ -34,6 +34,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool MagnificentMagnet { get; set; }
 
+        [Label("$Mods.YAQOLM.Config.QuantumStrongbox")]
+        [Tooltip("Combines all 4 player inventories into one item")]
+        [DefaultValue(true)]
+        public bool QuantumStrongbox { get; set; }
+
         [Label("$Mods.YAQOLM.Config.GoldenHorseshoeBalloon")]
         [Tooltip("Crafted from and into every horseshoe balloon")]
         [DefaultValue(true)]

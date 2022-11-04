@@ -41,8 +41,11 @@ namespace YAQOLM.Common.Players {
         public Item GetItemFromFullName(string name) {
             int separater = name.IndexOf(":");
             string item = name.Substring(separater + 1);
-            int type = ItemID.Search.GetId(item);
-            return ContentSamples.ItemsByType[type];
+            if (ItemID.Search.TryGetId(item, out int type)) {
+                return ContentSamples.ItemsByType[type];
+            }
+
+            return null;
         }
 
         public bool HasConsumedItem(Item item) => consumedCraftingStations.Contains(GetFullNameFromItem(item)) && ServerConfig.Instance.InventoryCraftingStations;
@@ -54,8 +57,10 @@ namespace YAQOLM.Common.Players {
 
             foreach (string fullName in consumedCraftingStations) {
                 Item item = GetItemFromFullName(fullName);
-                if (!tiles.Contains(item.createTile)) {
-                    tiles.Add(item.createTile);
+                if (item != null) {
+                    if (!tiles.Contains(item.createTile)) {
+                        tiles.Add(item.createTile);
+                    }
                 }
             }
 
