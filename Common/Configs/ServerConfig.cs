@@ -76,7 +76,7 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool BottomlessBuckets { get; set; }
 
-        [Label("[i:3031] Magic Mirror")]
+        [Label("[i:50] Magic Mirror")]
         [Tooltip("10 Iron/Lead Bar\n5 Glass")]
         [DefaultValue(true)]
         public bool MagicMirror { get; set; }
