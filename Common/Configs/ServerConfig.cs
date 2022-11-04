@@ -203,5 +203,10 @@ namespace YAQOLM.Common.Configs {
         [Label("[i:36] Consume crafting stations for permanent access")]
         [DefaultValue(true)]
         public bool InventoryCraftingStations { get; set; }
+
+        [Label("[i:29] Super quick respawn")]
+        [Tooltip("Respawn time will be 2 seconds unless there's a currently active invasion or boss")]
+        [DefaultValue(true)]
+        public bool SuperQuickRespawn { get; set; }
     }
 }
