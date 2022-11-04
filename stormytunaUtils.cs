@@ -359,9 +359,7 @@ namespace YAQOLM {
         /// <param name="checkVoidBag">If set to true, this wil search the void bag</param>
         /// <returns>Returns true when an item is found, returns false otherwise</returns>
         public static bool HasItemInInventories(this Player player, int itemType, bool checkPiggyBank = false, bool checkSafe = false, bool checkDefendersForge = false, bool checkVoidBag = true) {
-            bool hasItem = false;
-
-            hasItem = player.HasItem(itemType);
+            bool hasItem = player.HasItem(itemType);
 
             if (!hasItem && checkPiggyBank) {
                 foreach (Item item in player.bank.item) {
