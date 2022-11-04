@@ -131,6 +131,10 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool CheaperSolutions { get; set; }
 
+        [Label("[i:3111] Pink Gel is gel ammo")]
+        [DefaultValue(true)]
+        public bool PinkGelIsAmmo { get; set; }
+
         /* ================ */
         /*       NPCS       */
         /* ================ */

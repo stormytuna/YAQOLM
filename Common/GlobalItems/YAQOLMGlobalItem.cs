@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -20,11 +21,25 @@ namespace YAQOLM.Common.GlobalItems {
                 item.value = 5;
                 return;
             }
+
+            if (item.type == ItemID.PinkGel && ServerConfig.Instance.PinkGelIsAmmo) {
+                item.ammo = AmmoID.Gel;
+                item.consumable = true;
+                return;
+            }
         }
 
         public override void ModifyItemLoot(Item item, ItemLoot itemLoot) {
             if (item.type == ItemID.KingSlimeBossBag && ServerConfig.Instance.KingSlimeDropsSlimeStaff) {
                 itemLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 4));
+            }
+        }
+
+        public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback) {
+            if (player.PickAmmo(item, out _, out _, out _, out _, out int usedAmmoItemId, true)) {
+                if (usedAmmoItemId == ItemID.PinkGel) {
+                    damage = (int)((float)damage * 1.2f);
+                }
             }
         }
 
@@ -38,21 +53,32 @@ namespace YAQOLM.Common.GlobalItems {
             if (item.type == ItemID.SharpeningStation && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
                 tip.Text = "Right click to increase melee damage and melee swing speed by 12%";
+                return;
             }
 
             if (item.type == ItemID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
                 tip.Text = "Right click to increase ranged damage by 15% and reduce ammo usage by 40%";
+                return;
             }
 
             if (item.type == ItemID.CrystalBall && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.LastOrDefault(t => t.Mod == "Terraria");
                 tip.Text += "\nRight click to increase magic damage by 10% and reduce mana usage by 8%";
+                return;
             }
 
             if (item.type == ItemID.BewitchingTable && ServerConfig.Instance.BuffStationChanges) {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
                 tip.Text = "Right click to increase number of minions and sentries and increase minion damage by 15%";
+                return;
+            }
+
+            if (item.type == ItemID.PinkGel && ServerConfig.Instance.PinkGelIsAmmo) {
+                var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
+                string temp = tip.Text;
+                tip.Text = "When used as ammo, your weapon deals 20% more damage\n" + temp;
+                return;
             }
         }
 
