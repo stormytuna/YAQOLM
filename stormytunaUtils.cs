@@ -349,5 +349,53 @@ namespace YAQOLM {
 
             shop.item = inventory.ToArray();
         }
+
+        /// <summary>Checks whether the player has an item in their inventory, piggy bank, safe, defenders forge or void bag</summary>
+        /// <param name="player">The player to check for</param>
+        /// <param name="itemType">The type of item to search for</param>
+        /// <param name="checkPiggyBank">If set to true, this will search the piggy bank</param>
+        /// <param name="checkSafe">If set to true, this will search the safe</param>
+        /// <param name="checkDefendersForge">If set to true, this will search the defenders forge</param>
+        /// <param name="checkVoidBag">If set to true, this wil search the void bag</param>
+        /// <returns>Returns true when an item is found, returns false otherwise</returns>
+        public static bool HasItemInInventories(this Player player, int itemType, bool checkPiggyBank = false, bool checkSafe = false, bool checkDefendersForge = false, bool checkVoidBag = true) {
+            bool hasItem = false;
+
+            hasItem = player.HasItem(itemType);
+
+            if (!hasItem && checkPiggyBank) {
+                foreach (Item item in player.bank.item) {
+                    if (item.type == itemType) {
+                        hasItem = true;
+                    }
+                }
+            }
+
+            if (!hasItem && checkSafe) {
+                foreach (Item item in player.bank2.item) {
+                    if (item.type == itemType) {
+                        hasItem = true;
+                    }
+                }
+            }
+
+            if (!hasItem && checkDefendersForge) {
+                foreach (Item item in player.bank3.item) {
+                    if (item.type == itemType) {
+                        hasItem = true;
+                    }
+                }
+            }
+
+            if (!hasItem && checkVoidBag) {
+                foreach (Item item in player.bank4.item) {
+                    if (item.type == itemType) {
+                        hasItem = true;
+                    }
+                }
+            }
+
+            return hasItem;
+        }
     }
 }
