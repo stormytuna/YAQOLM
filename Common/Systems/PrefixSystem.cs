@@ -23,7 +23,7 @@ namespace YAQOLM.Common.Systems {
             }
 
             // Whips and melee weapons that are swung
-            if ((item.CountsAsClass(DamageClass.Melee) && item.useStyle == ItemUseStyleID.Swing) || item.DamageType == DamageClass.SummonMeleeSpeed) {
+            if ((item.CountsAsClass(DamageClass.Melee) && item.useStyle == ItemUseStyleID.Swing && !item.noMelee) || item.DamageType == DamageClass.SummonMeleeSpeed) {
                 return PrefixID.Legendary;
             }
 
