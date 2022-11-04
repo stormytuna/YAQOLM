@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -48,7 +50,7 @@ namespace YAQOLM.Common.Systems {
             ItemID.BeetleShell
         };
 
-        private static int[] itemsWithLegendary2 = new int[] {
+        private static int[] _itemsWithLegendary2 = new int[] {
             ItemID.Terrarian,
             ItemID.CopperShortsword,
             ItemID.Gladius,
@@ -73,6 +75,10 @@ namespace YAQOLM.Common.Systems {
             TileID.HatRack
         };
 
+        private static int[] _itemsThatPlaceTilesWithRecipes = new int[] {
+
+        };
+
         public static int[] SolutionIds { get => _solutionIds; }
 
         public static int[] BarTypes { get => _barTypes; }
@@ -81,16 +87,39 @@ namespace YAQOLM.Common.Systems {
 
         public static int[] BeetleArmor { get => _beetleArmor; }
 
-        public static int[] ItemsWithLegendary2 { get => itemsWithLegendary2; }
+        public static int[] ItemsWithLegendary2 { get => _itemsWithLegendary2; }
 
         public static int[] IndestructibleTiles { get => _indestructibleTiles; }
 
+        public static int[] ItemsThatPlaceTilesWithRecipes { get => _itemsThatPlaceTilesWithRecipes; }
         public override void Unload() {
             _solutionIds = null;
             _barTypes = null;
             _oreTypes = null;
             _beetleArmor = null;
-            itemsWithLegendary2 = null;
+            _itemsWithLegendary2 = null;
+        }
+
+        public override void PostAddRecipes() {
+            List<int> tilesWithRecipes = new List<int>();
+
+            for (int i = 0; i < Main.recipe.Length; i++) {
+                for (int j = 0; j < Main.recipe[i].requiredTile.Count; j++) {
+                    if (!tilesWithRecipes.Contains(Main.recipe[i].requiredTile[j])) {
+                        tilesWithRecipes.Add(Main.recipe[i].requiredTile[j]);
+                    }
+                }
+            }
+
+            List<int> itemsPlaceTilesWithRecipes = new List<int>();
+
+            for (int i = 0; i < ContentSamples.ItemsByType.Count; i++) {
+                if (tilesWithRecipes.Contains(ContentSamples.ItemsByType[i].createTile)) {
+                    itemsPlaceTilesWithRecipes.Add(i);
+                }
+            }
+
+            _itemsThatPlaceTilesWithRecipes = itemsPlaceTilesWithRecipes.ToArray();
         }
     }
 }

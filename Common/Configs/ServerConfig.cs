@@ -199,5 +199,9 @@ namespace YAQOLM.Common.Configs {
         [Label("[i:166] Bombs explode walls even when unexposed")]
         [DefaultValue(true)]
         public bool BetterBombWalls { get; set; }
+
+        [Label("[i:36] Consume crafting stations for permanent access")]
+        [DefaultValue(true)]
+        public bool InventoryCraftingStations { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
 using YAQOLM.Common.Players;
+using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Common.GlobalItems {
     // Just using a generic global item class here since there's a few little things we need to do
@@ -31,6 +32,20 @@ namespace YAQOLM.Common.GlobalItems {
                 item.ammo = AmmoID.Gel;
                 item.consumable = true;
                 return;
+            }
+        }
+
+        public override bool CanRightClick(Item item) {
+            if (ArraySystem.ItemsThatPlaceTilesWithRecipes.Contains(item.type) && !Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>().HasConsumedItem(item) && ServerConfig.Instance.InventoryCraftingStations) {
+                return true;
+            }
+
+            return base.CanRightClick(item);
+        }
+
+        public override void RightClick(Item item, Player player) {
+            if (ArraySystem.ItemsThatPlaceTilesWithRecipes.Contains(item.type) && !player.GetModPlayer<ConsumableCraftingStationsPlayer>().HasConsumedItem(item)) {
+                player.GetModPlayer<ConsumableCraftingStationsPlayer>().ConsumeItem(item);
             }
         }
 
@@ -90,6 +105,19 @@ namespace YAQOLM.Common.GlobalItems {
                 var tip = tooltips.FirstOrDefault(t => t.Mod == "Terraria" && t.Name == "Tooltip0");
                 tip.Text += "\nWorks while in your inventory or banks";
                 return;
+            }
+
+            if (Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>().HasConsumedItem(item) && ServerConfig.Instance.InventoryCraftingStations) {
+                var tip = tooltips.LastOrDefault(t => t.Mod == "Terraria");
+                int index = tooltips.IndexOf(tip) + 1;
+                TooltipLine line = new(Mod, "CraftingStationConsumed", "[c/00FF00:Consumed]");
+                tooltips.Insert(index, line);
+            }
+            else if (ArraySystem.ItemsThatPlaceTilesWithRecipes.Contains(item.type) && ServerConfig.Instance.InventoryCraftingStations) {
+                var tip = tooltips.LastOrDefault(t => t.Mod == "Terraria");
+                int index = tooltips.IndexOf(tip) + 1;
+                TooltipLine line = new(Mod, "CraftingStationConsumed", $"[c/FF0000:Not consumed:] Right click to consume and unlock permanent access to {item.Name}");
+                tooltips.Insert(index, line);
             }
         }
 
