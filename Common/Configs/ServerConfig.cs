@@ -161,6 +161,7 @@ namespace YAQOLM.Common.Configs {
         public bool CheaperWire { get; set; }
 
         [Label("[i:3111] Pink Gel is gel ammo")]
+        [Tooltip("Deals 20% more damage than regular gel")]
         [DefaultValue(true)]
         public bool PinkGelIsAmmo { get; set; }
 
