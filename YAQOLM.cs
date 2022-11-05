@@ -8,6 +8,7 @@ namespace YAQOLM {
             AddToggle("Mods.YAQOLM.Config.WarpedMirror", "Warped Mirror", ModContent.ItemType<WarpedMirror>(), "ffffff");
             AddToggle("Mods.YAQOLM.Config.MysticMirror", "Mystic Mirror", ModContent.ItemType<MysticMirror>(), "ffffff");
             AddToggle("Mods.YAQOLM.Config.RunicMirror", "Runic Mirror", ModContent.ItemType<RunicMirror>(), "ffffff");
+            AddToggle("Mods.YAQOLM.Config.SpiralMirror", "Spiral Mirror", ModContent.ItemType<SpiralMirror>(), "ffffff");
             AddToggle("Mods.YAQOLM.Config.GemstoneMagnet", "Gemstone Magnet", ModContent.ItemType<GemstoneMagnet>(), "ffffff");
             AddToggle("Mods.YAQOLM.Config.MagnificentMagnet", "Magnificent Magnet", ModContent.ItemType<MagnificentMagnet>(), "ffffff");
             AddToggle("Mods.YAQOLM.Config.QuantumStrongbox", "Quantum Strongbox", ModContent.ItemType<QuantumStrongbox>(), "ffffff");

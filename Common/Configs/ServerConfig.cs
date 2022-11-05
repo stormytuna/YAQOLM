@@ -24,6 +24,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool MysticMirror { get; set; }
 
+        [Label("$Mods.YAQOLM.Config.SpiralMirror")]
+        [Tooltip("A combination of all the above mirrors")]
+        [DefaultValue(true)]
+        public bool SpiralMirror { get; set; }
+
         [Label("$Mods.YAQOLM.Config.GemstoneMagnet")]
         [Tooltip("A Treasure Magnet upgrade that works in your inventory")]
         [DefaultValue(true)]
