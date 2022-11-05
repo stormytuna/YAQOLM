@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
-using YAQOLM.Common.Players;
 
 namespace YAQOLM.Common.GlobalNPCs {
     public class NPCLootGlobalNPC : GlobalNPC {
