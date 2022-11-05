@@ -24,6 +24,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool MysticMirror { get; set; }
 
+        [Label("$Mods.YAQOLM.Config.RunicMirror")]
+        [Tooltip("Allows you to teleport to party members, NPCs and Pylons")]
+        [DefaultValue(true)]
+        public bool RunicMirror { get; set; }
+
         [Label("$Mods.YAQOLM.Config.SpiralMirror")]
         [Tooltip("A combination of all the above mirrors")]
         [DefaultValue(true)]
