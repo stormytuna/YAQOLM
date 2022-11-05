@@ -46,6 +46,11 @@ namespace YAQOLM.Content.Items {
         }
 
         private int mode = 0;
+        private int resetMode = -1;
+        public void SetAndResetMode(int newMode) {
+            resetMode = mode;
+            mode = newMode;
+        }
 
         public override bool CanRightClick() => true;
 
