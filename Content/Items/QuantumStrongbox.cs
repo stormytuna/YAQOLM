@@ -87,55 +87,45 @@ namespace YAQOLM.Content.Items {
 
         public override bool? UseItem(Player player) {
             if (player.whoAmI == Main.myPlayer) {
-                var modPlayer = player.GetModPlayer<QuantumStrongboxPlayer>();
                 switch (mode) {
                     case 0:
                         SoundEngine.PlaySound(SoundID.Item59);
-                        modPlayer.SetStrongboxMode = -2;
+                        player.OpenChest(-1, -1, -2);
                         break;
                     case 1:
                         SoundEngine.PlaySound(SoundID.Item149);
-                        modPlayer.SetStrongboxMode = -3;
+                        player.OpenChest(-1, -1, -3);
                         break;
                     case 2:
                         SoundEngine.PlaySound(SoundID.Item117);
-                        modPlayer.SetStrongboxMode = -4;
+                        player.OpenChest(-1, -1, -4);
                         break;
                     case 3:
                         SoundEngine.PlaySound(SoundID.Item130);
-                        modPlayer.SetStrongboxMode = -5;
+                        player.OpenChest(-1, -1, -5);
                         break;
                 }
+            }
+
+            player.CloseSign();
+            player.SetTalkNPC(-1);
+            Main.npcChatCornerItem = 0;
+            Main.npcChatText = "";
+            Main.playerInventory = true;
+            Recipe.FindRecipes();
+            Main.stackSplit = 600;
+
+
+            if (resetMode != -1) {
+                mode = resetMode;
+                resetMode = -1;
             }
 
             return true;
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame) {
-            player.itemLocation += new Vector2(-6f, 2f);
-        }
-    }
-
-    public class QuantumStrongboxPlayer : ModPlayer {
-        private int _strongboxMode = -1;
-
-        public int SetStrongboxMode { set => _strongboxMode = value; }
-
-        public override void PostUpdate() {
-            if (!Main.playerInventory) {
-                _strongboxMode = -1;
-            }
-
-            if (_strongboxMode != -1) {
-                Recipe.FindRecipes();
-                Player.CloseSign();
-                Player.SetTalkNPC(-1);
-                Player.chest = _strongboxMode;
-                Main.npcChatCornerItem = 0;
-                Main.npcChatText = "";
-                Main.playerInventory = true;
-                Main.stackSplit = 600;
-            }
+            player.itemLocation += new Vector2(-6f * player.direction, 2f);
         }
     }
 }
