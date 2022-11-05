@@ -1,0 +1,68 @@
+[b]Yet Another Quality of Life Mod[/b] is, unsurprisingly, yet another quality of life mod. It aims to provide a variety of quality of life features and tweaks that would't necessarily fit in vanilla.
+
+Some things this changes are adding recipes to items that are hard to acquire (looking at you [i:1326]), allowing bombs to destroy tiles you can mine, a magnet that works from your inventory and lets you pull items in the world to you and a whole lot more.
+
+Don't like something I've changed? That's fine, you can disable every single feature of this mod independently of each other.
+
+[hr][/hr]
+
+[b]Vanilla changes[/b]
+[list]
+[*]Rod of Discord crafting recipe - 5 Souls of Sight, 15 Hallowed Bars, 10 Souls of Light @ Hardmode Anvil
+[*]Snow Globe crafting recipe - 20 Snow block, 20 Glass @ Hardmode Anvil
+[*]Money Trough crafting recipe - 1 Piggy Bank, 6 Evil Bars @ Demon Altar
+[*]Magic Mirror crafting recipe - 10 Iron Bars, 5 Glass @ Demon Altar
+[*]Fishing Bait crafting recipes - 2 Apprentice -> 1 Journeyman, 2 Journeyman -> 1 Master
+[*]Bottomless bucket crafting recipe - 8 fluid buckets @ Crystal Ball
+[*]Moon Lord drops can be turned into Luminite Bars
+[*]Pre Hardmode ores are cheaper at a Hardmode Forge
+[*]Beetle Armor requires more Beetle Husks but doesn't require Turtle Armor
+[*]Dye Trader sells all basic and strange dyes depending on moon phase
+[*]Steampunker sells all vanilla solutions
+[*]All solutions and Wire cost 5 copper
+[*]Angler quests give more loot
+[*]Angler quests reset after completing them
+[*]Wooden Greaves have 1 defense
+[*]Goggles provide Night Owl
+[*]Rain Armor has a set bonus - 8% increased damage and 5% increased crit chance when exposed to rain
+[*]King Slime drops Slime Staff - 20% chance in classic, 25% chance in expert and master
+[*]Sharks drop Sharktooth Necklace - 4% chance
+[*]Buff stations provide better buffs
+[list]
+[*]Sharpening Station provides 12% melee damage and swing speed
+[*]Ammo Box provides 15% ranged damage and 40% reduced ammo consumption
+[*]Crystal Ball provides 10% magic damage and 8% reduced mana usage
+[*]Bewitching Table provides a minion slot, a sentry slot and 15% summon damage
+[/list]
+[*]When extractinating, you can extractinate up to 300 items at once
+[*]Bombs can destroy tiles you could mine
+[*]Bombs can also destroy walls even when unexposed
+[*]Pink gel is an ammo and deals 20% more damage than regular gel
+[*]Discount Card works from your inventory and player storage
+[*]Respawn time is 2 seconds if no event or boss is active
+[*]Crafting stations are consumable, allowing you to craft with them when not next to them
+[*]Killing bosses increases NPC happiness
+[/list]
+
+[b]Added Items[/b]
+[list]
+[*]Warped Mirror: Teleports you to where you last died - 1 Magic Mirror, 8 Evil Bars, 5 Evil Materials @ Demon Altar
+[*]Mystic Mirror: Teleport home and leave a portal to teleport back - 1 Magic Mirror, 8 Souls of Light, 8 Souls of Night @ Hardmode Anvil
+[*]Runic Mirror: Allows you to teleport to players on your team, town NPCs and Pylons - 100% to drop from Rune Wizard
+[*]Spiral Mirror: A combination of the above mirrors, right click to change mode - The above mirrors, 3 Chlorophyte Bars @ Hardmode Anvil
+[*]Gemstone Magnet: A Treasure Magnet upgrade that works while in your inventory - 1 Treasure Magnet, 3 Sapphires, 3 Rubies, 3 Emeralds @ Crystal Ball
+[*]Magnificent Magnet: A Gemstone Magnet upgrade that lets you pull all items to you - 1 Gemstone Magnet, 3 of each Mech Boss Soul @ Hardmode Anvil
+[*]Quantum Strongbox: A combination of each player inventory, right click to change mode - 1 of each player inventory accessor, 3 of each Mech Soul @ Hardmode Anvil
+[*]Golden Horseshoe Balloon: A horseshoe balloon that is crafted from and into every other horseshoe balloon
+[*]Prefix Hammers: Consumables that apply a given prefix to your held weapon - 1 of each Lunar Fragment @ Ancient Manipulator
+[*]Flower of the Jungle: Summons Plantera - 5 Jungle Spores, 3 Chlorophyte Bars @ Hardmode Anvil
+[/list]
+
+[b]Hotkeys[/b]
+[list]
+[*]Rod of Discord
+[*]Spiral Mirror with a given mode 
+[*]Quantum Lockbox with a given mode
+[/list]
+
+To report any bugs or give feedback, you can post a comment on the Steam Workshop or message me on Discord (stormytuna#2688). You can report bugs using GitHub issues as well.
