@@ -100,6 +100,8 @@ namespace YAQOLM.Common.Systems {
                 recipe.AddIngredient(ItemID.Glass, 5);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.Register();
+
+                // TODO: remove this in 1.4.4
             }
 
             if (ServerConfig.Instance.LuminiteSmeltingRecipes) {
