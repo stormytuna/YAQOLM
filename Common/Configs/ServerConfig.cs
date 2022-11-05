@@ -208,6 +208,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool BulkExtractinate { get; set; }
 
+        [Label("[i:73] Killing bosses makes NPCs happier")]
+        [Tooltip("0.92 price multiplier for Evil boss, Wall of Flesh and Plantera\n0.9 price multiplier for Moon Lord")]
+        [DefaultValue(true)]
+        public bool BossesIncreaseHappiness { get; set; }
+
         [Label("[i:166] Bombs explode tiles you could mine")]
         [DefaultValue(true)]
         public bool BetterBombTiles { get; set; }

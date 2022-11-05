@@ -13,6 +13,9 @@ namespace YAQOLM.Common.Systems {
             if (ServerConfig.Instance.BetterBombWalls) {
                 On.Terraria.Projectile.ExplodeTiles += Projectile_ExplodeTiles;
             }
+            if (ServerConfig.Instance.BossesIncreaseHappiness) {
+                On.Terraria.GameContent.ShopHelper.GetShoppingSettings += ShopHelper_GetShoppingSettings;
+            }
         }
 
         public override void Unload() {
@@ -21,6 +24,9 @@ namespace YAQOLM.Common.Systems {
             }
             if (ServerConfig.Instance.BetterBombWalls) {
                 On.Terraria.Projectile.ExplodeTiles -= Projectile_ExplodeTiles;
+            }
+            if (ServerConfig.Instance.BossesIncreaseHappiness) {
+                On.Terraria.GameContent.ShopHelper.GetShoppingSettings -= ShopHelper_GetShoppingSettings;
             }
         }
 
@@ -46,6 +52,28 @@ namespace YAQOLM.Common.Systems {
 
         private void Projectile_ExplodeTiles(On.Terraria.Projectile.orig_ExplodeTiles orig, Projectile self, Microsoft.Xna.Framework.Vector2 compareSpot, int radius, int minI, int maxI, int minJ, int maxJ, bool wallSplode) {
             orig(self, compareSpot, radius, minI, maxI, minJ, maxJ, true);
+        }
+
+        private ShoppingSettings ShopHelper_GetShoppingSettings(On.Terraria.GameContent.ShopHelper.orig_GetShoppingSettings orig, Terraria.GameContent.ShopHelper self, Player player, NPC npc) {
+            var settings = orig(self, player, npc);
+
+            if (NPC.downedBoss2) {
+                settings.PriceAdjustment *= 0.92f;
+            }
+
+            if (Main.hardMode) {
+                settings.PriceAdjustment *= 0.92f;
+            }
+
+            if (NPC.downedPlantBoss) {
+                settings.PriceAdjustment *= 0.92f;
+            }
+
+            if (NPC.downedMoonlord) {
+                settings.PriceAdjustment *= 0.9f;
+            }
+
+            return settings;
         }
     }
 }
