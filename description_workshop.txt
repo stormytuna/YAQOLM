@@ -6,7 +6,7 @@ Don't like something I've changed? That's fine, you can disable every single fea
 
 [hr][/hr]
 
-[b]Vanilla changes[/b]
+[h2][b]Recipe changes[/b][/h2]
 [list]
 [*]Rod of Discord crafting recipe - 5 Souls of Sight, 15 Hallowed Bars, 10 Souls of Light @ Hardmode Anvil
 [*]Snow Globe crafting recipe - 20 Snow block, 20 Glass @ Hardmode Anvil
@@ -17,16 +17,27 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Moon Lord drops can be turned into Luminite Bars
 [*]Pre Hardmode ores are cheaper at a Hardmode Forge
 [*]Beetle Armor requires more Beetle Husks but doesn't require Turtle Armor
+[/list]
+
+[h2][b]Town NPC changes[/b][/h2]
+[list]
 [*]Dye Trader sells all basic and strange dyes depending on moon phase
 [*]Steampunker sells all vanilla solutions
-[*]All solutions and Wire cost 5 copper
 [*]Angler quests give more loot
 [*]Angler quests reset after completing them
+[*]King Slime drops Slime Staff - 20% chance in classic, 25% chance in expert and master
+[*]Sharks drop Sharktooth Necklace - 4% chance
+[/list]
+
+[h2][b]Item changes[/b][/h2]
+[list]
+[*]All solutions and Wire cost 5 copper
 [*]Wooden Greaves have 1 defense
 [*]Goggles provide Night Owl
 [*]Rain Armor has a set bonus - 8% increased damage and 5% increased crit chance when exposed to rain
-[*]King Slime drops Slime Staff - 20% chance in classic, 25% chance in expert and master
-[*]Sharks drop Sharktooth Necklace - 4% chance
+[/list]
+
+[h2][b]Misc changes[/b][/h2]
 [*]Buff stations provide better buffs
 [list]
 [*]Sharpening Station provides 12% melee damage and swing speed
@@ -50,7 +61,7 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [/list]
 [/list]
 
-[b]Added Items[/b]
+[h2][b]Added Items[/b][/h2]
 [list]
 [*]Warped Mirror: Teleports you to where you last died - 1 Magic Mirror, 8 Evil Bars, 5 Evil Materials @ Demon Altar
 [*]Mystic Mirror: Teleport home and leave a portal to teleport back - 1 Magic Mirror, 8 Souls of Light, 8 Souls of Night @ Hardmode Anvil
@@ -64,7 +75,7 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Flower of the Jungle: Summons Plantera - 5 Jungle Spores, 3 Chlorophyte Bars @ Hardmode Anvil
 [/list]
 
-[b]Hotkeys[/b]
+[h2][b]Hotkeys[/b][/h2]
 [list]
 [*]Rod of Discord
 [*]Spiral Mirror with a given mode 
