@@ -70,16 +70,10 @@ namespace YAQOLM.Content.Items {
 
             return true;
         }
-    }
 
-    // Again, like GemstoneMagnet, doing inventory checks in a player so we can use it in void bag
-    public class MagnificentMagnetPlayer : ModPlayer {
-        public override void PostUpdateMiscEffects() {
-            if (Player.HasItemInInventories(ModContent.ItemType<MagnificentMagnet>(), out Item item)) {
-                var magnet = item.ModItem as MagnificentMagnet;
-                if (!magnet.Disabled) {
-                    Player.treasureMagnet = true;
-                }
+        public override void UpdateInventory(Player player) {
+            if (!_disabled) {
+                player.treasureMagnet = true;
             }
         }
     }

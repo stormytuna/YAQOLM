@@ -29,14 +29,9 @@ namespace YAQOLM.Content.Items {
                 .AddTile(TileID.CrystalBall)
                 .Register();
         }
-    }
 
-    // Using a player class as UpdateInventory doesn't run in void bag yet // TODO: fix this in 1.4.4
-    public class GemstoneMagnetPlayer : ModPlayer {
-        public override void PostUpdateMiscEffects() {
-            if (Player.HasItemInInventories(ModContent.ItemType<GemstoneMagnet>(), out _)) {
-                Player.treasureMagnet = true;
-            }
+        public override void UpdateInventory(Player player) {
+            player.treasureMagnet = true;
         }
     }
 }
