@@ -134,26 +134,6 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool CheaperOre { get; set; }
 
-
-        /* ================ */
-        /*      DROPS       */
-        /* ================ */
-
-        [Header("Drops")]
-
-        [Label("[i:1309] King Slime drops Slime Staff")]
-        [Tooltip("20% chance in Classic, 25% chance in Expert")]
-        [ReloadRequired]
-        [DefaultValue(true)]
-        public bool KingSlimeDropsSlimeStaff { get; set; }
-
-        [Label("[i:3212] Sharks drop Sharktooth Necklace")]
-        [Tooltip("4% chance")]
-        [ReloadRequired]
-        [DefaultValue(true)]
-        public bool SharksDropSharktoothNecklace { get; set; }
-
-
         /* ================ */
         /*      ITEMS       */
         /* ================ */
@@ -211,12 +191,6 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool DyeTraderSellsSusDyes { get; set; }
 
-        /* ================ */
-        /*       MISC       */
-        /* ================ */
-
-        [Header("Misc")]
-
         [Label("[i:2294] More angler quest loot")]
         [ReloadRequired]
         [DefaultValue(true)]
@@ -226,6 +200,24 @@ namespace YAQOLM.Common.Configs {
         [ReloadRequired]
         [DefaultValue(true)]
         public bool AnglerResetsImmediately { get; set; }
+
+        [Label("[i:1309] King Slime drops Slime Staff")]
+        [Tooltip("20% chance in Classic, 25% chance in Expert")]
+        [ReloadRequired]
+        [DefaultValue(true)]
+        public bool KingSlimeDropsSlimeStaff { get; set; }
+
+        [Label("[i:3212] Sharks drop Sharktooth Necklace")]
+        [Tooltip("4% chance")]
+        [ReloadRequired]
+        [DefaultValue(true)]
+        public bool SharksDropSharktoothNecklace { get; set; }
+
+        /* ================ */
+        /*       MISC       */
+        /* ================ */
+
+        [Header("Misc")]
 
         [Label("[i:3198] Buff station changes")]
         [Tooltip("Buff stations provide 10% increased damage and a class specific buff")]
