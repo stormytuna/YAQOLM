@@ -13,8 +13,6 @@ namespace YAQOLM.Content.Items {
             Tooltip.SetDefault("Gaze into the mirror to return home and create a portal\nUse portal to return when you are done");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.MysticMirror;
-
         public override void SetDefaults() {
             Item.useTurn = true;
             Item.width = 24;
@@ -28,12 +26,14 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            CreateRecipe()
-                .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
-                .AddIngredient(ItemID.SoulofLight, 8)
-                .AddIngredient(ItemID.SoulofNight, 8)
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
+            if (ServerConfig.Instance.MysticMirror) {
+                CreateRecipe()
+                    .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
+                    .AddIngredient(ItemID.SoulofLight, 8)
+                    .AddIngredient(ItemID.SoulofNight, 8)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
+            }
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame) {

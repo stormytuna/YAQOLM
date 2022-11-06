@@ -10,8 +10,6 @@ namespace YAQOLM.Content.Items.PrefixHammers {
             Tooltip.SetDefault("Right click to apply the best prefix to your currently held weapon");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.PrefixHammers;
-
         public override void SetDefaults() {
             Item.width = 26;
             Item.height = 24;
@@ -20,13 +18,15 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         }
 
         public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient(ItemID.FragmentSolar, 1)
-                .AddIngredient(ItemID.FragmentVortex, 1)
-                .AddIngredient(ItemID.FragmentNebula, 1)
-                .AddIngredient(ItemID.FragmentStardust, 1)
-                .AddTile(TileID.LunarCraftingStation)
-                .Register();
+            if (ServerConfig.Instance.PrefixHammers) {
+                CreateRecipe()
+                    .AddIngredient(ItemID.FragmentSolar, 1)
+                    .AddIngredient(ItemID.FragmentVortex, 1)
+                    .AddIngredient(ItemID.FragmentNebula, 1)
+                    .AddIngredient(ItemID.FragmentStardust, 1)
+                    .AddTile(TileID.LunarCraftingStation)
+                    .Register();
+            }
         }
 
         public override bool CanRightClick() {

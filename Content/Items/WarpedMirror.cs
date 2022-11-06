@@ -14,8 +14,6 @@ namespace YAQOLM.Content.Items {
             Tooltip.SetDefault("Gaze into the mirror to return to where you last died");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.WarpedMirror;
-
         public override void SetDefaults() {
             Item.useTurn = true;
             Item.width = 24;
@@ -29,12 +27,14 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            CreateRecipe()
+            if (ServerConfig.Instance.WarpedMirror) {
+                CreateRecipe()
                 .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
                 .AddRecipeGroup(RecipeSystem.evilMaterialRecipeGroup, 8)
                 .AddRecipeGroup(RecipeSystem.evilBarRecipeGroup, 5)
                 .AddTile(TileID.DemonAltar)
                 .Register();
+            }
         }
 
         public override bool CanUseItem(Player player) {

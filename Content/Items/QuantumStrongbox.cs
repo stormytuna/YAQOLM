@@ -15,8 +15,6 @@ namespace YAQOLM.Content.Items {
             Tooltip.SetDefault("Picks up items when your inventory is full");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.QuantumStrongbox;
-
         public override void SetDefaults() {
             Item.width = 32;
             Item.height = 32;
@@ -29,16 +27,18 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient(ItemID.PiggyBank)
-                .AddIngredient(ItemID.Safe)
-                .AddIngredient(ItemID.DefendersForge)
-                .AddIngredient(ItemID.VoidLens)
-                .AddIngredient(ItemID.SoulofFright, 3)
-                .AddIngredient(ItemID.SoulofMight, 3)
-                .AddIngredient(ItemID.SoulofSight, 3)
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
+            if (ServerConfig.Instance.QuantumStrongbox) {
+                CreateRecipe()
+                    .AddIngredient(ItemID.PiggyBank)
+                    .AddIngredient(ItemID.Safe)
+                    .AddIngredient(ItemID.DefendersForge)
+                    .AddIngredient(ItemID.VoidLens)
+                    .AddIngredient(ItemID.SoulofFright, 3)
+                    .AddIngredient(ItemID.SoulofMight, 3)
+                    .AddIngredient(ItemID.SoulofSight, 3)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
+            }
         }
 
         public override void UpdateInventory(Player player) {

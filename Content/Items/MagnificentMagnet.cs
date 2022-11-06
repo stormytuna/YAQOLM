@@ -13,8 +13,6 @@ namespace YAQOLM.Content.Items {
             Tooltip.SetDefault("Increases pickup range for items while in your inventory\nUse to pull all items in the world to you");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.MagnificentMagnet;
-
         public override void SetDefaults() {
             Item.width = 26;
             Item.height = 28;
@@ -28,17 +26,18 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient(ModContent.ItemType<GemstoneMagnet>())
-                .AddIngredient(ItemID.SoulofSight, 3)
-                .AddIngredient(ItemID.SoulofMight, 3)
-                .AddIngredient(ItemID.SoulofFright, 3)
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
+            if (ServerConfig.Instance.MagnificentMagnet) {
+                CreateRecipe()
+                    .AddIngredient(ModContent.ItemType<GemstoneMagnet>())
+                    .AddIngredient(ItemID.SoulofSight, 3)
+                    .AddIngredient(ItemID.SoulofMight, 3)
+                    .AddIngredient(ItemID.SoulofFright, 3)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
+            }
         }
 
         private bool _disabled = false;
-        public bool Disabled { get => _disabled; }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips) {
             // Get index

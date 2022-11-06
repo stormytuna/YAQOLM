@@ -15,8 +15,6 @@ namespace YAQOLM.Content.Items {
             Tooltip.SetDefault("Allows you to teleport to party members, NPCs and Pylons");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.RunicMirror;
-
         public override void SetDefaults() {
             Item.useTurn = true;
             Item.width = 24;
@@ -82,7 +80,9 @@ namespace YAQOLM.Content.Items {
         public override bool AppliesToEntity(NPC entity, bool lateInstantiation) => entity.type == NPCID.RuneWizard;
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RunicMirror>()));
+            if (ServerConfig.Instance.RunicMirror) {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RunicMirror>()));
+            }
         }
     }
 

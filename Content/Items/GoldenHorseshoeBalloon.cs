@@ -14,8 +14,6 @@ namespace YAQOLM.Content.Items {
             Tooltip.SetDefault("Doesn't allow the holder to double jump\nDoesn't increase jump height or negate fall damage");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.GoldenHorseshoeBalloon;
-
         public override void SetDefaults() {
             Item.width = 28;
             Item.height = 48;
@@ -24,10 +22,12 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            CreateRecipe()
-                .AddRecipeGroup(RecipeSystem.horseshoeBalloonRecipeGroup)
-                .AddTile(TileID.TinkerersWorkbench)
-                .Register();
+            if (ServerConfig.Instance.GoldenHorseshoeBalloon) {
+                CreateRecipe()
+                    .AddRecipeGroup(RecipeSystem.horseshoeBalloonRecipeGroup)
+                    .AddTile(TileID.TinkerersWorkbench)
+                    .Register();
+            }
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips) {

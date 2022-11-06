@@ -17,8 +17,6 @@ namespace YAQOLM.Content.Items {
             NPCID.Sets.MPAllowedEnemies[NPCID.Plantera] = true;
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.FlowerOfTheJungle;
-
         public override void SetDefaults() {
             Item.width = 22;
             Item.height = 22;
@@ -56,11 +54,13 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient(ItemID.JungleSpores, 5)
-                .AddIngredient(ItemID.ChlorophyteBar, 3)
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
+            if (ServerConfig.Instance.FlowerOfTheJungle) {
+                CreateRecipe()
+                    .AddIngredient(ItemID.JungleSpores, 5)
+                    .AddIngredient(ItemID.ChlorophyteBar, 3)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
+            }
         }
     }
 }

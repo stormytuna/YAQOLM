@@ -16,8 +16,6 @@ namespace YAQOLM.Content.Items {
             Tooltip.SetDefault("Use to teleport somewhere\nRight click to switch mode\nAllows you to teleport to party members, NPCs and Pylons");
         }
 
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.SpiralMirror;
-
         public override void SetDefaults() {
             Item.useTurn = true;
             Item.width = 26;
@@ -34,13 +32,15 @@ namespace YAQOLM.Content.Items {
         public override bool CanUseItem(Player player) => _mode == 1 ? player.GetModPlayer<WarpedMirrorPlayer>().deathLocation != Vector2.Zero : true;
 
         public override void AddRecipes() {
-            CreateRecipe()
-                .AddIngredient(ModContent.ItemType<WarpedMirror>())
-                .AddIngredient(ModContent.ItemType<MysticMirror>())
-                .AddIngredient(ModContent.ItemType<RunicMirror>())
-                .AddIngredient(ItemID.ChlorophyteBar, 3)
-                .AddTile(TileID.MythrilAnvil)
-                .Register();
+            if (ServerConfig.Instance.SpiralMirror) {
+                CreateRecipe()
+                    .AddIngredient(ModContent.ItemType<WarpedMirror>())
+                    .AddIngredient(ModContent.ItemType<MysticMirror>())
+                    .AddIngredient(ModContent.ItemType<RunicMirror>())
+                    .AddIngredient(ItemID.ChlorophyteBar, 3)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
+            }
         }
 
         public override bool CanRightClick() => true;
