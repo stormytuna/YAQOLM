@@ -82,4 +82,6 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Quantum Lockbox with a given mode
 [/list]
 
+[hr][/hr]
+
 To report any bugs or give feedback, you can post a comment on the Steam Workshop or message me on Discord (stormytuna#2688). You can report bugs using GitHub issues as well.
