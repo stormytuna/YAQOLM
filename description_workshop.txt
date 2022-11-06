@@ -1,6 +1,6 @@
 [b]Yet Another Quality of Life Mod[/b] is, unsurprisingly, yet another quality of life mod. It aims to provide a variety of quality of life features and tweaks that would't necessarily fit in vanilla.
 
-Some things this changes are adding recipes to items that are hard to acquire (looking at you [i:1326]), allowing bombs to destroy tiles you can mine, a magnet that works from your inventory and lets you pull items in the world to you and a whole lot more.
+Some things this changes are adding recipes to items that are hard to acquire (looking at you Rod of Discord), allowing bombs to destroy tiles you can mine, a magnet that works from your inventory and lets you pull items in the world to you and a whole lot more.
 
 Don't like something I've changed? That's fine, you can disable every single feature of this mod independently of each other.
 
@@ -42,6 +42,12 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Respawn time is 2 seconds if no event or boss is active
 [*]Crafting stations are consumable, allowing you to craft with them when not next to them
 [*]Killing bosses increases NPC happiness
+[list]
+[*]To be more specific, 4 main progression bosses will add another multiplier to an NPCs price multiplier
+[*]This price multiplier is, as far as I can tell, what controls how "happy" an NPC is
+[*]Evil boss, Wall of Flesh and Plantera add a 0.92 multiplier, while Moon Lord adds a 0.9 multiplier
+[*]In practice this will mean NPCs that are slightly-moderately unhappy will now be happy enough to sell a pylon, while NPCs that are very unhappy will not
+[/list]
 [/list]
 
 [b]Added Items[/b]
