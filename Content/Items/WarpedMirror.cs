@@ -85,7 +85,7 @@ namespace YAQOLM.Content.Items {
         public Vector2 deathLocation = Vector2.Zero;
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) {
-            deathLocation = Player.Center;
+            deathLocation = Player.position;
         }
     }
 }
