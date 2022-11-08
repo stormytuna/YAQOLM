@@ -19,7 +19,7 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Beetle Armor requires more Beetle Husks but doesn't require Turtle Armor
 [/list]
 
-[h2][b]Town NPC changes[/b][/h2]
+[h2][b]NPC and Drop changes[/b][/h2]
 [list]
 [*]Dye Trader sells all basic and strange dyes depending on moon phase
 [*]Steampunker sells all vanilla solutions
@@ -27,6 +27,10 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Angler quests reset after completing them
 [*]King Slime drops Slime Staff - 20% chance in classic, 25% chance in expert and master
 [*]Sharks drop Sharktooth Necklace - 4% chance
+[*]One from options drops are now some from options
+[list]
+[*]For every 4 items, one more will drop. 4 items still drops 1, while 5 will drop 2, 9 drops 3 etc etc
+[/list]
 [/list]
 
 [h2][b]Item changes[/b][/h2]
@@ -91,6 +95,11 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.2.0[/i]
+[list]
+[*]Added a one from options into few from options feature
+[*]Fixed an issue with Quantum Strongbox not opening, but it will spam noise when you use it and I can't find a way to fix it, as such it's disabled by default
+[/list]
 [*][i]v1.1.0[/i]
 [list]
 [*]Fixed an issue where disabling certain items would prevent you from moving
