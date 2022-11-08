@@ -179,7 +179,7 @@ namespace YAQOLM.Common.Configs {
         /*       NPCS       */
         /* ================ */
 
-        [Header("NPCs")]
+        [Header("NPCs and Drops")]
 
         [Label("[i:780] Steampunker sells all vanilla solutions")]
         [Tooltip("Can't sell modded solutions here to avoid progression breaking with modded biomes")]
