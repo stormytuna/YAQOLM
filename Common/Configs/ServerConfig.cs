@@ -213,6 +213,12 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool SharksDropSharktoothNecklace { get; set; }
 
+        [Label("[i:3332] One from options drops become some from options")]
+        [Tooltip("For every 4 items, one more will drop. 4 items still drops 1, while 5 will drop 2, 9 drops 3 etc etc")]
+        [ReloadRequired]
+        [DefaultValue(true)]
+        public bool OneFromOptionsToFewFromOptions { get; set; }
+
         /* ================ */
         /*       MISC       */
         /* ================ */
