@@ -80,6 +80,11 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Golden Horseshoe Balloon: A horseshoe balloon that is crafted from and into every other horseshoe balloon
 [*]Prefix Hammers: Consumables that apply a given prefix to your held weapon - 1 of each Lunar Fragment @ Ancient Manipulator
 [*]Flower of the Jungle: Summons Plantera - 5 Jungle Spores, 3 Chlorophyte Bars @ Hardmode Anvil
+[*]Makeshift Device: Purely a crossmod compatibility item for Magic Storage
+[list]
+[*]When placed in a Magic Storage Crafting Interface you'll have access to your consumed crafting stations
+[*]Crafted with 5 Platinum Bars and 1 Diamond @ Anvil
+[/list]
 [/list]
 
 [h2][b]Hotkeys[/b][/h2]
@@ -97,6 +102,7 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 [list]
 [*][i]v1.2.0[/i]
 [list]
+[*]Added Makeshift Device
 [*]Added a one from options into few from options feature
 [*]Fixed an issue with Quantum Strongbox not opening, but it will spam noise when you use it and I can't find a way to fix it, as such it's disabled by default
 [/list]
