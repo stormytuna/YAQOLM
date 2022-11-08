@@ -87,38 +87,40 @@ namespace YAQOLM.Content.Items {
 
         public override bool? UseItem(Player player) {
             if (player.whoAmI == Main.myPlayer) {
+                var modPlayer = player.GetModPlayer<QuantumStrongboxPlayer>();
+
+
                 switch (mode) {
                     case 0:
                         SoundEngine.PlaySound(SoundID.Item59);
-                        player.OpenChest(-1, -1, -2);
+                        modPlayer.StrongboxMode = -2;
                         break;
                     case 1:
                         SoundEngine.PlaySound(SoundID.Item149);
-                        player.OpenChest(-1, -1, -3);
+                        modPlayer.StrongboxMode = -2;
                         break;
                     case 2:
                         SoundEngine.PlaySound(SoundID.Item117);
-                        player.OpenChest(-1, -1, -4);
+                        modPlayer.StrongboxMode = -2;
                         break;
                     case 3:
                         SoundEngine.PlaySound(SoundID.Item130);
-                        player.OpenChest(-1, -1, -5);
+                        modPlayer.StrongboxMode = -2;
                         break;
                 }
-            }
 
-            player.CloseSign();
-            player.SetTalkNPC(-1);
-            Main.npcChatCornerItem = 0;
-            Main.npcChatText = "";
-            Main.playerInventory = true;
-            Recipe.FindRecipes();
-            Main.stackSplit = 600;
+                player.CloseSign();
+                player.SetTalkNPC(-1);
+                Main.npcChatCornerItem = 0;
+                Main.npcChatText = "";
+                Main.playerInventory = true;
+                Recipe.FindRecipes();
 
 
-            if (resetMode != -1) {
-                mode = resetMode;
-                resetMode = -1;
+                if (resetMode != -1) {
+                    mode = resetMode;
+                    resetMode = -1;
+                }
             }
 
             return true;
@@ -126,6 +128,21 @@ namespace YAQOLM.Content.Items {
 
         public override void UseStyle(Player player, Rectangle heldItemFrame) {
             player.itemLocation += new Vector2(-6f * player.direction, 2f);
+        }
+    }
+
+    public class QuantumStrongboxPlayer : ModPlayer {
+        public int StrongboxMode { get; set; }
+
+        public override void PostUpdate() {
+            if (!Main.playerInventory) {
+                StrongboxMode = -1;
+            }
+
+            if (StrongboxMode != -1) {
+                Point tile = Player.Center.ToTileCoordinates();
+                Player.OpenChest(tile.X, tile.Y, StrongboxMode);
+            }
         }
     }
 }
