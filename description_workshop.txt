@@ -103,6 +103,9 @@ Don't like something I've changed? That's fine, you can disable every single fea
 To report any bugs or give feedback, you can post a comment on the Steam Workshop or message me on Discord (stormytuna#2688). You can report bugs using GitHub issues as well.
 
 [b]Changelog[/b]
+[*][i]v1.3.0[/i]
+[*]Added team saving when leaving and rejoining a multiplayer world 
+[*]Added life fruits give 10 hp instead of 5
 [list]
 [*][i]v1.2.1[/i]
 [*]Added unlimited potions when you have 30 of them, though it feels a bit cheaty so it's disabled by default
