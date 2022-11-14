@@ -174,6 +174,11 @@ namespace YAQOLM.Common.Configs {
         [DefaultValue(true)]
         public bool DiscountCard { get; set; }
 
+        [Label("[i:1291] Life Fruits increase max life by 10")]
+        [ReloadRequired]
+        [DefaultValue(true)]
+        public bool BetterLifeFruit { get; set; }
+
         /* ================ */
         /*       NPCS       */
         /* ================ */
@@ -268,5 +273,9 @@ namespace YAQOLM.Common.Configs {
         [Label("[i:2266] Gain buffs from potions that grant debuffs as well")]
         [DefaultValue(false)]
         public bool UnlimitedPotionsWithDebuffs { get; set; }
+
+        [Label("[i:1969] Save team when leaving and rejoining")]
+        [DefaultValue(true)]
+        public bool SaveTeam { get; set; }
     }
 }
