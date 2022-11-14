@@ -119,6 +119,11 @@ namespace YAQOLM.Common.GlobalItems {
                 TooltipLine line = new(Mod, "CraftingStationConsumed", $"[c/FF0000:Not consumed:] Right click to consume and unlock permanent access to {item.Name}");
                 tooltips.Insert(index, line);
             }
+
+            if (item.type == ItemID.LifeFruit && ServerConfig.Instance.BetterLifeFruit) {
+                var tip = tooltips.FirstOrDefault(t => t.Name == "Tooltip0");
+                tip.Text = "Permanently increases maximum life by 10";
+            }
         }
 
         public override void UpdateEquip(Item item, Player player) {

@@ -1,4 +1,6 @@
 using Terraria;
+using Terraria.GameContent.Achievements;
+using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
 
@@ -12,6 +14,9 @@ namespace YAQOLM.Common.Players {
             if (ServerConfig.Instance.BulkExtractinate) {
                 On.Terraria.Player.ExtractinatorUse += Player_ExtractinatorUse;
             }
+            if (ServerConfig.Instance.BetterLifeFruit) {
+                On.Terraria.Player.ItemCheck_UseLifeFruit += Player_ItemCheck_UseLifeFruit;
+            }
         }
 
         public override void Unload() {
@@ -21,6 +26,9 @@ namespace YAQOLM.Common.Players {
             }
             if (ServerConfig.Instance.BulkExtractinate) {
                 On.Terraria.Player.ExtractinatorUse -= Player_ExtractinatorUse;
+            }
+            if (ServerConfig.Instance.BetterLifeFruit) {
+                On.Terraria.Player.ItemCheck_UseLifeFruit -= Player_ItemCheck_UseLifeFruit;
             }
         }
 
@@ -63,6 +71,24 @@ namespace YAQOLM.Common.Players {
                     break;
                 }
             }
+        }
+
+        private void Player_ItemCheck_UseLifeFruit(On.Terraria.Player.orig_ItemCheck_UseLifeFruit orig, Player self, Item sItem) {
+            if (sItem.type == ItemID.LifeFruit && self.itemAnimation > 0 && self.statLifeMax >= 400 && self.statLifeMax < 500 && self.ItemTimeIsZero) {
+                //self.ApplyItemTime(sItem);
+                self.statLifeMax += 5;
+                self.statLifeMax2 += 5;
+                self.statLife += 5;
+                if (self.statLifeMax > 500) {
+                    self.statLifeMax = 500;
+                }
+                if (Main.myPlayer == self.whoAmI) {
+                    self.HealEffect(5);
+                }
+                AchievementsHelper.HandleSpecialEvent(self, 2);
+            }
+
+            orig(self, sItem);
         }
     }
 }

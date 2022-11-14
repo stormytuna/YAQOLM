@@ -2,7 +2,6 @@ using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
 namespace YAQOLM.Common.Configs {
-    [Label("Recipe Configs")]
     public class ServerConfig : ModConfig {
         public static ServerConfig Instance;
 
