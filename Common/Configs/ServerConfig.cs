@@ -261,5 +261,13 @@ namespace YAQOLM.Common.Configs {
         [Tooltip("Respawn time will be 2 seconds unless there's a currently active invasion or boss")]
         [DefaultValue(true)]
         public bool SuperQuickRespawn { get; set; }
+
+        [Label("[i:292] Having 30 potions grants you that buff")]
+        [DefaultValue(false)]
+        public bool UnlimitedPotions { get; set; }
+
+        [Label("[i:2266] Gain buffs from potions that grant debuffs as well")]
+        [DefaultValue(false)]
+        public bool UnlimitedPotionsWithDebuffs { get; set; }
     }
 }
