@@ -2,13 +2,13 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
-using Terraria.UI;
-using Terraria.UI.Gamepad;
-using Terraria.GameInput;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
+using Terraria.UI.Gamepad;
 using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
@@ -54,7 +54,7 @@ namespace YAQOLM.Content.Items {
             resetMode = mode;
             mode = newMode;
             var player = Main.LocalPlayer;
-        		ToggleChest(ref player, mode);
+            ToggleChest(ref player, mode);
         }
 
         public override bool CanRightClick() => true;
@@ -90,8 +90,8 @@ namespace YAQOLM.Content.Items {
             tooltips.Insert(index + 1, new(Mod, "Tooltip2", "Right click to switch mode"));
 
             if (PlayerInput.Triggers.JustPressed.MouseMiddle) {
-              var player = Main.LocalPlayer;
-              ToggleChest(ref player, mode);
+                var player = Main.LocalPlayer;
+                ToggleChest(ref player, mode);
             }
 
         }
@@ -114,41 +114,37 @@ namespace YAQOLM.Content.Items {
             player.itemLocation += new Vector2(-6f * player.direction, 2f);
         }
 
-        private void ToggleChest(ref Player player, int mode)
-        {
+        private void ToggleChest(ref Player player, int mode) {
             int chestId = -1;
             SoundStyle? sound = null;
             switch (mode) {
-	            case 0:
-  	         		sound = SoundID.Item59;
-             		chestId = -2;
-                break;
-              case 1:
-            		sound = SoundID.Item149;
-             		chestId = -3;
-                break;
-              case 2:
-             		sound = SoundID.Item117;
-             		chestId = -4;
-                break;
-              case 3:
-             		sound = SoundID.Item130;
-             		chestId = -5;
-                break;
+                case 0:
+                    sound = SoundID.Item59;
+                    chestId = -2;
+                    break;
+                case 1:
+                    sound = SoundID.Item149;
+                    chestId = -3;
+                    break;
+                case 2:
+                    sound = SoundID.Item117;
+                    chestId = -4;
+                    break;
+                case 3:
+                    sound = SoundID.Item130;
+                    chestId = -5;
+                    break;
             }
 
-            if (player.chest == chestId)
-            {
+            if (player.chest == chestId) {
                 player.chest = -1;
                 SoundEngine.PlaySound(sound ?? SoundID.MenuClose);
             }
-            else
-            {
+            else {
                 var x = player.Center.ToTileCoordinates().X;
                 var y = player.Center.ToTileCoordinates().Y;
                 player.chest = chestId;
-                for (int i = 0; i < 40; i++)
-                {
+                for (int i = 0; i < 40; i++) {
                     ItemSlot.SetGlow(i, -1f, chest: true);
                 }
 

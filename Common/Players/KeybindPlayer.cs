@@ -37,12 +37,10 @@ namespace YAQOLM.Common.Players {
             }
         }
 
-        public override void UpdateAutopause()
-        {
-          	if (Main.playerInventory || Main.npcChatText != "" || Main.player[Main.myPlayer].sign >= 0 || Main.ingameOptionsWindow || Main.inFancyUI)
-          	{
-            		ProcessTriggers(null);
-          	}
+        public override void UpdateAutopause() {
+            if (Main.playerInventory || Main.npcChatText != "" || Main.player[Main.myPlayer].sign >= 0 || Main.ingameOptionsWindow || Main.inFancyUI) {
+                ProcessTriggers(null);
+            }
         }
 
         private void QuickSwitchAndUse(int itemType, int extraData = -1) {
