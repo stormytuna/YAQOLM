@@ -101,6 +101,10 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.4.0[/i]
+[list]
+[*]Fixed Money Trough recipe
+[/list]
 [*][i]v1.3.1[/i]
 [list]
 [*]Fixed some issues with Quantum Strongbox thanks to thelich/DeadMor0z

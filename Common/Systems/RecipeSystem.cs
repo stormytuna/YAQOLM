@@ -64,6 +64,7 @@ namespace YAQOLM.Common.Systems {
                 Recipe recipe = Recipe.Create(ItemID.MoneyTrough);
                 recipe.AddIngredient(ItemID.PiggyBank);
                 recipe.AddRecipeGroup(evilBarRecipeGroup, 6);
+                recipe.AddRecipeGroup(evilMaterialRecipeGroup, 5);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.Register();
             }
