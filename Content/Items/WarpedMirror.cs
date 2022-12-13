@@ -38,7 +38,7 @@ namespace YAQOLM.Content.Items {
         }
 
         public override bool CanUseItem(Player player) {
-            return player.GetModPlayer<WarpedMirrorPlayer>().deathLocation != Vector2.Zero;
+            return player.GetModPlayer<WarpedMirrorPlayer>().canUseWarpedMirror;
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame) {
@@ -71,7 +71,7 @@ namespace YAQOLM.Content.Items {
 
                 // Teleport the player
                 player.Teleport(modPlayer.deathLocation, -1); // style: -1 prevents vanilla from doing any teleport effects
-                modPlayer.deathLocation = Vector2.Zero;
+                modPlayer.canUseWarpedMirror = false;
 
                 // Dust where the player appears
                 for (int i = 0; i < 70; i++) {
@@ -82,9 +82,11 @@ namespace YAQOLM.Content.Items {
     }
 
     public class WarpedMirrorPlayer : ModPlayer {
-        public Vector2 deathLocation = Vector2.Zero;
+        public bool canUseWarpedMirror = false;
+        public Vector2 deathLocation;
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) {
+            canUseWarpedMirror = true;
             deathLocation = Player.position;
         }
     }
