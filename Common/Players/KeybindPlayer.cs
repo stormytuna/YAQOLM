@@ -37,6 +37,12 @@ namespace YAQOLM.Common.Players {
             }
         }
 
+        public override void UpdateAutopause() {
+            if (Main.playerInventory || Main.npcChatText != "" || Main.player[Main.myPlayer].sign >= 0 || Main.ingameOptionsWindow || Main.inFancyUI) {
+                ProcessTriggers(null);
+            }
+        }
+
         private void QuickSwitchAndUse(int itemType, int extraData = -1) {
             // Guard clause
             if (Player.itemTime != 0 || Player.itemAnimation != 0)
@@ -56,6 +62,12 @@ namespace YAQOLM.Common.Players {
                 return;
             }
 
+            if (itemType == ModContent.ItemType<QuantumStrongbox>()) {
+                var modItem = Player.inventory[index].ModItem as QuantumStrongbox;
+                modItem.SetAndResetMode(extraData);
+                return;
+            }
+
             // Use our item at that index
             originalSelectedItem = Player.selectedItem;
             autoRevertSelectedItem = true;
@@ -65,10 +77,6 @@ namespace YAQOLM.Common.Players {
             if (extraData != -1) {
                 if (itemType == ModContent.ItemType<SpiralMirror>()) {
                     var modItem = Player.inventory[index].ModItem as SpiralMirror;
-                    modItem.SetAndResetMode(extraData);
-                }
-                else if (itemType == ModContent.ItemType<QuantumStrongbox>()) {
-                    var modItem = Player.inventory[index].ModItem as QuantumStrongbox;
                     modItem.SetAndResetMode(extraData);
                 }
             }

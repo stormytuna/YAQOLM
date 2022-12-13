@@ -52,7 +52,7 @@ namespace YAQOLM.Common.Configs {
         [Label("$Mods.YAQOLM.Config.QuantumStrongbox")]
         [Tooltip("Combines all 4 player inventories into one item")]
         [ReloadRequired]
-        [DefaultValue(false)]
+        [DefaultValue(true)]
         public bool QuantumStrongbox { get; set; }
 
         [Label("$Mods.YAQOLM.Config.GoldenHorseshoeBalloon")]
