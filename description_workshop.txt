@@ -78,9 +78,6 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Gemstone Magnet: A Treasure Magnet upgrade that works while in your inventory - 1 Treasure Magnet, 3 Sapphires, 3 Rubies, 3 Emeralds @ Crystal Ball
 [*]Magnificent Magnet: A Gemstone Magnet upgrade that lets you pull all items to you - 1 Gemstone Magnet, 3 of each Mech Boss Soul @ Hardmode Anvil
 [*]Quantum Strongbox: A combination of each player inventory, right click to change mode - 1 of each player inventory accessor, 3 of each Mech Soul @ Hardmode Anvil
-[list]
-[*]Using this item will spam the opening chest sound that I cannot fix, use at your own discretion
-[/list]
 [*]Golden Horseshoe Balloon: A horseshoe balloon that is crafted from and into every other horseshoe balloon
 [*]Prefix Hammers: Consumables that apply a given prefix to your held weapon - 1 of each Lunar Fragment @ Ancient Manipulator
 [*]Flower of the Jungle: Summons Plantera - 5 Jungle Spores, 3 Chlorophyte Bars @ Hardmode Anvil
