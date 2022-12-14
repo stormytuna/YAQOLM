@@ -9,6 +9,8 @@ using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
     public class MagnificentMagnet : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.MagnificentMagnet;
+
         public override void SetStaticDefaults() {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Tooltip.SetDefault("Increases pickup range for items while in your inventory\nUse to pull all items in the world to you");
@@ -27,15 +29,13 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.MagnificentMagnet) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddIngredient(ModContent.ItemType<GemstoneMagnet>())
                     .AddIngredient(ItemID.SoulofSight, 3)
                     .AddIngredient(ItemID.SoulofMight, 3)
                     .AddIngredient(ItemID.SoulofFright, 3)
                     .AddTile(TileID.MythrilAnvil)
                     .Register();
-            }
         }
 
         public int Mode { get; private set; } = 0;

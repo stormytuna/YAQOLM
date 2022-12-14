@@ -6,6 +6,8 @@ using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
     public class GemstoneMagnet : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.GemstoneMagnet;
+
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("Increases pickup range for items while in your inventory");
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -19,15 +21,13 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.GemstoneMagnet) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddIngredient(ItemID.TreasureMagnet)
                     .AddIngredient(ItemID.Sapphire, 3)
                     .AddIngredient(ItemID.Ruby, 3)
                     .AddIngredient(ItemID.Emerald, 3)
                     .AddTile(TileID.CrystalBall)
                     .Register();
-            }
         }
 
         public override void UpdateInventory(Player player) {

@@ -9,6 +9,8 @@ using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Content.Items {
     public class WarpedMirror : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.WarpedMirror;
+
         public override void SetStaticDefaults() {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Tooltip.SetDefault("Gaze into the mirror to return to where you last died");
@@ -27,14 +29,12 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.WarpedMirror) {
-                CreateRecipe()
+            CreateRecipe()
                 .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
                 .AddRecipeGroup(RecipeSystem.evilMaterialRecipeGroup, 8)
                 .AddRecipeGroup(RecipeSystem.evilBarRecipeGroup, 5)
                 .AddTile(TileID.DemonAltar)
                 .Register();
-            }
         }
 
         public override bool CanUseItem(Player player) {

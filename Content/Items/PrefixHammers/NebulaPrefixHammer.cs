@@ -6,6 +6,8 @@ using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Content.Items.PrefixHammers {
     public class NebulaPrefixHammer : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.PrefixHammers;
+
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("Right click with an accessory in your cursor to apply Warding to it\nOr, right click an accessory with this in your cursor");
         }
@@ -18,15 +20,13 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.PrefixHammers) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddIngredient(ItemID.FragmentSolar, 1)
                     .AddIngredient(ItemID.FragmentVortex, 1)
                     .AddIngredient(ItemID.FragmentNebula, 1)
                     .AddIngredient(ItemID.FragmentStardust, 1)
                     .AddTile(TileID.LunarCraftingStation)
                     .Register();
-            }
         }
 
         public override bool CanRightClick() {

@@ -13,6 +13,8 @@ using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
     public class QuantumStrongbox : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.QuantumStrongbox;
+
         public override void SetStaticDefaults() {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Tooltip.SetDefault("Picks up items when your inventory is full");
@@ -30,8 +32,7 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.QuantumStrongbox) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddIngredient(ItemID.PiggyBank)
                     .AddIngredient(ItemID.Safe)
                     .AddIngredient(ItemID.DefendersForge)
@@ -41,7 +42,6 @@ namespace YAQOLM.Content.Items {
                     .AddIngredient(ItemID.SoulofSight, 3)
                     .AddTile(TileID.MythrilAnvil)
                     .Register();
-            }
         }
 
         public override void UpdateInventory(Player player) {

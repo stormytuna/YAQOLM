@@ -9,6 +9,8 @@ using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
     public class SpiralMirror : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.SpiralMirror;
+
         public override void SetStaticDefaults() {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Tooltip.SetDefault("Use to teleport somewhere\nRight click to switch mode\nAllows you to teleport to party members, NPCs and Pylons\nDisplays everything\n'Can I interest you in everything, all of the time?'");
@@ -30,8 +32,7 @@ namespace YAQOLM.Content.Items {
         public override bool CanUseItem(Player player) => _mode == 2 ? player.GetModPlayer<WarpedMirrorPlayer>().canUseWarpedMirror : true;
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.SpiralMirror) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddIngredient(ModContent.ItemType<WarpedMirror>())
                     .AddIngredient(ModContent.ItemType<MysticMirror>())
                     .AddIngredient(ModContent.ItemType<RunicMirror>())
@@ -41,7 +42,6 @@ namespace YAQOLM.Content.Items {
                     .AddIngredient(ItemID.ChlorophyteBar, 3)
                     .AddTile(TileID.MythrilAnvil)
                     .Register();
-            }
         }
 
         public override bool CanRightClick() => true;

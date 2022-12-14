@@ -7,6 +7,8 @@ using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
     public class FlowerOfTheJungle : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.FlowerOfTheJungle;
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Flower of the Jungle");
             Tooltip.SetDefault("Summons Plantera");
@@ -54,13 +56,11 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.FlowerOfTheJungle) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddIngredient(ItemID.JungleSpores, 5)
                     .AddIngredient(ItemID.ChlorophyteBar, 3)
                     .AddTile(TileID.MythrilAnvil)
                     .Register();
-            }
         }
     }
 }

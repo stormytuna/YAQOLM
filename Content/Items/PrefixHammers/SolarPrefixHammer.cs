@@ -6,6 +6,8 @@ using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Content.Items.PrefixHammers {
     public class SolarPrefixHammer : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.PrefixHammers;
+
         public override void SetStaticDefaults() {
             Tooltip.SetDefault("Right click with a weapon in your cursor to apply the best prefix to it\nOr, right click a weapon with this in your cursor");
         }
@@ -18,15 +20,13 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.PrefixHammers) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddIngredient(ItemID.FragmentSolar, 1)
                     .AddIngredient(ItemID.FragmentVortex, 1)
                     .AddIngredient(ItemID.FragmentNebula, 1)
                     .AddIngredient(ItemID.FragmentStardust, 1)
                     .AddTile(TileID.LunarCraftingStation)
                     .Register();
-            }
         }
 
         public override bool CanRightClick() {

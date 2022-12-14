@@ -10,6 +10,8 @@ using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
     public class RunicMirror : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.RunicMirror;
+
         public override void SetStaticDefaults() {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Tooltip.SetDefault("Allows you to teleport to party members, NPCs and Pylons");
@@ -92,9 +94,7 @@ namespace YAQOLM.Content.Items {
         public override bool AppliesToEntity(NPC entity, bool lateInstantiation) => entity.type == NPCID.RuneWizard;
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {
-            if (ServerConfig.Instance.RunicMirror) {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RunicMirror>()));
-            }
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RunicMirror>()));
         }
     }
 

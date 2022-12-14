@@ -9,6 +9,8 @@ using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Content.Items {
     public class GoldenHorseshoeBalloon : ModItem {
+        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.GoldenHorseshoeBalloon;
+
         public override void SetStaticDefaults() {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             Tooltip.SetDefault("Doesn't allow the holder to double jump\nDoesn't increase jump height or negate fall damage");
@@ -22,12 +24,10 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void AddRecipes() {
-            if (ServerConfig.Instance.GoldenHorseshoeBalloon) {
-                CreateRecipe()
+            CreateRecipe()
                     .AddRecipeGroup(RecipeSystem.horseshoeBalloonRecipeGroup)
                     .AddTile(TileID.TinkerersWorkbench)
                     .Register();
-            }
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips) {
