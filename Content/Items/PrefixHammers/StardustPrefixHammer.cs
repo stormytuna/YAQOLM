@@ -47,6 +47,8 @@ namespace YAQOLM.Content.Items.PrefixHammers {
     }
 
     public class StardustPrefixHammerGlobalItem : GlobalItem {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.accessory;
+
         public override bool CanRightClick(Item item) {
             if (Main.mouseItem.type == ModContent.ItemType<StardustPrefixHammer>()) {
                 return item.prefix != PrefixID.Menacing;
@@ -56,6 +58,10 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         }
 
         public override void RightClick(Item item, Player player) {
+            if (Main.mouseItem.type != ModContent.ItemType<StardustPrefixHammer>()) {
+                return;
+            }
+
             PrefixSystem.ApplyPrefix(ref item, PrefixID.Menacing);
             item.stack++;
             Main.mouseItem.stack--;

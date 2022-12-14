@@ -47,6 +47,8 @@ namespace YAQOLM.Content.Items.PrefixHammers {
     }
 
     public class NebulaPrefixHammerGlobalItem : GlobalItem {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.accessory;
+
         public override bool CanRightClick(Item item) {
             if (Main.mouseItem.type == ModContent.ItemType<NebulaPrefixHammer>()) {
                 return item.prefix != PrefixID.Warding;
@@ -56,6 +58,10 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         }
 
         public override void RightClick(Item item, Player player) {
+            if (Main.mouseItem.type != ModContent.ItemType<NebulaPrefixHammer>()) {
+                return;
+            }
+
             PrefixSystem.ApplyPrefix(ref item, PrefixID.Warding);
             item.stack++;
             Main.mouseItem.stack--;

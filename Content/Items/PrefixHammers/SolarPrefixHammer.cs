@@ -47,15 +47,21 @@ namespace YAQOLM.Content.Items.PrefixHammers {
     }
 
     public class SolarPrefixHammerGlobalItem : GlobalItem {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.damage > 0;
+
         public override bool CanRightClick(Item item) {
             if (Main.mouseItem.type == ModContent.ItemType<SolarPrefixHammer>()) {
-                return item.damage > 0 && !PrefixSystem.ItemHasBestPrefix(item);
+                return !PrefixSystem.ItemHasBestPrefix(item);
             }
 
             return base.CanRightClick(item);
         }
 
         public override void RightClick(Item item, Player player) {
+            if (Main.mouseItem.type != ModContent.ItemType<SolarPrefixHammer>()) {
+                return;
+            }
+
             PrefixSystem.ApplyBestPrefix(ref item);
             item.stack++;
             Main.mouseItem.stack--;

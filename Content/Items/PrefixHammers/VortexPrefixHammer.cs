@@ -48,6 +48,8 @@ namespace YAQOLM.Content.Items.PrefixHammers {
     }
 
     public class VortexPrefixHammerGlobalItem : GlobalItem {
+        public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.accessory;
+
         public override bool CanRightClick(Item item) {
             if (Main.mouseItem.type == ModContent.ItemType<VortexPrefixHammer>()) {
                 return item.prefix != PrefixID.Lucky;
@@ -57,6 +59,10 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         }
 
         public override void RightClick(Item item, Player player) {
+            if (Main.mouseItem.type != ModContent.ItemType<VortexPrefixHammer>()) {
+                return;
+            }
+
             PrefixSystem.ApplyPrefix(ref item, PrefixID.Lucky);
             item.stack++;
             Main.mouseItem.stack--;
