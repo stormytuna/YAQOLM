@@ -18,7 +18,7 @@ namespace YAQOLM.Content.Items {
         public override void SetDefaults() {
             Item.useTurn = true;
             Item.width = 26;
-            Item.height = 28;
+            Item.height = 26;
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.sellPrice(gold: 2);
         }

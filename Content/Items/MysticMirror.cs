@@ -15,8 +15,8 @@ namespace YAQOLM.Content.Items {
 
         public override void SetDefaults() {
             Item.useTurn = true;
-            Item.width = 28;
-            Item.height = 26;
+            Item.width = 24;
+            Item.height = 30;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.useTime = 90;
             Item.UseSound = SoundID.Item6;
