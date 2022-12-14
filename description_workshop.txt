@@ -66,7 +66,6 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]In practice this will mean NPCs that are slightly-moderately unhappy will now be happy enough to sell a pylon, while NPCs that are very unhappy will not (assuming you've killed every boss)
 [/list]
 [*]Having more than 30 of a potion in your inventory or any of your banks gives you that buff
-[*]When leaving and rejoining a multiplayer world your team will be saved
 [/list]
 
 [h2][b]Added Items[/b][/h2]
