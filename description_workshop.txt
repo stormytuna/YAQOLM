@@ -74,7 +74,7 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Warped Mirror: Teleports you to where you last died - 1 Magic Mirror, 8 Evil Bars, 5 Evil Materials @ Demon Altar
 [*]Mystic Mirror: Teleport home and leave a portal to teleport back - 1 Magic Mirror, 8 Souls of Light, 8 Souls of Night @ Hardmode Anvil
 [*]Runic Mirror: Allows you to teleport to players on your team, town NPCs and Pylons - 100% to drop from Rune Wizard
-[*]Spiral Mirror: A combination of the above mirrors, right click to change mode - The above mirrors, 3 Chlorophyte Bars @ Hardmode Anvil
+[*]Spiral Mirror: A combination of the above mirrors, cellphone and both conches - The above mirrors, Cellphone, Magic Conch, Demon Conch, 3 Chlorophyte Bars @ Hardmode Anvil
 [*]Gemstone Magnet: A Treasure Magnet upgrade that works while in your inventory - 1 Treasure Magnet, 3 Sapphires, 3 Rubies, 3 Emeralds @ Crystal Ball
 [*]Magnificent Magnet: A Gemstone Magnet upgrade that lets you pull all items to you - 1 Gemstone Magnet, 3 of each Mech Boss Soul @ Hardmode Anvil
 [*]Quantum Strongbox: A combination of each player inventory, right click to change mode - 1 of each player inventory accessor, 3 of each Mech Soul @ Hardmode Anvil
@@ -105,6 +105,7 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 [list]
 [*]Updated some sprites
 [*]Fixed Money Trough recipe
+[*]Changed Spiral Mirror, see above for its new effect and recipe
 [*]Changed Magnificent Magnet, now has 10x and 100x modes
 [/list]
 [*][i]v1.3.1[/i]
