@@ -105,6 +105,7 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 [list]
 [*]Updated some sprites
 [*]Fixed Money Trough recipe
+[*]Changed Magnificent Magnet, now has 10x and 100x modes
 [/list]
 [*][i]v1.3.1[/i]
 [list]
