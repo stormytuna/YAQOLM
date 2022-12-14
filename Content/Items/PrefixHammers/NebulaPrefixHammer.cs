@@ -7,7 +7,7 @@ using YAQOLM.Common.Systems;
 namespace YAQOLM.Content.Items.PrefixHammers {
     public class NebulaPrefixHammer : ModItem {
         public override void SetStaticDefaults() {
-            Tooltip.SetDefault("Right click to apply Warding to your currently held accessory");
+            Tooltip.SetDefault("Right click with an accessory in your cursor to apply Warding to it\nOr, right click an accessory with this in your cursor");
         }
 
         public override void SetDefaults() {
@@ -30,11 +30,35 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         }
 
         public override bool CanRightClick() {
-            return Main.LocalPlayer.HeldItem.accessory && Main.LocalPlayer.HeldItem.prefix != PrefixID.Warding;
+            return Main.mouseItem.accessory && Main.LocalPlayer.HeldItem.prefix != PrefixID.Warding;
         }
 
         public override void RightClick(Player player) {
-            PrefixSystem.ApplyPrefix(ref player.inventory[player.selectedItem], PrefixID.Warding);
+            PrefixSystem.ApplyPrefix(ref Main.mouseItem, PrefixID.Warding);
+
+            // Dusty dust
+            for (int i = 0; i < 40; i++) {
+                Dust d = Dust.NewDustDirect(player.position, player.width, player.height, DustID.HallowedTorch, 0f, 0f, 150, default, 1.3f);
+                d.noLight = true;
+                d.velocity *= 10f;
+                d.noGravity = true;
+            }
+        }
+    }
+
+    public class NebulaPrefixHammerGlobalItem : GlobalItem {
+        public override bool CanRightClick(Item item) {
+            if (Main.mouseItem.type == ModContent.ItemType<NebulaPrefixHammer>()) {
+                return item.prefix != PrefixID.Warding;
+            }
+
+            return base.CanRightClick(item);
+        }
+
+        public override void RightClick(Item item, Player player) {
+            PrefixSystem.ApplyPrefix(ref item, PrefixID.Warding);
+            item.stack++;
+            Main.mouseItem.stack--;
 
             // Dusty dust
             for (int i = 0; i < 40; i++) {

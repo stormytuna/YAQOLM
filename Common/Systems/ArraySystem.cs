@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using YAQOLM.Content.Items.PrefixHammers;
 
 namespace YAQOLM.Common.Systems {
     public class ArraySystem : ModSystem {
@@ -79,6 +80,13 @@ namespace YAQOLM.Common.Systems {
 
         };
 
+        private static int[] _prefixHammers = new int[] {
+            ModContent.ItemType<NebulaPrefixHammer>(),
+            ModContent.ItemType<SolarPrefixHammer>(),
+            ModContent.ItemType<VortexPrefixHammer>(),
+            ModContent.ItemType<StardustPrefixHammer>()
+        };
+
         public static int[] SolutionIds { get => _solutionIds; }
 
         public static int[] BarTypes { get => _barTypes; }
@@ -92,6 +100,8 @@ namespace YAQOLM.Common.Systems {
         public static int[] IndestructibleTiles { get => _indestructibleTiles; }
 
         public static int[] ItemsThatPlaceTilesWithRecipes { get => _itemsThatPlaceTilesWithRecipes; }
+
+        public static int[] PrefixHammers { get => _prefixHammers; }
         public override void Unload() {
             _solutionIds = null;
             _barTypes = null;
