@@ -44,25 +44,26 @@ namespace YAQOLM.Content.Items {
             // Get index
             var lastTip = tooltips.FirstOrDefault(t => t.Name == "Tooltip1");
             int index = tooltips.IndexOf(lastTip) + 1;
+            float colorMult = Main.mouseTextColor / 255f;
 
             // Make TooltipLine
             string text = "";
             Color color;
             switch (Mode) {
                 case 0:
-                    color = Color.Red * Main.mouseTextColor;
+                    color = Color.Red * colorMult;
                     text = $"[c/{color.Hex3()}:Disabled]";
                     break;
                 case 1:
-                    color = Color.Orange * Main.mouseTextColor;
+                    color = Color.Orange * colorMult;
                     text = $"[c/{color.Hex3()}:1x strength]";
                     break;
                 case 2:
-                    color = Color.Yellow * Main.mouseTextColor;
+                    color = Color.Yellow * colorMult;
                     text = $"[c/{color.Hex3()}:10x strength]";
                     break;
                 case 3:
-                    color = Color.Green * Main.mouseTextColor;
+                    color = Color.Green * colorMult;
                     text = $"[c/{color.Hex3()}:100x strength]";
                     break;
             }
