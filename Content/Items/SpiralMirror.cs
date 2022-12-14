@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.GameContent.Creative;
-using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items {
-    // TODO: make shell mirror in 1.4.4 - merge this with shellphone
     public class SpiralMirror : ModItem {
         public override void SetStaticDefaults() {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -151,55 +149,7 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void UpdateInventory(Player player) {
-            if (player.whoAmI != Main.myPlayer || !Main.mapFullscreen || !Main.mouseLeft || !Main.mouseLeftRelease) {
-                return;
-            }
-
-            // Gets where our cursor is on the map
-            PlayerInput.SetZoom_Unscaled();
-            float scale = 16f / Main.mapFullscreenScale;
-            float minX = Main.mapFullscreenPos.X * 16f - 10f;
-            float minY = Main.mapFullscreenPos.Y * 16f - 21f;
-            float mouseX = Main.mouseX - Main.screenWidth / 2;
-            float mouseY = Main.mouseY - Main.screenHeight / 2;
-            float cursorOnMapX = minX + mouseX * scale;
-            float cursorOnMapY = minY + mouseY * scale;
-
-            // If we clicked near a player
-            for (int i = 0; i < Main.player.Length; i++) {
-                var teleportPlayer = Main.player[i];
-                if (teleportPlayer.whoAmI != Main.myPlayer && teleportPlayer.active && !teleportPlayer.dead && teleportPlayer.team == player.team && !teleportPlayer.hostile) {
-                    float minClickX = teleportPlayer.position.X - 14f * scale;
-                    float minClickY = teleportPlayer.position.Y - 14f * scale;
-                    float maxClickX = teleportPlayer.position.X + 14f * scale;
-                    float maxClickY = teleportPlayer.position.Y + 14f * scale;
-                    if (cursorOnMapX >= minClickX && cursorOnMapX <= maxClickX && cursorOnMapY >= minClickY && cursorOnMapY <= maxClickY) {
-                        Main.mouseLeftRelease = false;
-                        Main.mapFullscreen = false;
-                        player.UnityTeleport(teleportPlayer.position);
-                        PlayerInput.SetZoom_Unscaled();
-                        return;
-                    }
-                }
-            }
-
-            // If we clicked near a town npc
-            for (int i = 0; i < Main.npc.Length; i++) {
-                var teleportNPC = Main.npc[i];
-                if (teleportNPC.active && teleportNPC.townNPC) {
-                    float minClickX = teleportNPC.position.X - 14f * scale;
-                    float minClickY = teleportNPC.position.Y - 14f * scale;
-                    float maxClickX = teleportNPC.position.X + 14f * scale;
-                    float maxClickY = teleportNPC.position.Y + 14f * scale;
-                    if (cursorOnMapX >= minClickX && cursorOnMapX <= maxClickX && cursorOnMapY >= minClickY && cursorOnMapY <= maxClickY) {
-                        Main.mouseLeftRelease = false;
-                        Main.mapFullscreen = false;
-                        player.Teleport(teleportNPC.position + new Vector2(0f, -6f));
-                        PlayerInput.SetZoom_Unscaled();
-                        return;
-                    }
-                }
-            }
+            player.GetModPlayer<RunicMirrorPlayer>().runicMirror = true;
         }
     }
 }

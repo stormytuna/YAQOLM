@@ -24,7 +24,19 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void UpdateInventory(Player player) {
-            if (player.whoAmI != Main.myPlayer || !Main.mapFullscreen || !Main.mouseLeft || !Main.mouseLeftRelease) {
+            player.GetModPlayer<RunicMirrorPlayer>().runicMirror = true;
+        }
+    }
+
+    public class RunicMirrorPlayer : ModPlayer {
+        public bool runicMirror;
+
+        public override void ResetEffects() {
+            runicMirror = false;
+        }
+
+        public override void PostUpdateMiscEffects() {
+            if (Player.whoAmI != Main.myPlayer || !Main.mapFullscreen || !Main.mouseLeft || !Main.mouseLeftRelease) {
                 return;
             }
 
@@ -41,7 +53,7 @@ namespace YAQOLM.Content.Items {
             // If we clicked near a player
             for (int i = 0; i < Main.player.Length; i++) {
                 var teleportPlayer = Main.player[i];
-                if (teleportPlayer.whoAmI != Main.myPlayer && teleportPlayer.active && !teleportPlayer.dead && teleportPlayer.team == player.team && !teleportPlayer.hostile) {
+                if (teleportPlayer.whoAmI != Main.myPlayer && teleportPlayer.active && !teleportPlayer.dead && teleportPlayer.team == Player.team && !teleportPlayer.hostile) {
                     float minClickX = teleportPlayer.position.X - 14f * scale;
                     float minClickY = teleportPlayer.position.Y - 14f * scale;
                     float maxClickX = teleportPlayer.position.X + 14f * scale;
@@ -49,7 +61,7 @@ namespace YAQOLM.Content.Items {
                     if (cursorOnMapX >= minClickX && cursorOnMapX <= maxClickX && cursorOnMapY >= minClickY && cursorOnMapY <= maxClickY) {
                         Main.mouseLeftRelease = false;
                         Main.mapFullscreen = false;
-                        player.UnityTeleport(teleportPlayer.position);
+                        Player.UnityTeleport(teleportPlayer.position);
                         PlayerInput.SetZoom_Unscaled();
                         return;
                     }
@@ -67,7 +79,7 @@ namespace YAQOLM.Content.Items {
                     if (cursorOnMapX >= minClickX && cursorOnMapX <= maxClickX && cursorOnMapY >= minClickY && cursorOnMapY <= maxClickY) {
                         Main.mouseLeftRelease = false;
                         Main.mapFullscreen = false;
-                        player.Teleport(teleportNPC.position + new Vector2(0f, -6f));
+                        Player.Teleport(teleportNPC.position + new Vector2(0f, -6f));
                         PlayerInput.SetZoom_Unscaled();
                         return;
                     }
