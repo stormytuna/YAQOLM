@@ -4,7 +4,6 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
-using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Content.Items {
     public class MysticMirror : ModItem {
@@ -25,15 +24,6 @@ namespace YAQOLM.Content.Items {
             Item.useAnimation = 90;
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.sellPrice(gold: 2);
-        }
-
-        public override void AddRecipes() {
-            CreateRecipe()
-                    .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
-                    .AddIngredient(ItemID.SoulofLight, 8)
-                    .AddIngredient(ItemID.SoulofNight, 8)
-                    .AddTile(TileID.MythrilAnvil)
-                    .Register();
         }
 
         public override void UseStyle(Player player, Rectangle heldItemFrame) {
