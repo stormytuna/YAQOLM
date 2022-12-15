@@ -72,6 +72,9 @@ namespace YAQOLM.Content.Items {
             Vector2 vector;
             switch (_mode) {
                 case 0:
+                    d = Dust.NewDustDirect(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default, 1.1f);
+                    d.velocity *= 0.5f;
+                    return;
                 case 1:
                     d = Dust.NewDustDirect(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default, 1.1f);
                     d.velocity *= 0.5f;
