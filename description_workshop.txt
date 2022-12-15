@@ -100,6 +100,11 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.4.1[/i]
+[list]
+[*]Fixed some issues with Runic and Spiral Mirror
+[*]Changed acquisition of Mystic Mirror - Now sold by Wizard after any mech boss has been defeated
+[/list]
 [*][i]v1.4.0[/i]
 [list]
 [*]Updated some sprites
