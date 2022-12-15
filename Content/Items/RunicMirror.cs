@@ -38,7 +38,7 @@ namespace YAQOLM.Content.Items {
         }
 
         public override void PostUpdateMiscEffects() {
-            if (Player.whoAmI != Main.myPlayer || !Main.mapFullscreen || !Main.mouseLeft || !Main.mouseLeftRelease) {
+            if (Player.whoAmI != Main.myPlayer || !Main.mapFullscreen || !Main.mouseLeft || !Main.mouseLeftRelease || !runicMirror) {
                 return;
             }
 
