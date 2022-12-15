@@ -75,4 +75,13 @@ namespace YAQOLM.Content.Items {
             }
         }
     }
+
+    public class MysticMirrorGlobalNPC : GlobalNPC {
+        public override void SetupShop(int type, Chest shop, ref int nextSlot) {
+            if (type == NPCID.Wizard && NPC.downedMechBossAny) {
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<MysticMirror>());
+                nextSlot++;
+            }
+        }
+    }
 }
