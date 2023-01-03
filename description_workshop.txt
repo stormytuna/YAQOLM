@@ -100,6 +100,10 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.4.2[/i]
+[list]
+[*]Fixed an issue with Prefix Hammers
+[/list]
 [*][i]v1.4.1[/i]
 [list]
 [*]Fixed some issues with Runic and Spiral Mirror

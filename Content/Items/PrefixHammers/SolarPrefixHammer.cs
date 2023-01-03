@@ -50,7 +50,7 @@ namespace YAQOLM.Content.Items.PrefixHammers {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation) => entity.damage > 0;
 
         public override bool CanRightClick(Item item) {
-            if (Main.mouseItem.type == ModContent.ItemType<SolarPrefixHammer>()) {
+            if (Main.mouseItem.type == ModContent.ItemType<SolarPrefixHammer>() && Main.mouseItem.stack > 0) {
                 return !PrefixSystem.ItemHasBestPrefix(item);
             }
 
