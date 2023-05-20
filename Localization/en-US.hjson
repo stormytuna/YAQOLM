@@ -1,0 +1,183 @@
+Mods: {
+	YAQOLM: {
+		Conditions.HardmodeForge: Hardmode Forge
+
+		Items: {
+			WarpedMirror: {
+				Tooltip: Gaze into the mirror to return to where you last died
+				DisplayName: Warped Mirror
+			}
+
+			SpiralMirror: {
+				Tooltip:
+					'''
+					    Use to teleport somewhere
+					    Right click to switch mode
+					    Allows you to teleport to party members, NPCs and Pylons
+					    Displays everything
+					    'Can I interest you in everything, all of the time?'
+					'''
+				DisplayName: Spiral Mirror
+			}
+
+			RunicMirror: {
+				Tooltip: Allows you to teleport to party members, NPCs and Pylons
+				DisplayName: Runic Mirror
+			}
+
+			QuantumStrongbox: {
+				Tooltip: Picks up items when your inventory is full
+				DisplayName: Quantum Strongbox
+			}
+
+			VortexPrefixHammer: {
+				Tooltip:
+					'''
+					Right click with an accessory in your cursor to apply Lucky to it
+					   Or, right click an accessory with this in your cursor
+					'''
+				DisplayName: Vortex Prefix Hammer
+			}
+
+			StardustPrefixHammer: {
+				Tooltip:
+					'''
+					Right click with an accessory in your cursor to apply Menacing to it
+					Or, right click an accessory with this in your cursor
+					'''
+				DisplayName: Stardust Prefix Hammer
+			}
+
+			SolarPrefixHammer: {
+				Tooltip:
+					'''
+					Right click with a weapon in your cursor to apply the best prefix to it
+					Or, right click a weapon wit this in your cursor
+					'''
+				DisplayName: Solar Prefix Hammer
+			}
+
+			NebulaPrefixHammer: {
+				Tooltip:
+					'''
+					Right click with an accessory in your cursor to apply Warding to it
+					Or, right click an accessory with this in your cursor
+					'''
+				DisplayName: Nebula Prefix Hammer
+			}
+
+			MysticMirror: {
+				Tooltip:
+					'''
+					Gaze into the mirror to return home and create a portal
+					Use portal to return when you are done
+					'''
+				DisplayName: Mystic Mirror
+			}
+
+			MakeshiftDevice.Tooltip: Place this in a Magic Storage Crafting Interface to access your consumed crafting stations
+
+			MagnificentMagnet: {
+				Tooltip:
+					'''
+					Increases pickup range for items while in your inventory
+					Use to pull all items in the world to you
+					'''
+				DisplayName: Magnificent Magnet
+			}
+
+			GoldenHorseshoeBalloon: {
+				Tooltip:
+					'''
+					Doesn't allow the holder to double jump
+					Doesn't increase jump height or negate fall damage
+					'''
+				DisplayName: Golden Horseshoe Balloon
+			}
+
+			GemstoneMagnet: {
+				Tooltip: Increases pickup range for items while in your inventory
+				DisplayName: Gemstone Magnet
+			}
+
+			FlowerOfTheJungle: {
+				Tooltip: Summons Plantera
+				DisplayName: Flower Of The Jungle
+			}
+
+			_CONFIG_WarpedMirror: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Warped Mirror
+			}
+
+			_CONFIG_SpiralMirror: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Spiral Mirror
+			}
+
+			_CONFIG_RunicMirror: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Runic Mirror
+			}
+
+			_CONFIG_QuantumStrongbox: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Quantum Strongbox
+			}
+
+			_CONFIG_PrefixHammers: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Prefix Hammers
+			}
+
+			_CONFIG_MysticMirror: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Mystic Mirror
+			}
+
+			_CONFIG_MagnificentMagnet: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Magnificent Magnet
+			}
+
+			_CONFIG_GoldenHorseshoeBalloon: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Golden Horseshoe Balloon
+			}
+
+			_CONFIG_GemstoneMagnet: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Gemstone Magnet
+			}
+
+			_CONFIG_FlowerOfTheJungle: {
+				Tooltip: ""
+				DisplayName: _ C O N F I G_ Flower Of The Jungle
+			}
+		}
+
+		Config: {
+			PrefixHammers: "[i:5543] [c/ffffff:Prefix Hammers]"
+			FlowerOfTheJungle: "[i:5538] [c/ffffff:Flower of the Jungle]"
+			GoldenHorseshoeBalloon: "[i:5540] [c/ffffff:Golden Horseshoe Balloon]"
+			QuantumStrongbox: "[i:5544] [c/ffffff:Quantum Strongbox]"
+			MagnificentMagnet: "[i:5541] [c/ffffff:Magnificent Magnet]"
+			GemstoneMagnet: "[i:5539] [c/ffffff:Gemstone Magnet]"
+			SpiralMirror: "[i:5546] [c/ffffff:Spiral Mirror]"
+			RunicMirror: "[i:5545] [c/ffffff:Runic Mirror]"
+			MysticMirror: "[i:5542] [c/ffffff:Mystic Mirror]"
+			WarpedMirror: "[i:5547] [c/ffffff:Warped Mirror]"
+		}
+
+		Keybinds: {
+			QuantumStrongboxVoidVault.DisplayName: Quantum Strongbox Void Vault
+			QuantumStrongboxDefendersForge.DisplayName: Quantum Strongbox Defenders Forge
+			QuantumStrongboxSafe.DisplayName: Quantum Strongbox Safe
+			QuantumStrongboxPiggyBank.DisplayName: Quantum Strongbox Piggy Bank
+			SpiralMirrorReturn.DisplayName: Spiral Mirror Return
+			SpiralMirrorGrave.DisplayName: Spiral Mirror Grave
+			SpiralMirrorHome.DisplayName: Spiral Mirror Home
+			RodOfDiscord.DisplayName: Rod Of Discord
+		}
+	}
+}

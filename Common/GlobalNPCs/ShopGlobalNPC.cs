@@ -1,123 +1,86 @@
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
-using YAQOLM.Common.Systems;
 
-namespace YAQOLM.Common.GlobalNPCs {
-    public class ShopGlobalNPC : GlobalNPC {
-        public override bool InstancePerEntity => true;
+namespace YAQOLM.Common.GlobalNPCs;
 
-        public override void SetupShop(int type, Chest shop, ref int nextSlot) {
-            if (type == NPCID.Steampunker && ServerConfig.Instance.SteampunkerSolutions) {
-                List<Item> inventory = shop.item.ToList(); // Easier to insert into lists
+public class ShopGlobalNPC : GlobalNPC
+{
+	public override bool InstancePerEntity => true;
 
-                Item firstSolution = inventory.FirstOrDefault(i => i.ammo == AmmoID.Solution);
-                int index = 1; // Default index is immediately after clentaminator in case we dont find one
-                if (firstSolution != null) {
-                    index = inventory.IndexOf(firstSolution) + 1;
-                }
+	public override void ModifyShop(NPCShop shop) {
+		if (shop.NpcType == NPCID.Steampunker && ServerConfig.Instance.SteampunkerSolutions) {
+			shop.Add(ItemID.GreenSolution);
+			shop.Add(ItemID.PurpleSolution);
+			shop.Add(ItemID.RedSolution);
+			shop.Add(ItemID.BlueSolution);
+			shop.Add(ItemID.DarkBlueSolution);
+		}
 
-                for (int i = 0; i < ArraySystem.SolutionIds.Length; i++) {
-                    int solutionId = ArraySystem.SolutionIds[i];
-                    Item solution = inventory.FirstOrDefault(i => i.type == solutionId);
-                    // Edge case - solution we found is our first solution, just continue in this case
-                    if (solution == firstSolution) {
-                        continue;
-                    }
-                    // If steampunker isnt already selling this solution, insert it
-                    if (solution == null) {
-                        inventory.Insert(index, new(solutionId));
-                        inventory[index].isAShopItem = true;
-                        index++;
-                        nextSlot++;
-                    }
-                    // If steampunker is selling this solution, move it
-                    else {
-                        inventory.Remove(solution);
-                        inventory.Insert(index, solution);
-                        index++;
-                        // Don't increment nextSlot here since we haven't actually added anything to the shop
-                    }
-                }
+		if (shop.NpcType == NPCID.DyeTrader && ServerConfig.Instance.DyeTraderSellsSusDyes) {
+			Condition moonPhaseFull = new("", () => Main.GetMoonPhase() == MoonPhase.Full);
+			shop.Add(ItemID.RedDye, moonPhaseFull);
+			shop.Add(ItemID.OrangeDye, moonPhaseFull);
+			shop.Add(ItemID.ShiftingSandsDye, moonPhaseFull);
+			shop.Add(ItemID.TwilightDye, moonPhaseFull);
+			shop.Add(ItemID.UnicornWispDye, moonPhaseFull, Condition.DownedPlantera);
+			shop.Add(ItemID.MartianArmorDye, moonPhaseFull, Condition.DownedMartians);
 
-                shop.item = inventory.ToArray();
-                return;
-            }
+			Condition moonPhaseThreeQuartersAtLeft = new("", () => Main.GetMoonPhase() == MoonPhase.ThreeQuartersAtLeft);
+			shop.Add(ItemID.YellowDye, moonPhaseThreeQuartersAtLeft);
+			shop.Add(ItemID.LimeDye, moonPhaseThreeQuartersAtLeft);
+			shop.Add(ItemID.ReflectiveSilverDye, moonPhaseThreeQuartersAtLeft);
+			shop.Add(ItemID.ShadowDye, moonPhaseThreeQuartersAtLeft);
+			shop.Add(ItemID.LivingOceanDye, moonPhaseThreeQuartersAtLeft, Condition.DownedMechBossAny);
+			shop.Add(ItemID.MidnightRainbowDye, moonPhaseThreeQuartersAtLeft, Condition.DownedMartians);
 
-            if (type == NPCID.DyeTrader && ServerConfig.Instance.DyeTraderSellsSusDyes) {
-                #region Dyes
+			Condition moonPhaseHalfAtLeft = new("", () => Main.GetMoonPhase() == MoonPhase.HalfAtLeft);
+			shop.Add(ItemID.GreenDye, moonPhaseHalfAtLeft);
+			shop.Add(ItemID.TealDye, moonPhaseHalfAtLeft);
+			shop.Add(ItemID.ReflectiveGoldDye, moonPhaseHalfAtLeft);
+			shop.Add(ItemID.ReflectiveObsidianDye, moonPhaseHalfAtLeft);
+			shop.Add(ItemID.ReflectiveMetalDye, moonPhaseHalfAtLeft);
+			shop.Add(ItemID.LivingFlameDye, moonPhaseHalfAtLeft, Condition.DownedMechBossAny);
 
-                switch (Main.GetMoonPhase()) {
-                    case MoonPhase.Full:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.RedDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.OrangeDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ShiftingSandsDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.TwilightDye, ItemID.BrownDye, 1);
-                        if (NPC.downedPlantBoss) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.UnicornWispDye, ItemID.BrownDye, 1); }
-                        if (NPC.downedMartians) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.MartianArmorDye, ItemID.BrownDye, 1); }
-                        return;
-                    case MoonPhase.ThreeQuartersAtLeft:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.YellowDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.LimeDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ReflectiveSilverDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ShadowDye, ItemID.BrownDye, 1);
-                        if (NPC.downedMechBossAny) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.LivingOceanDye, ItemID.BrownDye, 1); }
-                        if (NPC.downedMartians) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.MidnightRainbowDye, ItemID.BrownDye, 1); }
-                        return;
-                    case MoonPhase.HalfAtLeft:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.GreenDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.TealDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ReflectiveGoldDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ReflectiveObsidianDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ReflectiveMetalDye, ItemID.BrownDye, 1);
-                        if (NPC.downedMechBossAny) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.LivingFlameDye, ItemID.BrownDye, 1); }
-                        return;
-                    case MoonPhase.QuarterAtLeft:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.CyanDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.SkyBlueDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.PurpleOozeDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ReflectiveDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ReflectiveCopperDye, ItemID.BrownDye, 1);
-                        if (NPC.downedMechBossAny) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.LivingRainbowDye, ItemID.BrownDye, 1); }
-                        return;
-                    case MoonPhase.Empty:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.BlueDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.PurpleDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.MirageDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.NegativeDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.PhaseDye, ItemID.BrownDye, 1);
-                        if (NPC.downedMechBossAny) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ChlorophyteDye, ItemID.BrownDye, 1); }
-                        return;
-                    case MoonPhase.QuarterAtRight:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.VioletDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.HadesDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.BurningHadesDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.ShadowflameHadesDye, ItemID.BrownDye, 1);
-                        if (NPC.downedPlantBoss) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.PixieDye, ItemID.BrownDye, 1); }
-                        return;
-                    case MoonPhase.HalfAtRight:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.PinkDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.GelDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.MushroomDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.GrimDye, ItemID.BrownDye, 1);
-                        if (NPC.downedPlantBoss) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.WispDye, ItemID.BrownDye, 1); }
-                        if (NPC.downedMoonlord) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.DevDye, ItemID.BrownDye, 1); }
-                        return;
-                    case MoonPhase.ThreeQuartersAtRight:
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.BlackDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.AcidDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.BlueAcidDye, ItemID.BrownDye, 1);
-                        stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.RedAcidDye, ItemID.BrownDye, 1);
-                        if (NPC.downedPlantBoss) { stormytunaUtils.AddToShop(ref shop, ref nextSlot, ItemID.InfernalWispDye, ItemID.BrownDye, 1); }
-                        return;
-                }
+			Condition moonPhaseQuarterAtLeft = new("", () => Main.GetMoonPhase() == MoonPhase.QuarterAtLeft);
+			shop.Add(ItemID.CyanDye, moonPhaseQuarterAtLeft);
+			shop.Add(ItemID.SkyBlueDye, moonPhaseQuarterAtLeft);
+			shop.Add(ItemID.PurpleOozeDye, moonPhaseQuarterAtLeft);
+			shop.Add(ItemID.ReflectiveDye, moonPhaseQuarterAtLeft);
+			shop.Add(ItemID.ReflectiveCopperDye, moonPhaseQuarterAtLeft);
+			shop.Add(ItemID.LivingRainbowDye, moonPhaseQuarterAtLeft, Condition.DownedMechBossAny);
 
-                #endregion
-            }
-        }
-    }
+			Condition moonPhaseEmpty = new("", () => Main.GetMoonPhase() == MoonPhase.Empty);
+			shop.Add(ItemID.BlueDye, moonPhaseEmpty);
+			shop.Add(ItemID.PurpleDye, moonPhaseEmpty);
+			shop.Add(ItemID.MirageDye, moonPhaseEmpty);
+			shop.Add(ItemID.NegativeDye, moonPhaseEmpty);
+			shop.Add(ItemID.PhaseDye, moonPhaseEmpty);
+			shop.Add(ItemID.ChlorophyteDye, moonPhaseEmpty, Condition.DownedMechBossAny);
+
+			Condition moonPhaseQuarterAtRight = new("", () => Main.GetMoonPhase() == MoonPhase.QuarterAtRight);
+			shop.Add(ItemID.VioletDye, moonPhaseQuarterAtRight);
+			shop.Add(ItemID.HadesDye, moonPhaseQuarterAtRight);
+			shop.Add(ItemID.BurningHadesDye, moonPhaseQuarterAtRight);
+			shop.Add(ItemID.ShadowflameHadesDye, moonPhaseQuarterAtRight);
+			shop.Add(ItemID.PixieDye, moonPhaseQuarterAtRight, Condition.DownedPlantera);
+
+			Condition moonPhaseHalfAtRight = new("", () => Main.GetMoonPhase() == MoonPhase.HalfAtRight);
+			shop.Add(ItemID.PinkDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.GelDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.MushroomDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.GrimDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.WispDye, moonPhaseHalfAtRight, Condition.DownedPlantera);
+			shop.Add(ItemID.DevDye, moonPhaseHalfAtRight, Condition.DownedMoonLord);
+
+			Condition moonPhaseThreeQuartersAtRight = new("", () => Main.GetMoonPhase() == MoonPhase.ThreeQuartersAtRight);
+			shop.Add(ItemID.BlackDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.AcidDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.BlueAcidDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.RedAcidDye, moonPhaseHalfAtRight);
+			shop.Add(ItemID.InfernalWispDye, moonPhaseHalfAtRight, Condition.DownedPlantera);
+		}
+	}
 }
