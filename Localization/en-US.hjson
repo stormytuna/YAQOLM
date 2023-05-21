@@ -156,6 +156,13 @@ Mods: {
 			}
 		}
 
+		Buffs: {
+			Sharpened: 12% increased melee damage and melee speed
+			AmmoBox: 15% increased ranged damage and 40% chance to not consume ammo
+			Clairvoyance: 10% increased magic damage and 8% reduced mana usage
+			Bewitched: Increased max number of minions and sentries and 10% increased summon damage
+		}
+
 		Config: {
 			PrefixHammers: "[i:5543] [c/ffffff:Prefix Hammers]"
 			FlowerOfTheJungle: "[i:5538] [c/ffffff:Flower of the Jungle]"
