@@ -1,22 +1,21 @@
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
+using YAQOLM.Helpers;
 
 namespace YAQOLM.Common.GlobalNPCs;
 
 public class ShopGlobalNPC : GlobalNPC
 {
-	public override bool InstancePerEntity => true;
-
 	public override void ModifyShop(NPCShop shop) {
 		if (shop.NpcType == NPCID.Steampunker && ServerConfig.Instance.SteampunkerSolutions) {
-			shop.Add(ItemID.GreenSolution);
-			shop.Add(ItemID.PurpleSolution);
-			shop.Add(ItemID.RedSolution);
-			shop.Add(ItemID.BlueSolution);
-			shop.Add(ItemID.DarkBlueSolution);
+			foreach (var entry in shop.Entries.Where(entry => entry.Item.ammo == AmmoID.Solution && entry.Item.IsVanillaItem())) {
+				entry.Conditions.RemoveAllHack();
+			}
 		}
 
 		if (shop.NpcType == NPCID.DyeTrader && ServerConfig.Instance.DyeTraderSellsSusDyes) {
@@ -76,11 +75,11 @@ public class ShopGlobalNPC : GlobalNPC
 			shop.Add(ItemID.DevDye, moonPhaseHalfAtRight, Condition.DownedMoonLord);
 
 			Condition moonPhaseThreeQuartersAtRight = new("", () => Main.GetMoonPhase() == MoonPhase.ThreeQuartersAtRight);
-			shop.Add(ItemID.BlackDye, moonPhaseHalfAtRight);
-			shop.Add(ItemID.AcidDye, moonPhaseHalfAtRight);
-			shop.Add(ItemID.BlueAcidDye, moonPhaseHalfAtRight);
-			shop.Add(ItemID.RedAcidDye, moonPhaseHalfAtRight);
-			shop.Add(ItemID.InfernalWispDye, moonPhaseHalfAtRight, Condition.DownedPlantera);
+			shop.Add(ItemID.BlackDye, moonPhaseThreeQuartersAtRight);
+			shop.Add(ItemID.AcidDye, moonPhaseThreeQuartersAtRight);
+			shop.Add(ItemID.BlueAcidDye, moonPhaseThreeQuartersAtRight);
+			shop.Add(ItemID.RedAcidDye, moonPhaseThreeQuartersAtRight);
+			shop.Add(ItemID.InfernalWispDye, moonPhaseThreeQuartersAtRight, Condition.DownedPlantera);
 		}
 	}
 }

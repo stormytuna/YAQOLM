@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace YAQOLM.Helpers;
@@ -60,4 +62,17 @@ public static class Extensions
 
 		tooltips[tooltipIndex] = newTooltip;
 	}
+
+	public static void RemoveAllHack<TSource>(this IEnumerable<TSource> source) {
+		List<TSource> hack = (List<TSource>)source;
+		hack.RemoveAll(_ => true);
+	}
+
+	public static bool NotAny<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
+		return !source.Any(predicate);
+	}
+
+	public static bool IsVanillaItem(this int itemType) => itemType < ItemID.Count;
+
+	public static bool IsVanillaItem(this Item item) => IsVanillaItem(item.type);
 }
