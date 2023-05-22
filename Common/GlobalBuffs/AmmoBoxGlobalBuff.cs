@@ -20,7 +20,7 @@ public class AmmoBoxGlobalBuff : GlobalBuff
 
 		// Do our stuff
 		player.GetDamage(DamageClass.Ranged) += 0.15f;
-		player.GetModPlayer<BuffStationPlayer>().ammoBox = true;
+		player.GetModPlayer<AmmoBoxPlayer>().ammoBox = true;
 	}
 
 	public override void ModifyBuffText(int type, ref string buffName, ref string tip, ref int rare) {
