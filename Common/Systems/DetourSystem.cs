@@ -24,20 +24,6 @@ public class DetourSystem : ModSystem
 		}
 	}
 
-	public override void Unload() {
-		if (ServerConfig.Instance.BetterBombTiles) {
-			On_Projectile.CanExplodeTile -= Projectile_CanExplodeTile;
-		}
-
-		if (ServerConfig.Instance.BetterBombWalls) {
-			On_Projectile.ExplodeTiles -= Projectile_ExplodeTiles;
-		}
-
-		if (ServerConfig.Instance.BossesIncreaseHappiness) {
-			On_ShopHelper.GetShoppingSettings -= ShopHelper_GetShoppingSettings;
-		}
-	}
-
 	private bool Projectile_CanExplodeTile(On_Projectile.orig_CanExplodeTile orig, Projectile self, int x, int y) {
 		bool canExplode = orig(self, x, y);
 

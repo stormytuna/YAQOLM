@@ -1,25 +1,23 @@
 using System;
+using System.Linq;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
+using YAQOLM.Helpers;
 
 namespace YAQOLM.Common.Players;
 
 public class QuickRespawnPlayer : ModPlayer
 {
+	public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.SuperQuickRespawn;
+
 	public override void UpdateDead() {
-		if (ServerConfig.Instance.SuperQuickRespawn) {
-			bool noBossOrInvasion = Main.invasionType <= 0;
+		bool noInvasion = Main.invasionType == InvasionID.None;
+		bool noBoss = Main.npc.NotAny(npc => npc.boss);
 
-			for (int i = 0; i < Main.npc.Length; i++) {
-				if (Main.npc[i].boss) {
-					noBossOrInvasion = false;
-				}
-			}
-
-			if (noBossOrInvasion) {
-				Player.respawnTimer = Math.Clamp(Player.respawnTimer, 0, 2 * 60);
-			}
+		if (noInvasion && noBoss) {
+			Player.respawnTimer = Math.Clamp(Player.respawnTimer, 0, 2 * 60);
 		}
 	}
 }
