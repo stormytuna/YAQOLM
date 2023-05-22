@@ -100,6 +100,10 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.5.0[/i]
+[list]
+[*]Released for 1.4.4
+[/list]
 [*][i]v1.4.2[/i]
 [list]
 [*]Fixed an issue with Prefix Hammers

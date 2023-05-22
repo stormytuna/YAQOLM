@@ -2,7 +2,6 @@ Mods: {
 	YAQOLM: {
 		Conditions.HardmodeForge: Hardmode Forge
 		SetBonuses.RainArmor: 8% increased damage and 5% increased critical strike chance
-		
 
 		Items: {
 			WarpedMirror: {
