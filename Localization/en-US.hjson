@@ -1,6 +1,8 @@
 Mods: {
 	YAQOLM: {
 		Conditions.HardmodeForge: Hardmode Forge
+		SetBonuses.RainArmor: 8% increased damage and 5% increased critical strike chance
+		
 
 		Items: {
 			WarpedMirror: {
@@ -104,6 +106,15 @@ Mods: {
 				Tooltip: Summons Plantera
 				DisplayName: Flower Of The Jungle
 			}
+
+			PinkGel.Tooltip: When used as ammo, your weapon deals 20% more damage
+			SharpeningStation.Tooltip: Right click to increase melee damage and melee swing speed by 12%
+			AmmoBox.Tooltip: Right click to increase ranged damage by 15% and reduce ammo usage by 40%
+			CrystalBall.Tooltip: Right click to increase magic damage by 10% and reduce mana usage by 8%
+			BewitchingTable.Tooltip: Right click to increase number of minions and sentries and increase summon damage by 15%
+			DiscountCard.Tooltip: Works while in your inventory or banks
+			Goggles.Tooltip: Grants Night Vision
+			LifeFruit.Tooltip: Permanently increases maximum life by 10
 
 			_CONFIG_WarpedMirror: {
 				Tooltip: ""
