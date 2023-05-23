@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using Humanizer;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
 
@@ -54,11 +56,6 @@ public class SpiralMirror : ModItem
 			_mode = 0;
 		}
 
-		// TODO: remove this when teleport to world spawn is added
-		if (_mode == 1) {
-			_mode++;
-		}
-
 		Item.stack++;
 	}
 
@@ -79,8 +76,18 @@ public class SpiralMirror : ModItem
 				d.velocity *= 0.5f;
 				return;
 			case 1:
-				d = Dust.NewDustDirect(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default, 1.1f);
-				d.velocity *= 0.5f;
+				Color dustColor = Main.rand.Next(4) switch {
+					0 or 1 => new Color(100, 255, 100),
+					2 => Color.Yellow,
+					3 => Color.White,
+					_ => Color.Green
+				};
+				
+				d = Dust.NewDustDirect(player.position, player.width, player.height, DustID.LastPrism);
+				d.noGravity = true;
+				d.color = dustColor;
+				d.velocity *= 2f;
+				d.scale = 0.8f + Main.rand.NextFloat() * 0.6f;
 				return;
 			case 2:
 				Dust.NewDust(player.position, player.width, player.height, DustID.Demonite, 0f, 0f, 150, default, 1.1f);
@@ -149,7 +156,12 @@ public class SpiralMirror : ModItem
 					player.Spawn(PlayerSpawnContext.RecallFromItem);
 					break;
 				case 1:
-					// TODO: Come back here and let it teleport you to world spawn
+					if (Main.netMode == NetmodeID.SinglePlayer) {
+						player.Shellphone_Spawn();
+					} else if (Main.netMode == NetmodeID.MultiplayerClient && player.whoAmI == Main.myPlayer) {
+						NetMessage.SendData(MessageID.RequestTeleportationByServer, -1, -1, null, 3);
+					}
+
 					break;
 				case 2:
 					player.Teleport(warpedPlayer.deathLocation, -1); // style: -1 prevents vanilla from doing any teleport effects
@@ -196,27 +208,27 @@ public class SpiralMirror : ModItem
 		switch (_mode) {
 			case 0:
 				Color homeColor = new Color(51, 153, 255) * colorMult;
-				tooltip.Text = $"Gaze into the mirror to return [c/{homeColor.Hex3()}:home]";
+				tooltip.Text = Language.GetTextValue("Mods.YAQOLM.Items.SpiralMirror.TooltipHome").FormatWith(homeColor.Hex3());
 				break;
 			case 1:
 				Color spawnColor = new Color(0, 204, 0) * colorMult;
-				tooltip.Text = $"Gaze into the mirror to return to [c/{spawnColor.Hex3()}:spawn]";
+				tooltip.Text = Language.GetTextValue("Mods.YAQOLM.Items.SpiralMirror.TooltipSpawn").FormatWith(spawnColor.Hex3());
 				break;
 			case 2:
 				Color graveColor = new Color(255, 153, 51) * colorMult;
-				tooltip.Text = $"Gaze into the mirror to return to [c/{graveColor.Hex3()}:where you last died]";
+				tooltip.Text = Language.GetTextValue("Mods.YAQOLM.Items.SpiralMirror.TooltipGrave").FormatWith(graveColor.Hex3());
 				break;
 			case 3:
 				Color returnColor = new Color(204, 0, 204) * colorMult;
-				tooltip.Text = $"Gaze into the mirror to return [c/{returnColor.Hex3()}:home and create a portal]";
+				tooltip.Text = Language.GetTextValue("Mods.YAQOLM.Items.SpiralMirror.TooltipReturn").FormatWith(returnColor.Hex3());
 				break;
 			case 4:
 				Color oceanColor = new Color(51, 255, 255) * colorMult;
-				tooltip.Text = $"Gaze into the mirror to travel to [c/{oceanColor.Hex3()}:the ocean]";
+				tooltip.Text = Language.GetTextValue("Mods.YAQOLM.Items.SpiralMirror.TooltipOcean").FormatWith(oceanColor.Hex3());
 				break;
 			case 5:
 				Color hellColor = new Color(204, 0, 0) * colorMult;
-				tooltip.Text = $"Gaze into the mirror to travel to [c/{hellColor.Hex3()}:the underworld]";
+				tooltip.Text = Language.GetTextValue("Mods.YAQOLM.Items.SpiralMirror.TooltipHell").FormatWith(hellColor.Hex3());
 				break;
 		}
 	}

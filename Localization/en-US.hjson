@@ -12,12 +12,18 @@ Mods: {
 			SpiralMirror: {
 				Tooltip:
 					'''
-					    Use to teleport somewhere
-					    Right click to switch mode
-					    Allows you to teleport to party members, NPCs and Pylons
-					    Displays everything
-					    'Can I interest you in everything, all of the time?'
+					Use to teleport somewhere
+					Right click to switch mode
+					Allows you to teleport to party members, NPCs and Pylons
+					Displays everything
+					'Can I interest you in everything, all of the time?'
 					'''
+				TooltipHome: Gaze into the mirror to return [c/{0}:home]
+				TooltipSpawn: Gaze into the mirror to return to [c/{0}:spawn]
+				TooltipGrave: Gaze into the mirror to return to [c/{0}:where you last died]
+				TooltipReturn: Gaze into the mirror to return [c/{0}:home and create a portal]
+				TooltipOcean: Gaze into the mirror to travel to [c/{0}:the ocean]
+				TooltipHell: Gaze into the mirror to travel to [c/{0}:the underworld]
 				DisplayName: Spiral Mirror
 			}
 
