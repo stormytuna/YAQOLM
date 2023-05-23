@@ -109,12 +109,6 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool BottomlessBuckets { get; set; }
 
-	[Label("[i:50] Magic Mirror")]
-	[Tooltip("10 Iron/Lead Bar\n5 Glass")]
-	[ReloadRequired]
-	[DefaultValue(true)]
-	public bool MagicMirror { get; set; }
-
 	[Label("[i:3467] Moon Lord drops to Luminite Bars")]
 	[Tooltip("Any weapon -> 8 Luminite Bar\nAnything else -> 5 Luminite Bar")]
 	[ReloadRequired]
