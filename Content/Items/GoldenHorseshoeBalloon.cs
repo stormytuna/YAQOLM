@@ -27,7 +27,7 @@ public class GoldenHorseshoeBalloon : ModItem
 
 	public override void AddRecipes() {
 		CreateRecipe()
-			.AddRecipeGroup(RecipeSystem.horseshoeBalloonRecipeGroup)
+			.AddRecipeGroup(RecipeSystem.HorseshoeBalloons)
 			.AddTile(TileID.TinkerersWorkbench)
 			.Register();
 	}

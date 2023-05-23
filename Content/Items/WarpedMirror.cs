@@ -32,9 +32,9 @@ public class WarpedMirror : ModItem
 
 	public override void AddRecipes() {
 		CreateRecipe()
-			.AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
-			.AddRecipeGroup(RecipeSystem.evilMaterialRecipeGroup, 8)
-			.AddRecipeGroup(RecipeSystem.evilBarRecipeGroup, 5)
+			.AddRecipeGroup(RecipeSystem.MagicMirrors)
+			.AddRecipeGroup(RecipeSystem.EvilMaterials, 8)
+			.AddRecipeGroup(RecipeSystem.EvilBars, 5)
 			.AddTile(TileID.DemonAltar)
 			.Register();
 	}

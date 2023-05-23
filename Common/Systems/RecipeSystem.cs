@@ -10,40 +10,44 @@ namespace YAQOLM.Common.Systems;
 public class RecipeSystem : ModSystem
 {
 	// Recipe groups 
-	public static RecipeGroup magicMirrorRecipeGroup;
-	public static RecipeGroup horseshoeBalloonRecipeGroup;
-	public static RecipeGroup evilBarRecipeGroup;
-	public static RecipeGroup evilMaterialRecipeGroup;
-	public static RecipeGroup moonLordWeaponRecipeGroup;
-	public static RecipeGroup moonLordItemRecipeGroup;
+	public static RecipeGroup MagicMirrors;
+	public static RecipeGroup HorseshoeBalloons;
+	public static RecipeGroup EvilBars;
+	public static RecipeGroup EvilMaterials;
+	public static RecipeGroup MoonLordWeapons;
+	public static RecipeGroup MoonLordItems;
+	public static RecipeGroup Shellphones;
 
 	public override void Unload() {
 		// Set stuff to null
-		magicMirrorRecipeGroup = null;
-		horseshoeBalloonRecipeGroup = null;
-		evilBarRecipeGroup = null;
-		evilMaterialRecipeGroup = null;
-		moonLordWeaponRecipeGroup = null;
-		moonLordItemRecipeGroup = null;
+		MagicMirrors = null;
+		HorseshoeBalloons = null;
+		EvilBars = null;
+		EvilMaterials = null;
+		MoonLordWeapons = null;
+		MoonLordItems = null;
+		Shellphones = null;
 	}
 
 	public override void AddRecipeGroups() {
 		// Initialise our recipe groups
-		magicMirrorRecipeGroup = new RecipeGroup(() => "Any Magic Mirror", ItemID.MagicMirror, ItemID.IceMirror);
-		RecipeGroup.RegisterGroup("YAQOLM:MagicMirror", magicMirrorRecipeGroup);
-		horseshoeBalloonRecipeGroup = new RecipeGroup(() => "Any Horseshoe Balloon", ItemID.BlueHorseshoeBalloon, ItemID.WhiteHorseshoeBalloon, ItemID.YellowHorseshoeBalloon,
+		MagicMirrors = new RecipeGroup(() => "Any Magic Mirror", ItemID.MagicMirror, ItemID.IceMirror);
+		RecipeGroup.RegisterGroup("YAQOLM:MagicMirror", MagicMirrors);
+		HorseshoeBalloons = new RecipeGroup(() => "Any Horseshoe Balloon", ItemID.BlueHorseshoeBalloon, ItemID.WhiteHorseshoeBalloon, ItemID.YellowHorseshoeBalloon,
 			ItemID.BalloonHorseshoeFart, ItemID.BalloonHorseshoeHoney, ItemID.BalloonHorseshoeSharkron);
-		RecipeGroup.RegisterGroup("YAQOLM:HorseshoeBalloon", horseshoeBalloonRecipeGroup);
-		evilBarRecipeGroup = new RecipeGroup(() => "Any Evil Bar", ItemID.DemoniteBar, ItemID.CrimtaneBar);
-		RecipeGroup.RegisterGroup("YAQOLM:EvilBar", evilBarRecipeGroup);
-		evilMaterialRecipeGroup = new RecipeGroup(() => "Any Evil Material", ItemID.ShadowScale, ItemID.TissueSample);
-		RecipeGroup.RegisterGroup("YAQOLM:EvilMaterial", evilMaterialRecipeGroup);
-		moonLordWeaponRecipeGroup = new RecipeGroup(() => "Any Moon Lord weapon", ItemID.Meowmere, ItemID.Terrarian, ItemID.StarWrath, ItemID.SDMG, ItemID.LastPrism, ItemID.LunarFlareBook,
+		RecipeGroup.RegisterGroup("YAQOLM:HorseshoeBalloon", HorseshoeBalloons);
+		EvilBars = new RecipeGroup(() => "Any Evil Bar", ItemID.DemoniteBar, ItemID.CrimtaneBar);
+		RecipeGroup.RegisterGroup("YAQOLM:EvilBar", EvilBars);
+		EvilMaterials = new RecipeGroup(() => "Any Evil Material", ItemID.ShadowScale, ItemID.TissueSample);
+		RecipeGroup.RegisterGroup("YAQOLM:EvilMaterial", EvilMaterials);
+		MoonLordWeapons = new RecipeGroup(() => "Any Moon Lord weapon", ItemID.Meowmere, ItemID.Terrarian, ItemID.StarWrath, ItemID.SDMG, ItemID.LastPrism, ItemID.LunarFlareBook,
 			ItemID.RainbowCrystalStaff, ItemID.MoonlordTurretStaff, ItemID.Celeb2);
-		RecipeGroup.RegisterGroup("YAQOLM:MoonLordWeapon", moonLordWeaponRecipeGroup);
-		moonLordItemRecipeGroup = new RecipeGroup(() => "Any Moon Lord item", ItemID.MeowmereMinecart, ItemID.PortalGun, ItemID.GravityGlobe, ItemID.SuspiciousLookingTentacle,
+		RecipeGroup.RegisterGroup("YAQOLM:MoonLordWeapon", MoonLordWeapons);
+		MoonLordItems = new RecipeGroup(() => "Any Moon Lord item", ItemID.MeowmereMinecart, ItemID.PortalGun, ItemID.GravityGlobe, ItemID.SuspiciousLookingTentacle,
 			ItemID.LongRainbowTrailWings);
-		RecipeGroup.RegisterGroup("YAQOLM:MoonLordItem", moonLordItemRecipeGroup);
+		RecipeGroup.RegisterGroup("YAQOLM:MoonLordItem", MoonLordItems);
+		Shellphones = new RecipeGroup(() => "Any Shellphone", ItemID.Shellphone, ItemID.ShellphoneDummy, ItemID.ShellphoneHell, ItemID.ShellphoneOcean, ItemID.ShellphoneSpawn);
+		RecipeGroup.RegisterGroup("YAQOLM:Shellphone", Shellphones);
 	}
 
 	public override void AddRecipes() {
@@ -67,8 +71,8 @@ public class RecipeSystem : ModSystem
 		if (ServerConfig.Instance.MoneyTrough) {
 			Recipe recipe = Recipe.Create(ItemID.MoneyTrough);
 			recipe.AddIngredient(ItemID.PiggyBank);
-			recipe.AddRecipeGroup(evilBarRecipeGroup, 6);
-			recipe.AddRecipeGroup(evilMaterialRecipeGroup, 5);
+			recipe.AddRecipeGroup(EvilBars, 6);
+			recipe.AddRecipeGroup(EvilMaterials, 5);
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.Register();
 		}
@@ -104,12 +108,12 @@ public class RecipeSystem : ModSystem
 
 		if (ServerConfig.Instance.LuminiteSmeltingRecipes) {
 			Recipe recipe = Recipe.Create(ItemID.LunarBar, 8);
-			recipe.AddRecipeGroup(moonLordWeaponRecipeGroup);
+			recipe.AddRecipeGroup(MoonLordWeapons);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.Register();
 
 			recipe = Recipe.Create(ItemID.LunarBar, 5);
-			recipe.AddRecipeGroup(moonLordItemRecipeGroup);
+			recipe.AddRecipeGroup(MoonLordItems);
 			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.Register();
 		}

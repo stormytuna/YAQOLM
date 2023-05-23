@@ -8,6 +8,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
+using YAQOLM.Common.Systems;
 
 namespace YAQOLM.Content.Items;
 
@@ -33,16 +34,14 @@ public class SpiralMirror : ModItem
 		Item.UseSound = SoundID.Item6;
 	}
 
-	public override bool CanUseItem(Player player) => _mode == 2 ? player.GetModPlayer<WarpedMirrorPlayer>().canUseWarpedMirror : true;
+	public override bool CanUseItem(Player player) => _mode != 2 || player.GetModPlayer<WarpedMirrorPlayer>().canUseWarpedMirror;
 
 	public override void AddRecipes() {
 		CreateRecipe()
 			.AddIngredient(ModContent.ItemType<WarpedMirror>())
 			.AddIngredient(ModContent.ItemType<MysticMirror>())
 			.AddIngredient(ModContent.ItemType<RunicMirror>())
-			.AddIngredient(ItemID.CellPhone)
-			.AddIngredient(ItemID.MagicConch)
-			.AddIngredient(ItemID.DemonConch)
+			.AddRecipeGroup(RecipeSystem.Shellphones)
 			.AddIngredient(ItemID.ChlorophyteBar, 3)
 			.AddTile(TileID.MythrilAnvil)
 			.Register();
