@@ -72,10 +72,10 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Warped Mirror: Teleports you to where you last died - 1 Magic Mirror, 8 Evil Bars, 5 Evil Materials @ Demon Altar
 [*]Runic Mirror: Allows you to teleport to players on your team, town NPCs and Pylons - 100% to drop from Rune Wizard
 [*]Mystic Mirror: Teleport home and leave a portal to teleport back - Bought from the Wizard after any Mech Boss has been defeated
-[*]Spiral Mirror: A combination of the above mirrors and the Shellphone - The above mirrors, 1 Shellphone, 3 Chlorophyte Bars @ Hardmode Anvil
+[*]Spiral Mirror: A combination of the above mirrors, cellphone and both conches - The above mirrors, Shellphone, 3 Chlorophyte Bars @ Hardmode Anvil
 [*]Gemstone Magnet: A Treasure Magnet upgrade that works while in your inventory - 1 Treasure Magnet, 3 Sapphires, 3 Rubies, 3 Emeralds @ Crystal Ball
 [*]Magnificent Magnet: A Gemstone Magnet upgrade that lets you pull all items to you - 1 Gemstone Magnet, 3 of each Mech Boss Soul @ Hardmode Anvil
-[*]Quantum Strongbox: A combination of each player inventory, right click to change mode - 1 of each player inventory accessory, 3 of each Mech Soul @ Hardmode Anvil
+[*]Quantum Strongbox: A combination of each player inventory, right click to change mode - 1 of each player inventory accessor, 3 of each Mech Soul @ Hardmode Anvil
 [*]Golden Horseshoe Balloon: A horseshoe balloon that is crafted from and into every other horseshoe balloon
 [*]Prefix Hammers: Consumables that apply a given prefix to your held weapon - 1 of each Lunar Fragment @ Ancient Manipulator
 [*]Flower of the Jungle: Summons Plantera - 5 Jungle Spores, 3 Chlorophyte Bars @ Hardmode Anvil
@@ -99,6 +99,13 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.5.1 (1.4.4 only)[/i]
+[list]
+[*]Remove Magic Mirror recipe
+[*]Change Spiral Mirror recipe to use Shellphone
+[*]Updated Spiral Mirror to be able to take you to your spawn
+[*]Added Bottomless Honey Bucket crafting recipe
+[/list]
 [*][i]v1.5.0[/i]
 [list]
 [*]Released for 1.4.4
