@@ -44,7 +44,7 @@ public class ArraySystem : ModSystem
 	}
 
 	public override void PostAddRecipes() {
-		var tilesWithRecipes = new List<int>();
+		List<int> tilesWithRecipes = new List<int>();
 
 		for (int i = 0; i < Main.recipe.Length; i++) {
 			for (int j = 0; j < Main.recipe[i].requiredTile.Count; j++) {
@@ -54,7 +54,7 @@ public class ArraySystem : ModSystem
 			}
 		}
 
-		var itemsPlaceTilesWithRecipes = new List<int>();
+		List<int> itemsPlaceTilesWithRecipes = new List<int>();
 
 		for (int i = 0; i < ContentSamples.ItemsByType.Count; i++) {
 			if (tilesWithRecipes.Contains(ContentSamples.ItemsByType[i].createTile)) {

@@ -3,7 +3,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
-using YAQOLM.Common.Players;
 
 namespace YAQOLM.Common.GlobalItems;
 

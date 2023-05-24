@@ -9,15 +9,15 @@ namespace YAQOLM;
 
 public static class stormytunaUtils
 {
-    /// <summary>Gets a list of NPCs within the range of that position</summary>
-    /// <param name="position">The position, should be the center of the search and usually the center of another entity</param>
-    /// <param name="range">The range measured in units, 1 tile is 16 units</param>
-    /// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
-    /// <param name="careAboutCanBeChased">Whether the function should check npc.chaseable</param>
-    /// <param name="excludedNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
-    /// <returns>A list of NPCs within range of the position</returns>
-    public static List<NPC> GetNearbyEnemies(Vector2 position, float range, bool careAboutLineOfSight, bool careAboutCanBeChased, List<int> excludedNPCs = null) {
-		var npcs = new List<NPC>();
+	/// <summary>Gets a list of NPCs within the range of that position</summary>
+	/// <param name="position">The position, should be the center of the search and usually the center of another entity</param>
+	/// <param name="range">The range measured in units, 1 tile is 16 units</param>
+	/// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
+	/// <param name="careAboutCanBeChased">Whether the function should check npc.chaseable</param>
+	/// <param name="excludedNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
+	/// <returns>A list of NPCs within range of the position</returns>
+	public static List<NPC> GetNearbyEnemies(Vector2 position, float range, bool careAboutLineOfSight, bool careAboutCanBeChased, List<int> excludedNPCs = null) {
+		List<NPC> npcs = new List<NPC>();
 		float rangeSquared = range * range;
 		if (excludedNPCs == null) {
 			excludedNPCs = new List<int>();
@@ -41,14 +41,14 @@ public static class stormytunaUtils
 		return npcs;
 	}
 
-    /// <summary>Gets the closest hostile NPC within the range of that position</summary>
-    /// <param name="position">The position, should be the center of the search and usually the center of another entity</param>
-    /// <param name="range">The range measured in units, 1 tile is 16 units</param>
-    /// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
-    /// <param name="careAboutCanBeChased">Whether the function should check npc.chaseable</param>
-    /// <param name="excludedNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
-    /// <returns>Returns the closest NPC. Returns null if no NPC is found</returns>
-    public static NPC GetClosestEnemy(Vector2 position, float range, bool careAboutLineOfSight, bool careAboutCanBeChased, List<int> excludedNPCs = null) {
+	/// <summary>Gets the closest hostile NPC within the range of that position</summary>
+	/// <param name="position">The position, should be the center of the search and usually the center of another entity</param>
+	/// <param name="range">The range measured in units, 1 tile is 16 units</param>
+	/// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
+	/// <param name="careAboutCanBeChased">Whether the function should check npc.chaseable</param>
+	/// <param name="excludedNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
+	/// <returns>Returns the closest NPC. Returns null if no NPC is found</returns>
+	public static NPC GetClosestEnemy(Vector2 position, float range, bool careAboutLineOfSight, bool careAboutCanBeChased, List<int> excludedNPCs = null) {
 		NPC closestNPC = null;
 		float rangeSquared = range * range;
 		if (excludedNPCs == null) {
@@ -74,15 +74,15 @@ public static class stormytunaUtils
 		return closestNPC;
 	}
 
-    /// <summary>Gets a list of players within the range of that position</summary>
-    /// <param name="position">The position, should be the center of the search and usually the center of another entity</param>
-    /// <param name="range">The range measured in units, 1 tile is 16 units</param>
-    /// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
-    /// <param name="team">The team the player should match. 0 means team doesn't matter</param>
-    /// <param name="excludedPlayers">The whoAmI fields of any players that are excluded from the search</param>
-    /// <returns>A list of players within range of the position</returns>
-    public static List<Player> GetNearbyPlayers(Vector2 position, float range, bool careAboutLineOfSight, int team = 0, List<int> excludedPlayers = null) {
-		var players = new List<Player>();
+	/// <summary>Gets a list of players within the range of that position</summary>
+	/// <param name="position">The position, should be the center of the search and usually the center of another entity</param>
+	/// <param name="range">The range measured in units, 1 tile is 16 units</param>
+	/// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
+	/// <param name="team">The team the player should match. 0 means team doesn't matter</param>
+	/// <param name="excludedPlayers">The whoAmI fields of any players that are excluded from the search</param>
+	/// <returns>A list of players within range of the position</returns>
+	public static List<Player> GetNearbyPlayers(Vector2 position, float range, bool careAboutLineOfSight, int team = 0, List<int> excludedPlayers = null) {
+		List<Player> players = new List<Player>();
 		float rangeSquared = range * range;
 		if (excludedPlayers == null) {
 			excludedPlayers = new List<int>();
@@ -105,15 +105,15 @@ public static class stormytunaUtils
 		return players;
 	}
 
-    /// <summary>Homing via rotating a projectiles velocity towards its target.\nThis overload searches for the closest enemy</summary>
-    /// <param name="currentVelocity">The projectiles current velocity</param>
-    /// <param name="startPosition">The position, should be the center of the projectile</param>
-    /// <param name="range">The range measured in units, 1 tile is 16 units</param>
-    /// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
-    /// <param name="rotationMax">The max amount of degrees the velocity can be rotated, make sure to use degrees as this function coverts it to radians</param>
-    /// <param name="excludeNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
-    /// <returns>Returns velocity rotated towards the found NPC. Returns the original velocity if no NPC is found</returns>
-    public static Vector2 RotateVelocityHoming(Vector2 currentVelocity, Vector2 startPosition, float range, bool careAboutLineOfSight, float rotationMax, List<int> excludeNPCs = null) {
+	/// <summary>Homing via rotating a projectiles velocity towards its target.\nThis overload searches for the closest enemy</summary>
+	/// <param name="currentVelocity">The projectiles current velocity</param>
+	/// <param name="startPosition">The position, should be the center of the projectile</param>
+	/// <param name="range">The range measured in units, 1 tile is 16 units</param>
+	/// <param name="careAboutLineOfSight">Whether the function should check Collision.CanHit</param>
+	/// <param name="rotationMax">The max amount of degrees the velocity can be rotated, make sure to use degrees as this function coverts it to radians</param>
+	/// <param name="excludeNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
+	/// <returns>Returns velocity rotated towards the found NPC. Returns the original velocity if no NPC is found</returns>
+	public static Vector2 RotateVelocityHoming(Vector2 currentVelocity, Vector2 startPosition, float range, bool careAboutLineOfSight, float rotationMax, List<int> excludeNPCs = null) {
 		if (excludeNPCs == null) {
 			excludeNPCs = new List<int>();
 		}
@@ -127,35 +127,35 @@ public static class stormytunaUtils
 		return RotateVelocityHoming(currentVelocity, startPosition, closestNPC.Center, rotationMax);
 	}
 
-    /// <summary>Homing via rotating a projectiles velocity towards its target.</summary>
-    /// <param name="currentVelocity">The projectiles current velocity</param>
-    /// <param name="startPosition">The start position, should be the center of the projectile</param>
-    /// <param name="targetPosition">The target position, should be the center of the target</param>
-    /// <param name="rotationMax">The max amount of degrees the velocity can be rotated, make sure to use degrees as this function coverts it to radians</param>
-    /// <returns>Returns velocity rotated towards the given position</returns>
-    public static Vector2 RotateVelocityHoming(Vector2 currentVelocity, Vector2 startPosition, Vector2 targetPosition, float rotationMax) {
+	/// <summary>Homing via rotating a projectiles velocity towards its target.</summary>
+	/// <param name="currentVelocity">The projectiles current velocity</param>
+	/// <param name="startPosition">The start position, should be the center of the projectile</param>
+	/// <param name="targetPosition">The target position, should be the center of the target</param>
+	/// <param name="rotationMax">The max amount of degrees the velocity can be rotated, make sure to use degrees as this function coverts it to radians</param>
+	/// <returns>Returns velocity rotated towards the given position</returns>
+	public static Vector2 RotateVelocityHoming(Vector2 currentVelocity, Vector2 startPosition, Vector2 targetPosition, float rotationMax) {
 		rotationMax = MathHelper.ToRadians(rotationMax);
 		float rotTarget = (targetPosition - startPosition).ToRotation();
 		float rotCurrent = currentVelocity.ToRotation();
 		return currentVelocity.RotatedBy(MathHelper.WrapAngle(MathHelper.WrapAngle(rotCurrent.AngleTowards(rotTarget, rotationMax)) - currentVelocity.ToRotation()));
 	}
 
-    /// <summary>Checks within a rotation is within the range of another rotation</summary>
-    /// <param name="rotation">The start rotation, measured in radians</param>
-    /// <param name="rotationTestAgainst">The rotation to test against, measured in radians</param>
-    /// <param name="range">The range around rotation to test if rotationTestAgainst is within, checks either side with the raw range (ie it isn't halved), measured in radians</param>
-    /// <returns>Returns true if rotationTestAgainst is within range of rotation. Returns false otherwise</returns>
-    public static bool RotationIsWithinRange(float rotation, float rotationTestAgainst, float range) {
+	/// <summary>Checks within a rotation is within the range of another rotation</summary>
+	/// <param name="rotation">The start rotation, measured in radians</param>
+	/// <param name="rotationTestAgainst">The rotation to test against, measured in radians</param>
+	/// <param name="range">The range around rotation to test if rotationTestAgainst is within, checks either side with the raw range (ie it isn't halved), measured in radians</param>
+	/// <returns>Returns true if rotationTestAgainst is within range of rotation. Returns false otherwise</returns>
+	public static bool RotationIsWithinRange(float rotation, float rotationTestAgainst, float range) {
 		float absDif = MathF.Abs(rotation - rotationTestAgainst);
 		return absDif < range;
 	}
 
-    /// <summary>Spherically interpolates between the start and end</summary>
-    /// <param name="start">The starting value, will return this when amount == 0</param>
-    /// <param name="end">The ending value, will return this when amount == 1</param>
-    /// <param name="amount">The amount to slerp by</param>
-    /// <returns>Returns the spherical interpolation between start and end</returns>
-    public static float Slerp(float start, float end, float amount) {
+	/// <summary>Spherically interpolates between the start and end</summary>
+	/// <param name="start">The starting value, will return this when amount == 0</param>
+	/// <param name="end">The ending value, will return this when amount == 1</param>
+	/// <param name="amount">The amount to slerp by</param>
+	/// <returns>Returns the spherical interpolation between start and end</returns>
+	public static float Slerp(float start, float end, float amount) {
 		if (amount == 0f) {
 			return start;
 		}
@@ -172,13 +172,13 @@ public static class stormytunaUtils
 		return MathHelper.Lerp(start, end, slerpedAmount);
 	}
 
-    /// <summary>Ease in interpolation between the start and end</summary>
-    /// <param name="start">The starting value, will return this when amount == 0</param>
-    /// <param name="end">The ending value, will return this when amount == 1</param>
-    /// <param name="amount">The amount to lerp by</param>
-    /// <param name="exponent">The exponent of the easing curve to use, larger values cause more easing</param>
-    /// <returns>Returns the ease in interpolation between start and end</returns>
-    public static float EaseIn(float start, float end, float amount, int exponent) {
+	/// <summary>Ease in interpolation between the start and end</summary>
+	/// <param name="start">The starting value, will return this when amount == 0</param>
+	/// <param name="end">The ending value, will return this when amount == 1</param>
+	/// <param name="amount">The amount to lerp by</param>
+	/// <param name="exponent">The exponent of the easing curve to use, larger values cause more easing</param>
+	/// <returns>Returns the ease in interpolation between start and end</returns>
+	public static float EaseIn(float start, float end, float amount, int exponent) {
 		if (amount == 0f) {
 			return start;
 		}
@@ -193,13 +193,13 @@ public static class stormytunaUtils
 		return MathHelper.Lerp(start, end, flipExp);
 	}
 
-    /// <summary>Ease out interpolation between the start and end</summary>
-    /// <param name="start">The starting value, will return this when amount == 0</param>
-    /// <param name="end">The ending value, will return this when amount == 1</param>
-    /// <param name="amount">The amount to lerp by</param>
-    /// <param name="exponent">The exponent of the easing curve to use, larger values cause more easing</param>
-    /// <returns>Returns the ease out interpolation between start and end</returns>
-    public static float EaseOut(float start, float end, float amount, int exponent) {
+	/// <summary>Ease out interpolation between the start and end</summary>
+	/// <param name="start">The starting value, will return this when amount == 0</param>
+	/// <param name="end">The ending value, will return this when amount == 1</param>
+	/// <param name="amount">The amount to lerp by</param>
+	/// <param name="exponent">The exponent of the easing curve to use, larger values cause more easing</param>
+	/// <returns>Returns the ease out interpolation between start and end</returns>
+	public static float EaseOut(float start, float end, float amount, int exponent) {
 		if (amount == 0f) {
 			return start;
 		}
@@ -215,20 +215,20 @@ public static class stormytunaUtils
 		return MathHelper.Lerp(start, end, reFlip);
 	}
 
-    /// <summary>Sets the magnitude of the vector to the given magnitude</summary>
-    /// <param name="vector">The vector to be changed</param>
-    /// <param name="magnitude">The new magnitude of the vector</param>
-    public static void SetMagnitude(this Vector2 vector, float magnitude) {
+	/// <summary>Sets the magnitude of the vector to the given magnitude</summary>
+	/// <param name="vector">The vector to be changed</param>
+	/// <param name="magnitude">The new magnitude of the vector</param>
+	public static void SetMagnitude(this Vector2 vector, float magnitude) {
 		vector.Normalize();
 		vector *= magnitude;
 	}
 
-    /// <summary>Converts an integer coin value to a string</summary>
-    /// <param name="coinValue">The coin value</param>
-    /// <param name="useIcons">Whether the string should use coin icons or coin names</param>
-    /// <param name="useColors">Whether the string should colour the number of coins</param>
-    /// <returns>Returns a string representing the coin value</returns>
-    public static string CoinValueToString(int coinValue, bool useIcons, bool useColors) {
+	/// <summary>Converts an integer coin value to a string</summary>
+	/// <param name="coinValue">The coin value</param>
+	/// <param name="useIcons">Whether the string should use coin icons or coin names</param>
+	/// <param name="useColors">Whether the string should colour the number of coins</param>
+	/// <returns>Returns a string representing the coin value</returns>
+	public static string CoinValueToString(int coinValue, bool useIcons, bool useColors) {
 		// Code copied from vanilla - PopupText.ValueToName()
 		int platinumCoins = 0;
 		int goldCoins = 0;
@@ -328,24 +328,24 @@ public static class stormytunaUtils
 		return text;
 	}
 
-    /// <summary>Adds an item to a shop</summary>
-    /// <param name="shop">The <c>shop</c> parameter of <c>SetupShop</c></param>
-    /// <param name="nextSlot">The <c>nextSlot</c> parameter of <c>SetupShop</c>, no need to increment this yourself as this function does that if needed</param>
-    /// <param name="itemType">The type of the item being inserted</param>
-    /// <param name="itemAfterType">The type of an item already in the shop that an item is inserted after</param>
-    /// <param name="defaultIndex">The default index if an item with type <c>itemAfterType</c> isn't found</param>
-    public static void AddToShop(ref Chest shop, ref int nextSlot, int itemType, int itemAfterType, int defaultIndex) {
+	/// <summary>Adds an item to a shop</summary>
+	/// <param name="shop">The <c>shop</c> parameter of <c>SetupShop</c></param>
+	/// <param name="nextSlot">The <c>nextSlot</c> parameter of <c>SetupShop</c>, no need to increment this yourself as this function does that if needed</param>
+	/// <param name="itemType">The type of the item being inserted</param>
+	/// <param name="itemAfterType">The type of an item already in the shop that an item is inserted after</param>
+	/// <param name="defaultIndex">The default index if an item with type <c>itemAfterType</c> isn't found</param>
+	public static void AddToShop(ref Chest shop, ref int nextSlot, int itemType, int itemAfterType, int defaultIndex) {
 		Predicate<Item> pred = delegate(Item i) { return i.type == itemAfterType; };
 		AddToShop(ref shop, ref nextSlot, itemType, pred, defaultIndex);
 	}
 
-    /// <summary>Adds an item to a shop</summary>
-    /// <param name="shop">The <c>shop</c> parameter of <c>SetupShop</c></param>
-    /// <param name="nextSlot">The <c>nextSlot</c> parameter of <c>SetupShop</c>, no need to increment this yourself as this function does that if needed</param>
-    /// <param name="itemType">The type of the item being inserted</param>
-    /// <param name="after">The predicate an Item must match for the added item to be inserted after it</param>
-    /// <param name="defaultIndex">The default index if an item with type <c>itemAfterType</c> isn't found</param>
-    public static void AddToShop(ref Chest shop, ref int nextSlot, int itemType, Predicate<Item> after, int defaultIndex) {
+	/// <summary>Adds an item to a shop</summary>
+	/// <param name="shop">The <c>shop</c> parameter of <c>SetupShop</c></param>
+	/// <param name="nextSlot">The <c>nextSlot</c> parameter of <c>SetupShop</c>, no need to increment this yourself as this function does that if needed</param>
+	/// <param name="itemType">The type of the item being inserted</param>
+	/// <param name="after">The predicate an Item must match for the added item to be inserted after it</param>
+	/// <param name="defaultIndex">The default index if an item with type <c>itemAfterType</c> isn't found</param>
+	public static void AddToShop(ref Chest shop, ref int nextSlot, int itemType, Predicate<Item> after, int defaultIndex) {
 		// Get our inventory as a list
 		List<Item> inventory = shop.item.ToList();
 
@@ -377,15 +377,15 @@ public static class stormytunaUtils
 		shop.item = inventory.ToArray();
 	}
 
-    /// <summary>Checks whether the player has an item in their inventory, piggy bank, safe, defenders forge or void bag</summary>
-    /// <param name="player">The player to check for</param>
-    /// <param name="itemType">The type of item to search for</param>
-    /// <param name="checkPiggyBank">If set to true, this will search the piggy bank</param>
-    /// <param name="checkSafe">If set to true, this will search the safe</param>
-    /// <param name="checkDefendersForge">If set to true, this will search the defenders forge</param>
-    /// <param name="checkVoidBag">If set to true, this wil search the void bag</param>
-    /// <returns>Returns true when an item is found, returns false otherwise</returns>
-    public static bool HasItemInInventories(this Player player, int itemType, out Item item, bool checkPiggyBank = false, bool checkSafe = false, bool checkDefendersForge = false,
+	/// <summary>Checks whether the player has an item in their inventory, piggy bank, safe, defenders forge or void bag</summary>
+	/// <param name="player">The player to check for</param>
+	/// <param name="itemType">The type of item to search for</param>
+	/// <param name="checkPiggyBank">If set to true, this will search the piggy bank</param>
+	/// <param name="checkSafe">If set to true, this will search the safe</param>
+	/// <param name="checkDefendersForge">If set to true, this will search the defenders forge</param>
+	/// <param name="checkVoidBag">If set to true, this wil search the void bag</param>
+	/// <returns>Returns true when an item is found, returns false otherwise</returns>
+	public static bool HasItemInInventories(this Player player, int itemType, out Item item, bool checkPiggyBank = false, bool checkSafe = false, bool checkDefendersForge = false,
 		bool checkVoidBag = true) {
 		item = null;
 

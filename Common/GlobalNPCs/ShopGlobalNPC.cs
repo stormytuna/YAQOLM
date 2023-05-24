@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Enums;
@@ -13,7 +12,7 @@ public class ShopGlobalNPC : GlobalNPC
 {
 	public override void ModifyShop(NPCShop shop) {
 		if (shop.NpcType == NPCID.Steampunker && ServerConfig.Instance.SteampunkerSolutions) {
-			foreach (var entry in shop.Entries.Where(entry => entry.Item.ammo == AmmoID.Solution && entry.Item.IsVanillaItem())) {
+			foreach (NPCShop.Entry entry in shop.Entries.Where(entry => entry.Item.ammo == AmmoID.Solution && entry.Item.IsVanillaItem())) {
 				entry.Conditions.RemoveAllHack();
 			}
 		}

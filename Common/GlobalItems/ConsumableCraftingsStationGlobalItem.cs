@@ -21,7 +21,7 @@ public class ConsumableCraftingsStationGlobalItem : GlobalItem
 	public override void RightClick(Item item, Player player) => player.GetModPlayer<ConsumableCraftingStationsPlayer>().ConsumeItem(item);
 
 	public override void ModifyTooltips(Item item, List<TooltipLine> tooltips) {
-		var modPlayer = Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>();
+		ConsumableCraftingStationsPlayer modPlayer = Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>();
 
 		string tooltipText = modPlayer.HasConsumedItem(item) ? Language.GetTextValue("Mods.YAQOLM.Misc.Consumed") : Language.GetTextValue("Mods.YAQOLM.Misc.NotConsumed");
 		TooltipLine newTooltip = new(Mod, "CraftingStationConsumed", tooltipText);

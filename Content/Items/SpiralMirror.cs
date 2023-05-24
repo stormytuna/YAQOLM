@@ -81,7 +81,7 @@ public class SpiralMirror : ModItem
 					3 => Color.White,
 					_ => Color.Green
 				};
-				
+
 				d = Dust.NewDustDirect(player.position, player.width, player.height, DustID.LastPrism);
 				d.noGravity = true;
 				d.color = dustColor;
