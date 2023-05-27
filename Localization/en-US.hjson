@@ -33,7 +33,12 @@ Mods: {
 			}
 
 			QuantumStrongbox: {
-				Tooltip: Picks up items when your inventory is full
+				Tooltip:
+					'''
+					Allows easy access to your piggy bank, safe, defender's forge and void vault
+					Picks up items when your inventory is full
+					'Schrödinger's storage'
+					'''
 				DisplayName: Quantum Strongbox
 			}
 

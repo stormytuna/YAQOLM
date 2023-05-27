@@ -72,12 +72,6 @@ public class KeybindPlayer : ModPlayer
 			return;
 		}
 
-		if (itemType == ModContent.ItemType<QuantumStrongbox>()) {
-			QuantumStrongbox modItem = Player.inventory[index].ModItem as QuantumStrongbox;
-			modItem.SetAndResetMode(extraData);
-			return;
-		}
-
 		// Use our item at that index
 		originalSelectedItem = Player.selectedItem;
 		autoRevertSelectedItem = true;
