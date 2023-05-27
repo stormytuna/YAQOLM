@@ -8,20 +8,14 @@ public class KeybindSystem : ModSystem
 	public static ModKeybind SpiralMirrorHomeKB { get; private set; }
 	public static ModKeybind SpiralMirrorGraveKB { get; private set; }
 	public static ModKeybind SpiralMirrorReturnKB { get; private set; }
-	public static ModKeybind QuantumStrongboxPiggyBankKB { get; private set; }
-	public static ModKeybind QuantumStrongboxSafeKB { get; private set; }
-	public static ModKeybind QuantumStrongboxDefendersForgeKB { get; private set; }
-	public static ModKeybind QuantumStrongboxVoidVaultKB { get; private set; }
+	public static ModKeybind QuantumStrongboxKB { get; private set; }
 
 	public override void Load() {
 		RodOfDiscordKB = KeybindLoader.RegisterKeybind(Mod, "RodOfDiscord", "F");
 		SpiralMirrorHomeKB = KeybindLoader.RegisterKeybind(Mod, "SpiralMirrorHome", "Y");
 		SpiralMirrorGraveKB = KeybindLoader.RegisterKeybind(Mod, "SpiralMirrorGrave", "H");
 		SpiralMirrorReturnKB = KeybindLoader.RegisterKeybind(Mod, "SpiralMirrorReturn", "N");
-		QuantumStrongboxPiggyBankKB = KeybindLoader.RegisterKeybind(Mod, "QuantumStrongboxPiggyBank", "U");
-		QuantumStrongboxSafeKB = KeybindLoader.RegisterKeybind(Mod, "QuantumStrongboxSafe", "I");
-		QuantumStrongboxDefendersForgeKB = KeybindLoader.RegisterKeybind(Mod, "QuantumStrongboxDefendersForge", "J");
-		QuantumStrongboxVoidVaultKB = KeybindLoader.RegisterKeybind(Mod, "QuantumStrongboxVoidVault", "K");
+		QuantumStrongboxKB = KeybindLoader.RegisterKeybind(Mod, "QuantumStrongbox", "U");
 	}
 
 	public override void Unload() {
@@ -29,9 +23,6 @@ public class KeybindSystem : ModSystem
 		SpiralMirrorHomeKB = null;
 		SpiralMirrorGraveKB = null;
 		SpiralMirrorReturnKB = null;
-		QuantumStrongboxPiggyBankKB = null;
-		QuantumStrongboxSafeKB = null;
-		QuantumStrongboxDefendersForgeKB = null;
-		QuantumStrongboxVoidVaultKB = null;
+		QuantumStrongboxKB = null;
 	}
 }

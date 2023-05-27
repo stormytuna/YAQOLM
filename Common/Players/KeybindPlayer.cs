@@ -29,20 +29,8 @@ public class KeybindPlayer : ModPlayer
 			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 2);
 		}
 
-		if (KeybindSystem.QuantumStrongboxPiggyBankKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 0);
-		}
-
-		if (KeybindSystem.QuantumStrongboxSafeKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 1);
-		}
-
-		if (KeybindSystem.QuantumStrongboxDefendersForgeKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 2);
-		}
-
-		if (KeybindSystem.QuantumStrongboxVoidVaultKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 3);
+		if (KeybindSystem.QuantumStrongboxKB.JustPressed) {
+			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>());
 		}
 	}
 
