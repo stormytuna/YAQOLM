@@ -99,6 +99,10 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.6.1 (1.4.4 only)[/i]
+[list]
+[*]Fixed crashing on servers
+[/list]
 [*][i]v1.6.0 (1.4.4 only)[/i]
 [list]
 [*]Reworked Quantum Strongbox - now opens a custom UI instead of the inventory
