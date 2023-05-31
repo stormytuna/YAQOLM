@@ -9,12 +9,7 @@ namespace YAQOLM.Helpers;
 
 public static class Extensions
 {
-	private static readonly string[] VanillaTooltipOrder = {
-		"ItemName", "Favorite", "FavoriteDesc", "Social", "SocialDesc", "Damage", "CritChance", "Speed", "Knockback", "FishingPower", "NeedsBait", "BaitPower", "WandConsumables", "Quest", "Vanity",
-		"Defense", "PickPower", "AxePower", "HammerPower", "TileBoost", "HealLife", "HealMana", "UseMana", "Placeable", "Ammo", "Consumable", "Material", "Tooltip#", "EtherianManaWarning",
-		"WellFedExpert", "BuffTime", "OneDropLogo", "PrefixDamage", "PrefixSpeed", "PrefixCritChance", "PrefixUseMana", "PrefixSize", "PrefixShootSpeed", "PrefixKnockback", "PrefixAccDefense",
-		"PrefixAccMaxMana", "PrefixAccCritChance", "PrefixAccDamage", "PrefixAccMoveSpeed", "PrefixAccMeleeSpeed", "SetBonus", "Expert", "SpecialPrice", "Price"
-	};
+	private static readonly string[] VanillaTooltipOrder = { "ItemName", "Favorite", "FavoriteDesc", "Social", "SocialDesc", "Damage", "CritChance", "Speed", "Knockback", "FishingPower", "NeedsBait", "BaitPower", "WandConsumables", "Quest", "Vanity", "Defense", "PickPower", "AxePower", "HammerPower", "TileBoost", "HealLife", "HealMana", "UseMana", "Placeable", "Ammo", "Consumable", "Material", "Tooltip#", "EtherianManaWarning", "WellFedExpert", "BuffTime", "OneDropLogo", "PrefixDamage", "PrefixSpeed", "PrefixCritChance", "PrefixUseMana", "PrefixSize", "PrefixShootSpeed", "PrefixKnockback", "PrefixAccDefense", "PrefixAccMaxMana", "PrefixAccCritChance", "PrefixAccDamage", "PrefixAccMoveSpeed", "PrefixAccMeleeSpeed", "SetBonus", "Expert", "SpecialPrice", "Price" };
 
 	public static void InsertTooltip(this List<TooltipLine> tooltips, TooltipLine newTooltip, string afterVanillaTooltip) {
 		int index = Array.IndexOf(VanillaTooltipOrder, afterVanillaTooltip);

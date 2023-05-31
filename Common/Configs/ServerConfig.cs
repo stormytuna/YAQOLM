@@ -14,7 +14,6 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("NewContent")]
-	
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool WarpedMirror { get; set; }
@@ -60,7 +59,6 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("Recipes")]
-	
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool RodOfDiscord { get; set; }
@@ -98,7 +96,6 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("Items")]
-	
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool WoodGreavesDefense { get; set; }
@@ -134,7 +131,6 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("NPCsAndDrops")]
-	
 	[DefaultValue(true)]
 	public bool SteampunkerSolutions { get; set; }
 
@@ -166,7 +162,6 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("Misc")]
-	
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool BuffStationChanges { get; set; }

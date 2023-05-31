@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,8 +13,8 @@ public class QuantumStrongboxUIState : UIState
 {
 	private const int numRows = 4;
 	private const int numColumns = 10;
-	
-	public int Bank { private get; set; } = 0;
+
+	public int Bank { private get; set; }
 
 	private UIText header;
 
@@ -39,10 +38,10 @@ public class QuantumStrongboxUIState : UIState
 		itemSlots = new BankItemSlot[numRows * numColumns];
 		for (int row = 0; row < numRows; row++) {
 			for (int column = 0; column < numColumns; column++) {
-				int index = (row * 10) + column;
+				int index = row * 10 + column;
 				BankItemSlot itemSlot = new(Bank, index, ItemSlot.Context.BankItem, 0.8f);
-				itemSlot.Top.Set((row * 50) + 40, 0f);
-				itemSlot.Left.Set((column * 50) + 5, 0f);
+				itemSlot.Top.Set(row * 50 + 40, 0f);
+				itemSlot.Left.Set(column * 50 + 5, 0f);
 				itemSlots[index] = itemSlot;
 				panel.Append(itemSlot);
 			}
@@ -60,7 +59,7 @@ public class QuantumStrongboxUIState : UIState
 		nextBankButton.Width.Set(25, 0f);
 		nextBankButton.Height.Set(25, 0f);
 		nextBankButton.Top.Set(5, 0f);
-		nextBankButton.Left.Set(220 , 0f);
+		nextBankButton.Left.Set(220, 0f);
 		nextBankButton.OnLeftClick += OnNextBankButtonClick;
 		panel.Append(nextBankButton);
 	}
@@ -79,7 +78,7 @@ public class QuantumStrongboxUIState : UIState
 		if (nextSlot < 0) {
 			nextSlot = 3;
 		}
-		
+
 		SetNextBank(nextSlot);
 	}
 

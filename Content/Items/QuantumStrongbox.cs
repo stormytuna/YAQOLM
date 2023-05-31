@@ -1,14 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.Creative;
-using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.UI;
-using Terraria.UI.Gamepad;
 using YAQOLM.Common.Configs;
 using YAQOLM.Common.Systems;
 

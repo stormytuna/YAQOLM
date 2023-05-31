@@ -1,10 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.GameContent;
-using Terraria.GameInput;
-using Terraria.ModLoader;
 using Terraria.UI;
 
 namespace YAQOLM.Common.UI;
@@ -20,13 +16,11 @@ public class BankItemSlot : EnhancedItemSlot
 		3 => Main.LocalPlayer.bank4.item,
 		_ => throw new ArgumentException($"Bank type {BankType} not recognised")
 	};
-	
+
 	public BankItemSlot(int bankType, int slot, int context = ItemSlot.Context.InventoryItem, float scale = 1) : base(slot, context, scale) {
 		BankType = bankType;
 
-		OnItemChanged += item => {
-			Bank[slot] = StoredItem;
-		};
+		OnItemChanged += item => { Bank[slot] = StoredItem; };
 	}
 
 	public override void Update(GameTime gameTime) {

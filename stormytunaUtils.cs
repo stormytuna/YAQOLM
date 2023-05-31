@@ -17,7 +17,7 @@ public static class stormytunaUtils
 	/// <param name="excludedNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
 	/// <returns>A list of NPCs within range of the position</returns>
 	public static List<NPC> GetNearbyEnemies(Vector2 position, float range, bool careAboutLineOfSight, bool careAboutCanBeChased, List<int> excludedNPCs = null) {
-		List<NPC> npcs = new List<NPC>();
+		List<NPC> npcs = new();
 		float rangeSquared = range * range;
 		if (excludedNPCs == null) {
 			excludedNPCs = new List<int>();
@@ -82,7 +82,7 @@ public static class stormytunaUtils
 	/// <param name="excludedPlayers">The whoAmI fields of any players that are excluded from the search</param>
 	/// <returns>A list of players within range of the position</returns>
 	public static List<Player> GetNearbyPlayers(Vector2 position, float range, bool careAboutLineOfSight, int team = 0, List<int> excludedPlayers = null) {
-		List<Player> players = new List<Player>();
+		List<Player> players = new();
 		float rangeSquared = range * range;
 		if (excludedPlayers == null) {
 			excludedPlayers = new List<int>();
