@@ -7,87 +7,87 @@ using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
 using YAQOLM.Common.Systems;
 
-namespace YAQOLM.Content.Items {
-    public class WarpedMirror : ModItem {
-        public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.WarpedMirror;
+namespace YAQOLM.Content.Items;
 
-        public override void SetStaticDefaults() {
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            Tooltip.SetDefault("Gaze into the mirror to return to where you last died");
-        }
+public class WarpedMirror : ModItem
+{
+	public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.WarpedMirror;
 
-        public override void SetDefaults() {
-            Item.useTurn = true;
-            Item.width = 30;
-            Item.height = 30;
-            Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useTime = 90;
-            Item.UseSound = SoundID.Item6;
-            Item.useAnimation = 90;
-            Item.rare = ItemRarityID.Green;
-            Item.value = Item.sellPrice(gold: 1, silver: 50);
-        }
+	public override void SetStaticDefaults() {
+		CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+		Tooltip.SetDefault("Gaze into the mirror to return to where you last died");
+	}
 
-        public override void AddRecipes() {
-            CreateRecipe()
-                .AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
-                .AddRecipeGroup(RecipeSystem.evilMaterialRecipeGroup, 8)
-                .AddRecipeGroup(RecipeSystem.evilBarRecipeGroup, 5)
-                .AddTile(TileID.DemonAltar)
-                .Register();
-        }
+	public override void SetDefaults() {
+		Item.useTurn = true;
+		Item.width = 30;
+		Item.height = 30;
+		Item.useStyle = ItemUseStyleID.HoldUp;
+		Item.useTime = 90;
+		Item.UseSound = SoundID.Item6;
+		Item.useAnimation = 90;
+		Item.rare = ItemRarityID.Green;
+		Item.value = Item.sellPrice(gold: 1, silver: 50);
+	}
 
-        public override bool CanUseItem(Player player) {
-            return player.GetModPlayer<WarpedMirrorPlayer>().canUseWarpedMirror;
-        }
+	public override void AddRecipes() {
+		CreateRecipe()
+			.AddRecipeGroup(RecipeSystem.magicMirrorRecipeGroup)
+			.AddRecipeGroup(RecipeSystem.evilMaterialRecipeGroup, 8)
+			.AddRecipeGroup(RecipeSystem.evilBarRecipeGroup, 5)
+			.AddTile(TileID.DemonAltar)
+			.Register();
+	}
 
-        public override void UseStyle(Player player, Rectangle heldItemFrame) {
-            var modPlayer = player.GetModPlayer<WarpedMirrorPlayer>();
+	public override bool CanUseItem(Player player) => player.GetModPlayer<WarpedMirrorPlayer>().canUseWarpedMirror;
 
-            // Make dust each frame
-            if (Main.rand.NextBool()) {
-                Dust.NewDust(player.position, player.width, player.height, DustID.Demonite, 0f, 0f, 150, default, 1.1f);
-            }
+	public override void UseStyle(Player player, Rectangle heldItemFrame) {
+		WarpedMirrorPlayer modPlayer = player.GetModPlayer<WarpedMirrorPlayer>();
 
-            // Set up itemTime correctly
-            if (player.ItemTimeIsZero) {
-                player.ApplyItemTime(Item);
-            }
+		// Make dust each frame
+		if (Main.rand.NextBool()) {
+			Dust.NewDust(player.position, player.width, player.height, DustID.Demonite, 0f, 0f, 150, default, 1.1f);
+		}
 
-            if (player.itemTime == player.itemTimeMax / 2) {
-                // Dust where the player starts
-                for (int i = 0; i < 70; i++) {
-                    Dust.NewDust(player.position, player.width, player.height, DustID.Demonite, 0f, 0f, 150, default, 1.5f);
-                }
+		// Set up itemTime correctly
+		if (player.ItemTimeIsZero) {
+			player.ApplyItemTime(Item);
+		}
 
-                // Release grappling hooks
-                player.grappling[0] = -1;
-                player.grapCount = 0;
-                for (int i = 0; i < Main.projectile.Length; i++) {
-                    if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7) {
-                        Main.projectile[i].Kill();
-                    }
-                }
+		if (player.itemTime == player.itemTimeMax / 2) {
+			// Dust where the player starts
+			for (int i = 0; i < 70; i++) {
+				Dust.NewDust(player.position, player.width, player.height, DustID.Demonite, 0f, 0f, 150, default, 1.5f);
+			}
 
-                // Teleport the player
-                player.Teleport(modPlayer.deathLocation, -1); // style: -1 prevents vanilla from doing any teleport effects
-                modPlayer.canUseWarpedMirror = false;
+			// Release grappling hooks
+			player.grappling[0] = -1;
+			player.grapCount = 0;
+			for (int i = 0; i < Main.projectile.Length; i++) {
+				if (Main.projectile[i].active && Main.projectile[i].owner == player.whoAmI && Main.projectile[i].aiStyle == 7) {
+					Main.projectile[i].Kill();
+				}
+			}
 
-                // Dust where the player appears
-                for (int i = 0; i < 70; i++) {
-                    Dust.NewDust(player.position, player.width, player.height, DustID.Demonite, 0f, 0f, 150, default, 1.5f);
-                }
-            }
-        }
-    }
+			// Teleport the player
+			player.Teleport(modPlayer.deathLocation, -1); // style: -1 prevents vanilla from doing any teleport effects
+			modPlayer.canUseWarpedMirror = false;
 
-    public class WarpedMirrorPlayer : ModPlayer {
-        public bool canUseWarpedMirror = false;
-        public Vector2 deathLocation;
+			// Dust where the player appears
+			for (int i = 0; i < 70; i++) {
+				Dust.NewDust(player.position, player.width, player.height, DustID.Demonite, 0f, 0f, 150, default, 1.5f);
+			}
+		}
+	}
+}
 
-        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) {
-            canUseWarpedMirror = true;
-            deathLocation = Player.position;
-        }
-    }
+public class WarpedMirrorPlayer : ModPlayer
+{
+	public bool canUseWarpedMirror;
+	public Vector2 deathLocation;
+
+	public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource) {
+		canUseWarpedMirror = true;
+		deathLocation = Player.position;
+	}
 }

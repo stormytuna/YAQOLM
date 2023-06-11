@@ -1,79 +1,87 @@
 using System.Linq;
+using Microsoft.Xna.Framework;
+using On.Terraria.GameContent;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
+using Projectile = On.Terraria.Projectile;
 
-namespace YAQOLM.Common.Systems {
-    public class DetourSystem : ModSystem {
-        public override void Load() {
-            if (ServerConfig.Instance.BetterBombTiles) {
-                On.Terraria.Projectile.CanExplodeTile += Projectile_CanExplodeTile;
-            }
-            if (ServerConfig.Instance.BetterBombWalls) {
-                On.Terraria.Projectile.ExplodeTiles += Projectile_ExplodeTiles;
-            }
-            if (ServerConfig.Instance.BossesIncreaseHappiness) {
-                On.Terraria.GameContent.ShopHelper.GetShoppingSettings += ShopHelper_GetShoppingSettings;
-            }
-        }
+namespace YAQOLM.Common.Systems;
 
-        public override void Unload() {
-            if (ServerConfig.Instance.BetterBombTiles) {
-                On.Terraria.Projectile.CanExplodeTile -= Projectile_CanExplodeTile;
-            }
-            if (ServerConfig.Instance.BetterBombWalls) {
-                On.Terraria.Projectile.ExplodeTiles -= Projectile_ExplodeTiles;
-            }
-            if (ServerConfig.Instance.BossesIncreaseHappiness) {
-                On.Terraria.GameContent.ShopHelper.GetShoppingSettings -= ShopHelper_GetShoppingSettings;
-            }
-        }
+public class DetourSystem : ModSystem
+{
+	public override void Load() {
+		if (ServerConfig.Instance.BetterBombTiles) {
+			Projectile.CanExplodeTile += Projectile_CanExplodeTile;
+		}
 
-        private bool Projectile_CanExplodeTile(On.Terraria.Projectile.orig_CanExplodeTile orig, Terraria.Projectile self, int x, int y) {
-            bool canExplode = orig(self, x, y);
+		if (ServerConfig.Instance.BetterBombWalls) {
+			Projectile.ExplodeTiles += Projectile_ExplodeTiles;
+		}
 
-            if (!canExplode) {
-                // Check we absolutely cannot explode this tile
-                int type = Main.tile[x, y].TileType;
-                var player = Main.player[self.owner];
-                if (Main.tileDungeon[type] || TileID.Sets.BasicChest[type] || ArraySystem.IndestructibleTiles.Contains(type)) {
-                    return canExplode;
-                }
+		if (ServerConfig.Instance.BossesIncreaseHappiness) {
+			ShopHelper.GetShoppingSettings += ShopHelper_GetShoppingSettings;
+		}
+	}
 
-                // Check if our player could mine this
-                if (player.HasEnoughPickPowerToHurtTile(x, y)) {
-                    canExplode = true;
-                }
-            }
+	public override void Unload() {
+		if (ServerConfig.Instance.BetterBombTiles) {
+			Projectile.CanExplodeTile -= Projectile_CanExplodeTile;
+		}
 
-            return canExplode;
-        }
+		if (ServerConfig.Instance.BetterBombWalls) {
+			Projectile.ExplodeTiles -= Projectile_ExplodeTiles;
+		}
 
-        private void Projectile_ExplodeTiles(On.Terraria.Projectile.orig_ExplodeTiles orig, Projectile self, Microsoft.Xna.Framework.Vector2 compareSpot, int radius, int minI, int maxI, int minJ, int maxJ, bool wallSplode) {
-            orig(self, compareSpot, radius, minI, maxI, minJ, maxJ, true);
-        }
+		if (ServerConfig.Instance.BossesIncreaseHappiness) {
+			ShopHelper.GetShoppingSettings -= ShopHelper_GetShoppingSettings;
+		}
+	}
 
-        private ShoppingSettings ShopHelper_GetShoppingSettings(On.Terraria.GameContent.ShopHelper.orig_GetShoppingSettings orig, Terraria.GameContent.ShopHelper self, Player player, NPC npc) {
-            var settings = orig(self, player, npc);
+	private bool Projectile_CanExplodeTile(Projectile.orig_CanExplodeTile orig, Terraria.Projectile self, int x, int y) {
+		bool canExplode = orig(self, x, y);
 
-            if (NPC.downedBoss2) {
-                settings.PriceAdjustment *= 0.92f;
-            }
+		if (!canExplode) {
+			// Check we absolutely cannot explode this tile
+			int type = Main.tile[x, y].TileType;
+			Player player = Main.player[self.owner];
+			if (Main.tileDungeon[type] || TileID.Sets.BasicChest[type] || ArraySystem.IndestructibleTiles.Contains(type)) {
+				return canExplode;
+			}
 
-            if (Main.hardMode) {
-                settings.PriceAdjustment *= 0.92f;
-            }
+			// Check if our player could mine this
+			if (player.HasEnoughPickPowerToHurtTile(x, y)) {
+				canExplode = true;
+			}
+		}
 
-            if (NPC.downedPlantBoss) {
-                settings.PriceAdjustment *= 0.92f;
-            }
+		return canExplode;
+	}
 
-            if (NPC.downedMoonlord) {
-                settings.PriceAdjustment *= 0.9f;
-            }
+	private void Projectile_ExplodeTiles(Projectile.orig_ExplodeTiles orig, Terraria.Projectile self, Vector2 compareSpot, int radius, int minI, int maxI, int minJ, int maxJ, bool wallSplode) {
+		orig(self, compareSpot, radius, minI, maxI, minJ, maxJ, true);
+	}
 
-            return settings;
-        }
-    }
+	private ShoppingSettings ShopHelper_GetShoppingSettings(ShopHelper.orig_GetShoppingSettings orig, Terraria.GameContent.ShopHelper self, Player player, NPC npc) {
+		ShoppingSettings settings = orig(self, player, npc);
+
+		if (NPC.downedBoss2) {
+			settings.PriceAdjustment *= 0.92f;
+		}
+
+		if (Main.hardMode) {
+			settings.PriceAdjustment *= 0.92f;
+		}
+
+		if (NPC.downedPlantBoss) {
+			settings.PriceAdjustment *= 0.92f;
+		}
+
+		if (NPC.downedMoonlord) {
+			settings.PriceAdjustment *= 0.9f;
+		}
+
+		return settings;
+	}
 }

@@ -1,20 +1,21 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace YAQOLM.Common.Players {
-    public class BuffStationPlayer : ModPlayer {
-        public bool ammoBox;
+namespace YAQOLM.Common.Players;
 
-        public override void ResetEffects() {
-            ammoBox = false;
-        }
+public class BuffStationPlayer : ModPlayer
+{
+	public bool ammoBox;
 
-        public override bool CanConsumeAmmo(Item weapon, Item ammo) {
-            if (ammoBox && Main.rand.NextFloat() < 0.4f) {
-                return false;
-            }
+	public override void ResetEffects() {
+		ammoBox = false;
+	}
 
-            return base.CanConsumeAmmo(weapon, ammo);
-        }
-    }
+	public override bool CanConsumeAmmo(Item weapon, Item ammo) {
+		if (ammoBox && Main.rand.NextFloat() < 0.4f) {
+			return false;
+		}
+
+		return base.CanConsumeAmmo(weapon, ammo);
+	}
 }

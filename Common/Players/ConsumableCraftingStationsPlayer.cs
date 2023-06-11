@@ -6,78 +6,82 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using YAQOLM.Common.Configs;
 
-namespace YAQOLM.Common.Players {
-    public class ConsumableCraftingStationsPlayer : ModPlayer {
-        private List<string> consumedCraftingStations = new();
-        public override void SaveData(TagCompound tag) {
-            if (consumedCraftingStations == null) {
-                consumedCraftingStations = new();
-            }
+namespace YAQOLM.Common.Players;
 
-            if (consumedCraftingStations.Count != 0) {
-                tag["consumedCraftingStations"] = consumedCraftingStations;
-            }
-        }
+public class ConsumableCraftingStationsPlayer : ModPlayer
+{
+	private List<string> consumedCraftingStations = new();
 
-        public override void LoadData(TagCompound tag) {
-            consumedCraftingStations = new();
+	public override void SaveData(TagCompound tag) {
+		if (consumedCraftingStations == null) {
+			consumedCraftingStations = new List<string>();
+		}
 
-            if (tag.ContainsKey("consumedCraftingStations")) {
-                consumedCraftingStations = tag.GetList<string>("consumedCraftingStations").ToList();
-            }
-        }
+		if (consumedCraftingStations.Count != 0) {
+			tag["consumedCraftingStations"] = consumedCraftingStations;
+		}
+	}
 
-        public string GetFullNameFromItem(Item item) {
-            string name = ItemID.Search.GetName(item.type);
-            string mod = "Terraria";
-            if (item.ModItem != null) {
-                mod = item.ModItem.Mod.Name;
-            }
-            string fullName = $"{mod}:{name}";
+	public override void LoadData(TagCompound tag) {
+		consumedCraftingStations = new List<string>();
 
-            return fullName;
-        }
+		if (tag.ContainsKey("consumedCraftingStations")) {
+			consumedCraftingStations = tag.GetList<string>("consumedCraftingStations").ToList();
+		}
+	}
 
-        public Item GetItemFromFullName(string name) {
-            int separater = name.IndexOf(":");
-            string item = name.Substring(separater + 1);
-            if (ItemID.Search.TryGetId(item, out int type)) {
-                return ContentSamples.ItemsByType[type];
-            }
+	public string GetFullNameFromItem(Item item) {
+		string name = ItemID.Search.GetName(item.type);
+		string mod = "Terraria";
+		if (item.ModItem != null) {
+			mod = item.ModItem.Mod.Name;
+		}
 
-            return null;
-        }
+		string fullName = $"{mod}:{name}";
 
-        public bool HasConsumedItem(Item item) => consumedCraftingStations.Contains(GetFullNameFromItem(item)) && ServerConfig.Instance.InventoryCraftingStations;
+		return fullName;
+	}
 
-        public void ConsumeItem(Item item) => consumedCraftingStations.Add(GetFullNameFromItem(item));
+	public Item GetItemFromFullName(string name) {
+		int separater = name.IndexOf(":");
+		string item = name.Substring(separater + 1);
+		if (ItemID.Search.TryGetId(item, out int type)) {
+			return ContentSamples.ItemsByType[type];
+		}
 
-        public List<int> ConsumedItemTiles() {
-            List<int> tiles = new();
+		return null;
+	}
 
-            foreach (string fullName in consumedCraftingStations) {
-                Item item = GetItemFromFullName(fullName);
-                if (item != null) {
-                    if (!tiles.Contains(item.createTile)) {
-                        tiles.Add(item.createTile);
-                    }
-                }
-            }
+	public bool HasConsumedItem(Item item) => consumedCraftingStations.Contains(GetFullNameFromItem(item)) && ServerConfig.Instance.InventoryCraftingStations;
 
-            return tiles;
-        }
-    }
+	public void ConsumeItem(Item item) => consumedCraftingStations.Add(GetFullNameFromItem(item));
 
-    public class ConsumableCraftingStationsGlobalTile : GlobalTile {
-        public override int[] AdjTiles(int type) {
-            if (ServerConfig.Instance.InventoryCraftingStations) {
-                foreach (int entry in Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>().ConsumedItemTiles()) {
-                    Main.LocalPlayer.adjTile[entry] = true;
-                    Main.LocalPlayer.oldAdjTile[entry] = true;
-                }
-            }
+	public List<int> ConsumedItemTiles() {
+		List<int> tiles = new();
 
-            return base.AdjTiles(type);
-        }
-    }
+		foreach (string fullName in consumedCraftingStations) {
+			Item item = GetItemFromFullName(fullName);
+			if (item != null) {
+				if (!tiles.Contains(item.createTile)) {
+					tiles.Add(item.createTile);
+				}
+			}
+		}
+
+		return tiles;
+	}
+}
+
+public class ConsumableCraftingStationsGlobalTile : GlobalTile
+{
+	public override int[] AdjTiles(int type) {
+		if (ServerConfig.Instance.InventoryCraftingStations) {
+			foreach (int entry in Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>().ConsumedItemTiles()) {
+				Main.LocalPlayer.adjTile[entry] = true;
+				Main.LocalPlayer.oldAdjTile[entry] = true;
+			}
+		}
+
+		return base.AdjTiles(type);
+	}
 }

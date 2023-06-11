@@ -10,13 +10,13 @@ namespace YAQOLM.Common.Systems;
 public class QuantumStrongboxUiSystem : ModSystem
 {
 	public static QuantumStrongboxUiSystem Instance => ModContent.GetInstance<QuantumStrongboxUiSystem>();
-	
+
 	public UserInterface QuantumStrongboxUi;
 	public QuantumStrongboxUIState QuantumStrongboxUiState;
 
 	public override void Load() {
 		QuantumStrongboxUi = new UserInterface();
-		
+
 		QuantumStrongboxUiState = new QuantumStrongboxUIState();
 		QuantumStrongboxUiState.Activate();
 	}
@@ -30,7 +30,7 @@ public class QuantumStrongboxUiSystem : ModSystem
 	}
 
 	private GameTime oldUiGameTime;
-	
+
 	public override void UpdateUI(GameTime gameTime) {
 		oldUiGameTime = gameTime;
 
@@ -52,7 +52,7 @@ public class QuantumStrongboxUiSystem : ModSystem
 
 			return true;
 		};
-		
+
 		layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer("YAQOLM: QuantumLockboxUi", drawMethod, InterfaceScaleType.UI));
 	}
 }
