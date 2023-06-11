@@ -75,7 +75,7 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Spiral Mirror: A combination of the above mirrors, cellphone and both conches - The above mirrors, Shellphone, 3 Chlorophyte Bars @ Hardmode Anvil
 [*]Gemstone Magnet: A Treasure Magnet upgrade that works while in your inventory - 1 Treasure Magnet, 3 Sapphires, 3 Rubies, 3 Emeralds @ Crystal Ball
 [*]Magnificent Magnet: A Gemstone Magnet upgrade that lets you pull all items to you - 1 Gemstone Magnet, 3 of each Mech Boss Soul @ Hardmode Anvil
-[*]Quantum Strongbox: A combination of each player inventory, - 1 of each player inventory accessor, 3 of each Mech Soul @ Hardmode Anvil
+[*]Quantum Strongbox: A combination of each player inventory - 1 of each player inventory accessor, 3 of each Mech Soul @ Hardmode Anvil
 [*]Golden Horseshoe Balloon: A horseshoe balloon that is crafted from and into every other horseshoe balloon
 [*]Prefix Hammers: Consumables that apply a given prefix to your held weapon - 1 of each Lunar Fragment @ Ancient Manipulator
 [*]Flower of the Jungle: Summons Plantera - 5 Jungle Spores, 3 Chlorophyte Bars @ Hardmode Anvil
@@ -99,11 +99,11 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
-[*][i]v1.6.1 (1.4.4 only)[/i]
+[*][i]v1.6.1[/i]
 [list]
 [*]Fixed crashing on servers
 [/list]
-[*][i]v1.6.0 (1.4.4 only)[/i]
+[*][i]v1.6.0[/i]
 [list]
 [*]Reworked Quantum Strongbox - now opens a custom UI instead of the inventory
 [/list]
@@ -113,10 +113,6 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 [*]Change Spiral Mirror recipe to use Shellphone
 [*]Updated Spiral Mirror to be able to take you to your spawn
 [*]Added Bottomless Honey Bucket crafting recipe
-[/list]
-[*][i]v1.5.0[/i]
-[list]
-[*]Released for 1.4.4
 [/list]
 [*][i]v1.4.2[/i]
 [list]
