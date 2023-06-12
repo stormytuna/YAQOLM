@@ -7,6 +7,7 @@ using YAQOLM.Common.UI;
 
 namespace YAQOLM.Common.Systems;
 
+[Autoload(Side = ModSide.Client)]
 public class QuantumStrongboxUiSystem : ModSystem
 {
 	public static QuantumStrongboxUiSystem Instance => ModContent.GetInstance<QuantumStrongboxUiSystem>();
