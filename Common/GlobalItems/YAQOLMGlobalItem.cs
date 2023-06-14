@@ -34,6 +34,10 @@ public class YAQOLMGlobalItem : GlobalItem
 			item.ammo = AmmoID.Gel;
 			item.consumable = true;
 		}
+
+		if (item.type == ItemID.Actuator && ServerConfig.Instance.CheaperActuators) {
+			item.value = 20;
+		}
 	}
 
 	public override bool CanRightClick(Item item) {
