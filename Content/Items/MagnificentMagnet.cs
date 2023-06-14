@@ -121,10 +121,6 @@ public class MagnificentMagnetPlayer : ModPlayer
 		On.Terraria.Player.GetItemGrabRange += Player_GetItemGrabRange;
 	}
 
-	public override void Unload() {
-		On.Terraria.Player.GetItemGrabRange += Player_GetItemGrabRange;
-	}
-
 	private int Player_GetItemGrabRange(On.Terraria.Player.orig_GetItemGrabRange orig, Player self, Item item) {
 		int ret = orig(self, item);
 
