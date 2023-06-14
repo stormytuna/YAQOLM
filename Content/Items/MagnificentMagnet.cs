@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Content.Items;
@@ -103,6 +104,14 @@ public class MagnificentMagnet : ModItem
 		}
 
 		return true;
+	}
+
+	public override void SaveData(TagCompound tag) {
+		tag["MagnificentMagnetMode"] = Mode;
+	}
+
+	public override void LoadData(TagCompound tag) {
+		Mode = tag.GetInt("MagnificentMagnetMode");
 	}
 }
 
