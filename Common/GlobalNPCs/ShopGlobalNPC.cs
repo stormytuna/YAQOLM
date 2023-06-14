@@ -154,5 +154,12 @@ public class ShopGlobalNPC : GlobalNPC
 
 			#endregion
 		}
+
+		if (type == NPCID.DD2Bartender && ServerConfig.Instance.CheaperDefendersForge) {
+			Item defendersForge = shop.item.FirstOrDefault(i => i.type == ItemID.DefendersForge);
+			if (defendersForge is not null) {
+				defendersForge.shopCustomPrice = 15;
+			}
+		}
 	}
 }

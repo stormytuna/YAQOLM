@@ -162,6 +162,11 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool CheaperWire { get; set; }
 
+	[Label("[i:3813] Cheaper defender's forge")]
+	[ReloadRequired]
+	[DefaultValue(true)]
+	public bool CheaperDefendersForge { get; set; }
+
 	[Label("[i:3111] Pink Gel is gel ammo")]
 	[Tooltip("Deals 20% more damage than regular gel")]
 	[ReloadRequired]
