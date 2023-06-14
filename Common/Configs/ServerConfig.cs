@@ -115,6 +115,11 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool CheaperWire { get; set; }
 
+	[Label("[i:849] Cheaper actuators")]
+	[ReloadRequired]
+	[DefaultValue(true)]
+	public bool CheaperActuators { get; set; }
+
 	[Label("[i:3813] Cheaper defender's forge")]
 	[ReloadRequired]
 	[DefaultValue(true)]
