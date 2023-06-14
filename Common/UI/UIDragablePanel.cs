@@ -50,7 +50,7 @@ public class UIDragablePanel : UIPanel
 		header.OnMouseUp += Header_MouseUp;
 		Append(header);
 
-		UITextPanel<char> closeButton = new UITextPanel<char>('X');
+		UITextPanel<char> closeButton = new('X');
 		closeButton.SetPadding(7);
 		closeButton.Width.Set(40, 0);
 		closeButton.Left.Set(-40, 1);
