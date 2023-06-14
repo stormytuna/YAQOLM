@@ -80,5 +80,12 @@ public class ShopGlobalNPC : GlobalNPC
 			shop.Add(ItemID.RedAcidDye, moonPhaseThreeQuartersAtRight);
 			shop.Add(ItemID.InfernalWispDye, moonPhaseThreeQuartersAtRight, Condition.DownedPlantera);
 		}
+
+		if (type == NPCID.DD2Bartender && ServerConfig.Instance.CheaperDefendersForge) {
+			Item defendersForge = shop.item.FirstOrDefault(i => i.type == ItemID.DefendersForge);
+			if (defendersForge is not null) {
+				defendersForge.shopCustomPrice = 15;
+			}
+		}
 	}
 }
