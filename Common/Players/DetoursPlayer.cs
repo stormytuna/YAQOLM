@@ -1,3 +1,4 @@
+using System.Linq;
 using On.Terraria;
 using Terraria.GameContent.Achievements;
 using Terraria.ID;
@@ -26,21 +27,6 @@ public class DetoursPlayer : ModPlayer
 		}
 	}
 
-	public override void Unload() {
-		// Unsubscribing in Unload
-		if (ServerConfig.Instance.MoreAnglerLoot || ServerConfig.Instance.AnglerResetsImmediately) {
-			On.Terraria.Player.GetAnglerReward -= Player_GetAnglerReward;
-		}
-
-		if (ServerConfig.Instance.BulkExtractinate) {
-			On.Terraria.Player.ExtractinatorUse -= Player_ExtractinatorUse;
-		}
-
-		if (ServerConfig.Instance.BetterLifeFruit) {
-			On.Terraria.Player.ItemCheck_UseLifeFruit -= Player_ItemCheck_UseLifeFruit;
-		}
-	}
-
 	private void Player_GetAnglerReward(Player.orig_GetAnglerReward orig, Terraria.Player self, NPC angler) {
 		// Just gives us double loot from angler
 		if (ServerConfig.Instance.MoreAnglerLoot) {
@@ -57,9 +43,14 @@ public class DetoursPlayer : ModPlayer
 	}
 
 	private void Player_ExtractinatorUse(Player.orig_ExtractinatorUse orig, Terraria.Player self, int extractType) {
-		// Extractinate one by one, removing from the stack as we do
-		// If Main.item gets 3/4 full, we should stop
-		while (self.HeldItem.stack > 0) {
+		int maxExtractinations = Main.item.SkipLast(101).Count(item => !item.active);
+
+		// Prevents us eating silt when we can't make any more items
+		if (maxExtractinations == 0) {
+			self.HeldItem.stack++;
+		}
+
+		for (int i = 0; i < maxExtractinations; i++) {
 			// Call orig
 			orig(self, extractType);
 
@@ -67,18 +58,7 @@ public class DetoursPlayer : ModPlayer
 			self.HeldItem.stack--;
 			if (self.HeldItem.stack <= 0) {
 				self.HeldItem.TurnToAir();
-			}
-
-			// Check if we should break our loop
-			int numItems = 0;
-			for (int i = 0; i < Main.item.Length; i++) {
-				if (Main.item[i].active) {
-					numItems++;
-				}
-			}
-
-			if (numItems > 300) {
-				break;
+				return;
 			}
 		}
 	}
