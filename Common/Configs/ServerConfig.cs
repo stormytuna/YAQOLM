@@ -272,6 +272,10 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool SuperQuickRespawn { get; set; }
 
+	[Label("[i:3084] Radar shows nearby enemies on the map and minimap")]
+	[DefaultValue(true)]
+	public bool RadarEnemyMap { get; set; }
+
 	[Label("[i:292] Having 30 potions grants you that buff")]
 	[DefaultValue(false)]
 	public bool UnlimitedPotions { get; set; }
