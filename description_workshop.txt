@@ -98,7 +98,8 @@ Don't like something I've changed? That's fine, you can disable every single fea
 
 [hr][/hr]
 
-To report any bugs or give feedback, you can post a comment on the Steam Workshop or message me on Discord (@stormytuna). You can report bugs using GitHub issues as well.
+To give feedback, visit [url=https://steamcommunity.com/workshop/filedetails/discussion/2884878621/6226836983327172184/]this thread here[/url] and post a comment.
+To report bugs, either [url=https://steamcommunity.com/sharedfiles/filedetails/discussions/2884878621/?newdiscussion=1]start a new discussion here[/url] or let me know in the comments. If I don't reply to a bug report discussion within a few days I likely haven't seen it, feel free to comment here to notify me.
 
 [b]Latest Changes [i]v1.7.0[/i][/b]
 [list]
@@ -111,4 +112,5 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 [*]Fixed an issue caused by Magnificent Magnet when unloading the mod and continuing to play
 [*]Removed unused Quantum Strongbox keybinds
 [/list]
+
 [url=https://steamcommunity.com/workshop/filedetails/discussion/2884878621/6226836983327140327/]See here[/url] for the full changelog
