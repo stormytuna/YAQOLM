@@ -5,4 +5,4 @@ Some things this changes are adding recipes to items that are hard to acquire (l
 
 Don't like something I've changed? That's fine, you can disable every single feature of this mod independently of each other.
 
-To report any bugs or give feedback, you can post a comment on the Steam Workshop or message me on Discord (stormytuna#2688). You can report bugs using GitHub issues as well.
+To report any bugs or give feedback, you can post a comment on the Steam Workshop or message me on Discord (@stormytuna). You can report bugs using GitHub issues as well.
