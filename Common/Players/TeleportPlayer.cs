@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using ReLogic.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -14,11 +15,17 @@ public class TeleportPlayer : ModPlayer
 
 	private int teleportTime;
 	private int teleportStyle;
+	private SlotId teleportSound;
 
 	public void StartTeleport(int teleportStyle) {
+		// Checks we are using Warped Mirror and can use it
+		if (teleportStyle == 2 && Player.GetModPlayer<WarpedMirrorPlayer>().deathLocation == Vector2.Zero) {
+			return;
+		}
+
 		this.teleportStyle = teleportStyle;
 		teleportTime = TotalTeleportTime;
-		SoundEngine.PlaySound(SoundID.Item6, Player.Center);
+		teleportSound = SoundEngine.PlaySound(SoundID.Item6, Player.Center);
 	}
 
 	public override void PostUpdate() {
@@ -79,6 +86,11 @@ public class TeleportPlayer : ModPlayer
 					}
 
 					break;
+			}
+
+			// Move our sound
+			if (SoundEngine.TryGetActiveSound(teleportSound, out ActiveSound sound)) {
+				sound.Position = Player.Center;
 			}
 
 			// Dust where the player appears

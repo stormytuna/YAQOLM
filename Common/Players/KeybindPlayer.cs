@@ -20,25 +20,31 @@ public class KeybindPlayer : ModPlayer
 		}
 
 		// TODO: Fix these!
-
-		if (KeybindSystem.SpiralMirrorHomeKB.JustPressed)
+		int spiralMirrorType = ModContent.ItemType<SpiralMirror>();
+		TeleportPlayer teleportPlayer = Player.GetModPlayer<TeleportPlayer>();
+		if (KeybindSystem.SpiralMirrorHomeKB.JustPressed && Player.HasItem(spiralMirrorType))
 		{
-			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 0);
+			teleportPlayer.StartTeleport(0);
 		}
 
-		if (KeybindSystem.SpiralMirrorGraveKB.JustPressed)
+		if (KeybindSystem.SpiralMirrorGraveKB.JustPressed && Player.HasItem(spiralMirrorType))
 		{
-			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 1);
+			teleportPlayer.StartTeleport(2);
 		}
 
-		if (KeybindSystem.SpiralMirrorReturnKB.JustPressed)
+		if (KeybindSystem.SpiralMirrorReturnKB.JustPressed && Player.HasItem(spiralMirrorType))
 		{
-			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 2);
+			teleportPlayer.StartTeleport(3);
 		}
 
-		if (KeybindSystem.QuantumStrongboxKB.JustPressed)
+		if (KeybindSystem.SpiralMirrorOceanKB.JustPressed && Player.HasItem(spiralMirrorType))
 		{
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>());
+			teleportPlayer.StartTeleport(4);
+		}
+
+		if (KeybindSystem.SpiralMirrorHellKB.JustPressed && Player.HasItem(spiralMirrorType))
+		{
+			teleportPlayer.StartTeleport(5);
 		}
 	}
 
