@@ -25,6 +25,7 @@ public class SpiralMirrorUiState : UIState
 		homeButton.HAlign = 0.5f;
 		homeButton.VAlign = 0.1f;
 		homeButton.OnClick += HomeButtonOnOnClick;
+		homeButton.Tooltip = "Teleport home";
 		mainPanel.Append(homeButton);
 
 		SpiralMirrorButton graveButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorGrave"));
@@ -33,6 +34,7 @@ public class SpiralMirrorUiState : UIState
 		graveButton.HAlign = 0.1f;
 		graveButton.VAlign = 0.45f;
 		graveButton.OnClick += GraveButtonOnOnClick;
+		graveButton.Tooltip = "Teleport to where you last died";
 		mainPanel.Append(graveButton);
 
 		SpiralMirrorButton returnButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorReturn"));
@@ -41,6 +43,7 @@ public class SpiralMirrorUiState : UIState
 		returnButton.HAlign = 0.9f;
 		returnButton.VAlign = 0.45f;
 		returnButton.OnClick += ReturnButtonOnOnClick;
+		returnButton.Tooltip = "Teleport home and leave a portal";
 		mainPanel.Append(returnButton);
 
 		SpiralMirrorButton oceanButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorOcean"));
@@ -49,6 +52,7 @@ public class SpiralMirrorUiState : UIState
 		oceanButton.HAlign = 0.25f;
 		oceanButton.VAlign = 0.9f;
 		oceanButton.OnClick += OceanButtonOnOnClick;
+		oceanButton.Tooltip = "Teleport to the ocean";
 		mainPanel.Append(oceanButton);
 
 		SpiralMirrorButton hellButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorHell"));
@@ -57,6 +61,7 @@ public class SpiralMirrorUiState : UIState
 		hellButton.HAlign = 0.75f;
 		hellButton.VAlign = 0.9f;
 		hellButton.OnClick += HellButtonOnOnClick;
+		hellButton.Tooltip = "Teleport to the underworld";
 		mainPanel.Append(hellButton);
 	}
 
