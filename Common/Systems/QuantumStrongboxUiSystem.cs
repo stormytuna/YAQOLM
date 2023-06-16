@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;
 using YAQOLM.Common.UI;
+using YAQOLM.Common.UI.QuantumStrongbox;
 
 namespace YAQOLM.Common.Systems;
 
