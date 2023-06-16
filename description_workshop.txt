@@ -102,7 +102,7 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
-[*][i]v1.7.0[/i]
+[*][i]v1.7.0 (1.4.3 only)[/i]
 [list]
 [*]Updated Spiral Mirror to use a new UI instead of right clicking to switch modes
 [*]Added more Spiral Mirror keybinds
