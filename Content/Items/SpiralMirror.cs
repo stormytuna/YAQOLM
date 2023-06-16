@@ -25,8 +25,8 @@ public class SpiralMirror : ModItem
 		Item.value = Item.sellPrice(gold: 5);
 
 		Item.useStyle = ItemUseStyleID.HoldUp;
-		Item.useTime = 10;
-		Item.useAnimation = 10;
+		Item.useTime = 25;
+		Item.useAnimation = 25;
 	}
 
 	public override void AddRecipes() {
