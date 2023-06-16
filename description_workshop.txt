@@ -36,6 +36,8 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [h2][b]Item changes[/b][/h2]
 [list]
 [*]All solutions and Wire cost 5 copper
+[*]Actuators cost 20 copper
+[*]Defender's Forge costs 15 Defender Medals
 [*]Wooden Greaves have 1 defense
 [*]Goggles provide Night Owl
 [*]Rain Armor has a set bonus - 8% increased damage and 5% increased crit chance when exposed to rain
@@ -100,6 +102,13 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 
 [b]Changelog[/b]
 [list]
+[*][i]v1.7.0[/i]
+[list]
+[*]Made Defender's Forge cheaper
+[*]Made Actuators cheaper
+[*]Added ability for Magnificent Magnet to save and load its mode
+[*]Fixed an issue caused by Magnificent Magnet when unloading the mod and continuing to play
+[/list]
 [*][i]v1.6.1[/i]
 [list]
 [*]Fixed crashing on servers

@@ -17,6 +17,8 @@ public class KeybindPlayer : ModPlayer
 			QuickSwitchAndUse(ItemID.RodofDiscord);
 		}
 
+		// TODO: Fix these!
+
 		if (KeybindSystem.SpiralMirrorHomeKB.JustPressed) {
 			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 0);
 		}
@@ -77,13 +79,6 @@ public class KeybindPlayer : ModPlayer
 		autoRevertSelectedItem = true;
 		Player.selectedItem = index;
 		Player.controlUseItem = true;
-
-		if (extraData != -1) {
-			if (itemType == ModContent.ItemType<SpiralMirror>()) {
-				SpiralMirror modItem = Player.inventory[index].ModItem as SpiralMirror;
-				modItem.SetAndResetMode(extraData);
-			}
-		}
 
 		Player.ItemCheck(index);
 	}
