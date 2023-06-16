@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.UI;
 using YAQOLM.Common.Systems;
 
-namespace YAQOLM.Common.UI;
+namespace YAQOLM.Common.UI.QuantumStrongbox;
 
 public class QuantumStrongboxUIState : UIState
 {

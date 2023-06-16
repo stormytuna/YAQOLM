@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.UI;
 
-namespace YAQOLM.Common.UI;
+namespace YAQOLM.Common.UI.QuantumStrongbox;
 
 public class BankItemSlot : EnhancedItemSlot
 {
