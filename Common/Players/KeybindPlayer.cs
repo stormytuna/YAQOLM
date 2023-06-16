@@ -18,33 +18,26 @@ public class KeybindPlayer : ModPlayer
 		}
 
 		// TODO: Fix these!
-
-		if (KeybindSystem.SpiralMirrorHomeKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 0);
+		int spiralMirrorType = ModContent.ItemType<SpiralMirror>();
+		TeleportPlayer teleportPlayer = Player.GetModPlayer<TeleportPlayer>();
+		if (KeybindSystem.SpiralMirrorHomeKB.JustPressed && Player.HasItem(spiralMirrorType)) {
+			teleportPlayer.StartTeleport(0);
 		}
 
-		if (KeybindSystem.SpiralMirrorGraveKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 1);
+		if (KeybindSystem.SpiralMirrorGraveKB.JustPressed && Player.HasItem(spiralMirrorType)) {
+			teleportPlayer.StartTeleport(2);
 		}
 
-		if (KeybindSystem.SpiralMirrorReturnKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<SpiralMirror>(), 2);
+		if (KeybindSystem.SpiralMirrorReturnKB.JustPressed && Player.HasItem(spiralMirrorType)) {
+			teleportPlayer.StartTeleport(3);
 		}
 
-		if (KeybindSystem.QuantumStrongboxPiggyBankKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 0);
+		if (KeybindSystem.SpiralMirrorOceanKB.JustPressed && Player.HasItem(spiralMirrorType)) {
+			teleportPlayer.StartTeleport(4);
 		}
 
-		if (KeybindSystem.QuantumStrongboxSafeKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 1);
-		}
-
-		if (KeybindSystem.QuantumStrongboxDefendersForgeKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 2);
-		}
-
-		if (KeybindSystem.QuantumStrongboxVoidVaultKB.JustPressed) {
-			QuickSwitchAndUse(ModContent.ItemType<QuantumStrongbox>(), 3);
+		if (KeybindSystem.SpiralMirrorHellKB.JustPressed && Player.HasItem(spiralMirrorType)) {
+			teleportPlayer.StartTeleport(5);
 		}
 	}
 

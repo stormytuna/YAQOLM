@@ -92,8 +92,7 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [h2][b]Hotkeys[/b][/h2]
 [list]
 [*]Rod of Discord
-[*]Spiral Mirror with a given mode 
-[*]Quantum Lockbox with a given mode
+[*]Spiral Mirror with a given mode
 [/list]
 
 [hr][/hr]
@@ -104,10 +103,13 @@ To report any bugs or give feedback, you can post a comment on the Steam Worksho
 [list]
 [*][i]v1.7.0[/i]
 [list]
+[*]Updated Spiral Mirror to use a new UI instead of right clicking to switch modes
+[*]Added more Spiral Mirror keybinds
 [*]Made Defender's Forge cheaper
 [*]Made Actuators cheaper
 [*]Added ability for Magnificent Magnet to save and load its mode
 [*]Fixed an issue caused by Magnificent Magnet when unloading the mod and continuing to play
+[*]Removed unused Quantum Strongbox keybinds
 [/list]
 [*][i]v1.6.1[/i]
 [list]

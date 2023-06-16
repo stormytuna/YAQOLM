@@ -31,7 +31,7 @@ public class SpiralMirrorUiState : UIState
 		graveButton.Width.Set(40f, 0f);
 		graveButton.Height.Set(40f, 0f);
 		graveButton.HAlign = 0.1f;
-		graveButton.VAlign = 0.5f;
+		graveButton.VAlign = 0.45f;
 		graveButton.OnClick += GraveButtonOnOnClick;
 		mainPanel.Append(graveButton);
 
@@ -39,7 +39,7 @@ public class SpiralMirrorUiState : UIState
 		returnButton.Width.Set(40f, 0f);
 		returnButton.Height.Set(40f, 0f);
 		returnButton.HAlign = 0.9f;
-		returnButton.VAlign = 0.5f;
+		returnButton.VAlign = 0.45f;
 		returnButton.OnClick += ReturnButtonOnOnClick;
 		mainPanel.Append(returnButton);
 
