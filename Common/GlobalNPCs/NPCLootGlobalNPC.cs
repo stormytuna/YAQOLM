@@ -81,6 +81,17 @@ public class NPCLootGlobalNPC : GlobalNPC
 				}, rule);
 			}
 		}
+
+		if (LunarPillars.Contains(npc.type) && ServerConfig.Instance.LunarPillarRework) {
+			foreach (IItemDropRule rule in npcLoot.Get()) {
+				if (rule is DropBasedOnExpertMode expertRule) {
+					if (expertRule.ruleForNormalMode is DropOneByOne normalDrop) {
+						MakeLunarPillarDropRulesBetter(normalDrop);
+					}
+
+					if (expertRule.ruleForExpertMode is DropOneByOne expertDrop) {
+						MakeLunarPillarDropRulesBetter(expertDrop);
+					}
 				}
 			}
 		}

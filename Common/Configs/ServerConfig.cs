@@ -192,6 +192,11 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("NPCs and Drops")]
+	[Label("[i:3459] More fragments from Lunar Pillar")]
+	[Tooltip("Increases amount of fragments you get to 80-100 - Enough for both weapons and a full set of armour from 1 kill")]
+	[DefaultValue(true)]
+	public bool LunarPillarRework { get; set; }
+
 	[Label("[i:780] Steampunker sells all vanilla solutions")]
 	[Tooltip("Can't sell modded solutions here to avoid progression breaking with modded biomes")]
 	[DefaultValue(true)]
