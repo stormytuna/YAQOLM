@@ -28,7 +28,7 @@ public class NPCLootGlobalNPC : GlobalNPC
 		parametersProperty.SetValue(drop, newParameters);
 	}
 
-	private void OneFromOptionsToFewFromOptions(Action<IItemDropRule> setRuleFunc, IItemDropRule rule) {
+	public static void OneFromOptionsToFewFromOptions(Action<IItemDropRule> setRuleFunc, IItemDropRule rule) {
 		if (rule is OneFromOptionsDropRule oneFromOptionsRule && oneFromOptionsRule.dropIds.Length > 4) {
 			int amountDropped = (int)MathF.Ceiling(oneFromOptionsRule.dropIds.Length / 4f);
 			FewFromOptionsDropRule newRule = new(amountDropped, oneFromOptionsRule.chanceDenominator, oneFromOptionsRule.chanceNumerator, oneFromOptionsRule.dropIds);
