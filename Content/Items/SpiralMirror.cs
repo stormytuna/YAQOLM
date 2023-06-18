@@ -43,8 +43,10 @@ public class SpiralMirror : ModItem
 	}
 
 	public override bool? UseItem(Player player) {
-		SoundEngine.PlaySound(SoundID.MenuOpen);
-		SpiralMirrorUiSystem.Toggle();
+		if (player.whoAmI == Main.myPlayer) {
+			SoundEngine.PlaySound(SoundID.MenuOpen);
+			SpiralMirrorUiSystem.Toggle();
+		}
 
 		return true;
 	}
