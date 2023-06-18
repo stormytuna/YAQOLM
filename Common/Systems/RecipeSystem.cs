@@ -17,6 +17,7 @@ public class RecipeSystem : ModSystem
 	public static RecipeGroup evilMaterialRecipeGroup;
 	public static RecipeGroup moonLordWeaponRecipeGroup;
 	public static RecipeGroup moonLordItemRecipeGroup;
+	public static RecipeGroup goldBarRecipeGroup;
 
 	public override void Unload() {
 		// Set stuff to null
@@ -26,6 +27,7 @@ public class RecipeSystem : ModSystem
 		evilMaterialRecipeGroup = null;
 		moonLordWeaponRecipeGroup = null;
 		moonLordItemRecipeGroup = null;
+		goldBarRecipeGroup = null;
 	}
 
 	public override void AddRecipeGroups() {
@@ -42,6 +44,8 @@ public class RecipeSystem : ModSystem
 		RecipeGroup.RegisterGroup("YAQOLM:MoonLordWeapon", moonLordWeaponRecipeGroup);
 		moonLordItemRecipeGroup = new RecipeGroup(() => "Any Moon Lord item", ItemID.MeowmereMinecart, ItemID.PortalGun, ItemID.GravityGlobe, ItemID.SuspiciousLookingTentacle, ItemID.LongRainbowTrailWings);
 		RecipeGroup.RegisterGroup("YAQOLM:MoonLordItem", moonLordItemRecipeGroup);
+		goldBarRecipeGroup = new RecipeGroup(() => "Any Gold Bar", ItemID.GoldBar, ItemID.PlatinumBar);
+		RecipeGroup.RegisterGroup("YAQOLM:GoldBar", goldBarRecipeGroup);
 	}
 
 	public override void AddRecipes() {
@@ -233,6 +237,23 @@ public class RecipeSystem : ModSystem
 			recipe = Recipe.Create(ItemID.BalloonHorseshoeSharkron);
 			recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
 			recipe.AddTile(TileID.TinkerersWorkbench);
+			recipe.Register();
+		}
+
+		if (ServerConfig.Instance.Cascade) {
+			Recipe recipe = Recipe.Create(ItemID.Cascade);
+			recipe.AddIngredient(ItemID.HellstoneBar, 15);
+			recipe.AddIngredient(ItemID.WoodYoyo);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
+		}
+
+		if (ServerConfig.Instance.Extractinator) {
+			Recipe recipe = Recipe.Create(ItemID.Extractinator);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 25);
+			recipe.AddRecipeGroup(goldBarRecipeGroup, 10);
+			recipe.AddIngredient(ItemID.Diamond);
+			recipe.AddTile(TileID.HeavyWorkBench);
 			recipe.Register();
 		}
 	}

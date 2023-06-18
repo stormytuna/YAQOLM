@@ -163,4 +163,14 @@ public class ShopGlobalNPC : GlobalNPC
 			}
 		}
 	}
+
+	public override void SetupTravelShop(int[] shop, ref int nextSlot) {
+		if (ServerConfig.Instance.TravellingMerchantKeepsGreyZapinator) {
+			for (int i = 0; i < shop.Length; i++) {
+				if (shop[i] == ItemID.ZapinatorOrange) {
+					shop[nextSlot] = ItemID.ZapinatorGray;
+				}
+			}
+		}
+	}
 }
