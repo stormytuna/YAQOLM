@@ -79,6 +79,26 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool BottomlessBuckets { get; set; }
 
+	[Label("[i:50] Magic Mirror")]
+	[Tooltip("10 Iron/Lead Bar\n5 Glass")]
+	[ReloadRequired]
+	[DefaultValue(true)]
+	public bool MagicMirror { get; set; }
+
+	[Label("[i:3282] Cascade")]
+	[Tooltip("15 Hellstone Bar\n1 Wood Yoyo")]
+	[ReloadRequired]
+	[DefaultValue(true)]
+	public bool Cascade { get; set; }
+
+	[Label("[i:997] Extractinator")]
+	[Tooltip("25 Iron/Lead Bar\n5 Gold/Platinum bar\n1 Diamond")]
+	[ReloadRequired]
+	[DefaultValue(true)]
+	public bool Extractinator { get; set; }
+
+	[Label("[i:3467] Moon Lord drops to Luminite Bars")]
+	[Tooltip("Any weapon -> 8 Luminite Bar\nAnything else -> 5 Luminite Bar")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool LuminiteSmeltingRecipes { get; set; }
@@ -157,6 +177,12 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool DyeTraderSellsSusDyes { get; set; }
 
+	[Label("[i:4347] Travelling Merchant sells Grey Zapinator when he sells Orange Zapinator")]
+	[ReloadRequired]
+	[DefaultValue(true)]
+	public bool TravellingMerchantKeepsGreyZapinator { get; set; }
+
+	[Label("[i:2294] More angler quest loot")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool MoreAnglerLoot { get; set; }

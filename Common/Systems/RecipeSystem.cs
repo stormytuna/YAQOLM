@@ -18,7 +18,8 @@ public class RecipeSystem : ModSystem
 	public static RecipeGroup MoonLordItems;
 	public static RecipeGroup Shellphones;
 
-	public override void Unload() {
+	public override void Unload()
+	{
 		// Set stuff to null
 		MagicMirrors = null;
 		HorseshoeBalloons = null;
@@ -29,7 +30,8 @@ public class RecipeSystem : ModSystem
 		Shellphones = null;
 	}
 
-	public override void AddRecipeGroups() {
+	public override void AddRecipeGroups()
+	{
 		// Initialise our recipe groups
 		MagicMirrors = new RecipeGroup(() => "Any Magic Mirror", ItemID.MagicMirror, ItemID.IceMirror);
 		RecipeGroup.RegisterGroup("YAQOLM:MagicMirror", MagicMirrors);
@@ -50,8 +52,10 @@ public class RecipeSystem : ModSystem
 		RecipeGroup.RegisterGroup("YAQOLM:Shellphone", Shellphones);
 	}
 
-	public override void AddRecipes() {
-		if (ServerConfig.Instance.RodOfDiscord) {
+	public override void AddRecipes()
+	{
+		if (ServerConfig.Instance.RodOfDiscord)
+		{
 			Recipe recipe = Recipe.Create(ItemID.RodofDiscord);
 			recipe.AddIngredient(ItemID.HallowedBar, 15);
 			recipe.AddIngredient(ItemID.SoulofLight, 10);
@@ -60,7 +64,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.SnowGlobe) {
+		if (ServerConfig.Instance.SnowGlobe)
+		{
 			Recipe recipe = Recipe.Create(ItemID.SnowGlobe);
 			recipe.AddIngredient(ItemID.SnowBlock, 20);
 			recipe.AddIngredient(ItemID.Glass, 20);
@@ -68,7 +73,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.MoneyTrough) {
+		if (ServerConfig.Instance.MoneyTrough)
+		{
 			Recipe recipe = Recipe.Create(ItemID.MoneyTrough);
 			recipe.AddIngredient(ItemID.PiggyBank);
 			recipe.AddRecipeGroup(EvilBars, 6);
@@ -77,7 +83,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.Bait) {
+		if (ServerConfig.Instance.Bait)
+		{
 			Recipe recipe = Recipe.Create(ItemID.JourneymanBait);
 			recipe.AddIngredient(ItemID.ApprenticeBait, 2);
 			recipe.AddTile(TileID.Solidifier);
@@ -89,7 +96,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.BottomlessBuckets) {
+		if (ServerConfig.Instance.BottomlessBuckets)
+		{
 			Recipe recipe = Recipe.Create(ItemID.BottomlessBucket);
 			recipe.AddIngredient(ItemID.WaterBucket, 8);
 			recipe.AddTile(TileID.CrystalBall);
@@ -106,7 +114,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.LuminiteSmeltingRecipes) {
+		if (ServerConfig.Instance.LuminiteSmeltingRecipes)
+		{
 			Recipe recipe = Recipe.Create(ItemID.LunarBar, 8);
 			recipe.AddRecipeGroup(MoonLordWeapons);
 			recipe.AddTile(TileID.LunarCraftingStation);
@@ -118,7 +127,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.BeetleArmorOnlyBeetle) {
+		if (ServerConfig.Instance.BeetleArmorOnlyBeetle)
+		{
 			Recipe recipe = Recipe.Create(ItemID.BeetleHelmet);
 			recipe.AddIngredient(ItemID.BeetleHusk, 6);
 			recipe.AddTile(TileID.MythrilAnvil);
@@ -140,7 +150,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.CheaperOre) {
+		if (ServerConfig.Instance.CheaperOre)
+		{
 			Recipe recipe = Recipe.Create(ItemID.CopperBar);
 			recipe.AddIngredient(ItemID.CopperOre, 2);
 			recipe.AddTile(TileID.AdamantiteForge);
@@ -203,7 +214,8 @@ public class RecipeSystem : ModSystem
 			recipe.Register();
 		}
 
-		if (ServerConfig.Instance.GoldenHorseshoeBalloon) {
+		if (ServerConfig.Instance.GoldenHorseshoeBalloon)
+		{
 			Recipe recipe = Recipe.Create(ItemID.BlueHorseshoeBalloon);
 			recipe.AddIngredient(ModContent.ItemType<GoldenHorseshoeBalloon>());
 			recipe.AddTile(TileID.TinkerersWorkbench);
@@ -234,21 +246,47 @@ public class RecipeSystem : ModSystem
 			recipe.AddTile(TileID.TinkerersWorkbench);
 			recipe.Register();
 		}
+
+		if (ServerConfig.Instance.Cascade)
+		{
+			Recipe recipe = Recipe.Create(ItemID.Cascade);
+			recipe.AddIngredient(ItemID.HellstoneBar, 15);
+			recipe.AddIngredient(ItemID.WoodYoyo);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
+		}
+
+		if (ServerConfig.Instance.Extractinator)
+		{
+			Recipe recipe = Recipe.Create(ItemID.Extractinator);
+			recipe.AddRecipeGroup(RecipeGroupID.IronBar, 25);
+			recipe.AddRecipeGroup(goldBarRecipeGroup, 10);
+			recipe.AddIngredient(ItemID.Diamond);
+			recipe.AddTile(TileID.HeavyWorkBench);
+			recipe.Register();
+		}
 	}
 
-	public override void PostAddRecipes() {
-		if (ServerConfig.Instance.CheaperOre) {
-			for (int i = 0; i < Main.recipe.Length; i++) {
+	public override void PostAddRecipes()
+	{
+		if (ServerConfig.Instance.CheaperOre)
+		{
+			for (int i = 0; i < Main.recipe.Length; i++)
+			{
 				Recipe recipe = Main.recipe[i];
-				if (ArraySystem.BarTypes.Contains(recipe.createItem.type) && !recipe.requiredTile.Contains(TileID.AdamantiteForge) && ArraySystem.OreTypes.Contains(recipe.requiredItem[0].type)) {
+				if (ArraySystem.BarTypes.Contains(recipe.createItem.type) && !recipe.requiredTile.Contains(TileID.AdamantiteForge) && ArraySystem.OreTypes.Contains(recipe.requiredItem[0].type))
+				{
 					recipe.AddCondition(new Condition("Mods.YAQOLM.Conditions.HardmodeForge", () => !Main.LocalPlayer.adjTile[TileID.AdamantiteForge]));
 				}
 			}
 		}
 
-		if (ServerConfig.Instance.BeetleArmorOnlyBeetle) {
-			for (int i = 0; i < Main.recipe.Length; i++) {
-				if (ArraySystem.BeetleArmor.Contains(Main.recipe[i].createItem.type) && Main.recipe[i].requiredItem.Count > 1) {
+		if (ServerConfig.Instance.BeetleArmorOnlyBeetle)
+		{
+			for (int i = 0; i < Main.recipe.Length; i++)
+			{
+				if (ArraySystem.BeetleArmor.Contains(Main.recipe[i].createItem.type) && Main.recipe[i].requiredItem.Count > 1)
+				{
 					Main.recipe[i].DisableRecipe();
 				}
 			}
