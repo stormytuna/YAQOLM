@@ -13,6 +13,8 @@ Don't like something I've changed? That's fine, you can disable every single fea
 [*]Money Trough crafting recipe - 1 Piggy Bank, 6 Evil Bars @ Demon Altar
 [*]Fishing Bait crafting recipes - 2 Apprentice -> 1 Journeyman, 2 Journeyman -> 1 Master
 [*]Bottomless bucket crafting recipe - 8 fluid buckets @ Crystal Ball
+[*]Cascade crafting recipe - 15 Hellstone Bars, 1 Wood Yoyo @ Anvil
+[*]Extractinator crafting recipe - 25 Iron/Lead Bars, 5 Gold/Platinum bars, 1 Diamond @ Heavy Work Bench
 [*]Moon Lord drops can be turned into Luminite Bars
 [*]Pre Hardmode ores are cheaper at a Hardmode Forge
 [*]Beetle Armor requires more Beetle Husks but doesn't require Turtle Armor
@@ -20,8 +22,10 @@ Don't like something I've changed? That's fine, you can disable every single fea
 
 [h2][b]NPC and Drop changes[/b][/h2]
 [list]
+[*]More Lunar Fragments drop from Celestial Pillars - 80-100 per kill per player, enough for both weapons and armour from 1 kill
 [*]Dye Trader sells all basic and strange dyes depending on moon phase
 [*]Steampunker sells all vanilla solutions
+[*]Travelling merchant will also sell the Gray Zapinator when he sells the Orange Zapinator
 [*]Angler quests give more loot
 [*]Angler quests reset after completing them
 [*]King Slime drops Slime Staff - 20% chance in classic, 25% chance in expert and master
@@ -100,11 +104,15 @@ Don't like something I've changed? That's fine, you can disable every single fea
 To give feedback, visit [url=https://steamcommunity.com/workshop/filedetails/discussion/2884878621/6226836983327172184/]this thread here[/url] and post a comment.
 To report bugs, either [url=https://steamcommunity.com/sharedfiles/filedetails/discussions/2884878621/?newdiscussion=1]start a new discussion here[/url] or let me know in the comments. If I don't reply to a bug report discussion within a few days I likely haven't seen it, feel free to comment here to notify me.
 
-[b]Latest Changes [i]v1.7.1[/i][/b]
+[b]Latest Changes [i]v1.7.2[/i][/b]
 [list]
-[*]Added tooltips to Spiral Mirror UI to make it more obvious where you're teleporting
-[*]Optimised ultra fast extractination
-[*]Fixed an issue with ultra fast extractination that ate items sometimes
+[*]Added More Lunar Fragments feature
+[*]Added Cascade and Grey Zapinator extra acquisition methods
+[*]Fixed an issue where using the Spiral Mirror would open the UI for everyone
+[*]Fixed an issue where the Radar Map UI wouldn't toggle off when you toggled off the Radar info display
+[*]Fixed an issue where the Radar Map UI would draw over NPCs with map heads when it shouldn't
+[*]Fixed an issue where holding left click after using an item with a keybind you'd continue to use the item
+[*]Fixed several issues with one from options -> few from options
 [/list]
 
 [url=https://steamcommunity.com/workshop/filedetails/discussion/2884878621/6226836983327140327/]See here[/url] for the full changelog
