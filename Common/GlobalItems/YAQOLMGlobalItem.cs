@@ -6,6 +6,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
+using YAQOLM.Common.GlobalNPCs;
 using YAQOLM.Common.Players;
 using YAQOLM.Common.Systems;
 
@@ -57,6 +58,15 @@ public class YAQOLMGlobalItem : GlobalItem
 	public override void ModifyItemLoot(Item item, ItemLoot itemLoot) {
 		if (item.type == ItemID.KingSlimeBossBag && ServerConfig.Instance.KingSlimeDropsSlimeStaff) {
 			itemLoot.Add(ItemDropRule.Common(ItemID.SlimeStaff, 4));
+		}
+
+		if (ServerConfig.Instance.OneFromOptionsToFewFromOptions && ItemID.Sets.BossBag[item.type]) {
+			foreach (IItemDropRule rule in itemLoot.Get()) {
+				NPCLootGlobalNPC.OneFromOptionsToFewFromOptions(newRule => {
+					itemLoot.Remove(rule);
+					itemLoot.Add(newRule);
+				}, rule);
+			}
 		}
 	}
 
