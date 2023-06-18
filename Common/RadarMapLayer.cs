@@ -13,6 +13,12 @@ namespace YAQOLM.Common;
 
 public class RadarMapLayer : ModMapLayer
 {
+	private bool NPCHasHeadTexture(NPC npc) {
+		bool hasRegularNPCHead = NPC.TypeToDefaultHeadIndex(npc.type) != -1;
+		bool hasBossNPCHead = npc.GetBossHeadTextureIndex() != -1;
+		return hasBossNPCHead || hasRegularNPCHead;
+	}
+
 	private Asset<Texture2D> _radarMapLayerNPCHostile;
 	private Asset<Texture2D> RadarMapLayerNPCHostile => _radarMapLayerNPCHostile ??= ModContent.Request<Texture2D>("YAQOLM/Assets/UI/RadarMapLayerNPCHostile");
 	private Asset<Texture2D> _radarMapLayerNPCFriendly;
@@ -24,7 +30,7 @@ public class RadarMapLayer : ModMapLayer
 		}
 
 		foreach (NPC npc in Main.npc.SkipLast(1)) {
-			if (!npc.active || !npc.WithinRange(Main.LocalPlayer.Center, 2000f)) {
+			if (!npc.active || !npc.WithinRange(Main.LocalPlayer.Center, 2000f) || NPCHasHeadTexture(npc)) {
 				continue;
 			}
 
