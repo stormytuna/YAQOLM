@@ -10,7 +10,11 @@ namespace YAQOLM.Common.Players;
 public class KeybindPlayer : ModPlayer
 {
 	private int originalSelectedItem;
+
 	private bool autoRevertSelectedItem;
+
+	// Stops us holding left click after using a keybind and continuing to use the item
+	private bool autoReuseHack;
 
 	public override void ProcessTriggers(TriggersSet triggersSet)
 	{
@@ -19,7 +23,6 @@ public class KeybindPlayer : ModPlayer
 			QuickSwitchAndUse(ItemID.RodofDiscord);
 		}
 
-		// TODO: Fix these!
 		int spiralMirrorType = ModContent.ItemType<SpiralMirror>();
 		TeleportPlayer teleportPlayer = Player.GetModPlayer<TeleportPlayer>();
 		if (KeybindSystem.SpiralMirrorHomeKB.JustPressed && Player.HasItem(spiralMirrorType))
@@ -56,7 +59,7 @@ public class KeybindPlayer : ModPlayer
 		}
 	}
 
-	private void QuickSwitchAndUse(int itemType, int extraData = -1)
+	private void QuickSwitchAndUse(int itemType)
 	{
 		// Guard clause
 		if (Player.itemTime != 0 || Player.itemAnimation != 0)
@@ -85,6 +88,8 @@ public class KeybindPlayer : ModPlayer
 		originalSelectedItem = Player.selectedItem;
 		autoRevertSelectedItem = true;
 		Player.selectedItem = index;
+		autoReuseHack = Player.HeldItem.autoReuse;
+		Player.HeldItem.autoReuse = false;
 		Player.controlUseItem = true;
 
 		Player.ItemCheck(index);
@@ -94,6 +99,7 @@ public class KeybindPlayer : ModPlayer
 	{
 		if (autoRevertSelectedItem && Player.itemTime == 0 && Player.itemAnimation == 0)
 		{
+			Player.HeldItem.autoReuse = autoReuseHack;
 			Player.selectedItem = originalSelectedItem;
 			autoRevertSelectedItem = false;
 		}
