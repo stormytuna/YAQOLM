@@ -19,7 +19,7 @@ public class RadarMapLayer : ModMapLayer
 	private Asset<Texture2D> RadarMapLayerNPCFriendly => _radarMapLayerNPCFriendly ??= ModContent.Request<Texture2D>("YAQOLM/Assets/UI/RadarMapLayerNPCFriendly");
 
 	public override void Draw(ref MapOverlayDrawContext context, ref string text) {
-		if (!Main.LocalPlayer.accThirdEye || !InfoDisplay.Radar.Active() || !ServerConfig.Instance.RadarEnemyMap) {
+		if (!Main.LocalPlayer.accThirdEye || Main.LocalPlayer.hideInfo[InfoDisplay.Radar.Type] || !ServerConfig.Instance.RadarEnemyMap) {
 			return;
 		}
 
