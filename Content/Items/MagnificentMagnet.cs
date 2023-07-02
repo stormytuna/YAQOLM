@@ -142,18 +142,20 @@ public class MagnificentMagnetPlayer : ModPlayer
 		int magnet = self.FindItem(ModContent.ItemType<MagnificentMagnet>());
 		if (magnet != -1)
 		{
-			MagnificentMagnet modItem = self.inventory[magnet].ModItem as MagnificentMagnet;
-			switch (modItem.Mode)
+			if (self.inventory[magnet].ModItem is MagnificentMagnet modItem)
 			{
-				case 1:
-					ret += 150;
-					break;
-				case 2:
-					ret += 1500;
-					break;
-				case 3:
-					ret += 15000;
-					break;
+				switch (modItem.Mode)
+				{
+					case 1:
+						ret += 150;
+						break;
+					case 2:
+						ret += 1500;
+						break;
+					case 3:
+						ret += 15000;
+						break;
+				}
 			}
 		}
 
