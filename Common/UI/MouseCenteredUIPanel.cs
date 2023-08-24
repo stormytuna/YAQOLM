@@ -7,28 +7,28 @@ namespace YAQOLM.Common.UI;
 
 public class MouseCenteredUIPanel : UIPanel
 {
-	private bool centreOnMouse;
+    private bool centreOnMouse;
 
-	public override void OnActivate() {
-		base.OnActivate();
-		centreOnMouse = true;
-	}
+    public override void OnActivate() {
+        base.OnActivate();
+        centreOnMouse = true;
+    }
 
-	public override void Update(GameTime gameTime) {
-		base.Update(gameTime);
-		if (!centreOnMouse) {
-			return;
-		}
+    public override void Update(GameTime gameTime) {
+        base.Update(gameTime);
+        if (!centreOnMouse) {
+            return;
+        }
 
-		centreOnMouse = false;
-		Left.Set(Main.mouseX - Width.Pixels / 2f, 0f);
-		Top.Set(Main.mouseY - Height.Pixels / 2f, 0f);
-		Recalculate();
-	}
+        centreOnMouse = false;
+        Left.Set(Main.mouseX - (Width.Pixels / 2f), 0f);
+        Top.Set(Main.mouseY - (Height.Pixels / 2f), 0f);
+        Recalculate();
+    }
 
-	protected override void DrawChildren(SpriteBatch spriteBatch) {
-		if (!centreOnMouse) {
-			base.DrawChildren(spriteBatch);
-		}
-	}
+    protected override void DrawChildren(SpriteBatch spriteBatch) {
+        if (!centreOnMouse) {
+            base.DrawChildren(spriteBatch);
+        }
+    }
 }

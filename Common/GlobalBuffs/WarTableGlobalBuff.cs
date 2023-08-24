@@ -1,15 +1,19 @@
-﻿using Terraria;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.Localization;
+using Terraria;
 using Terraria.ModLoader;
 using YAQOLM.Common.Configs;
 
 namespace YAQOLM.Common.GlobalBuffs;
-
-public class BewitchedGlobalBuff : GlobalBuff
+public class WarTableGlobalBuff : GlobalBuff
 {
     public override void Update(int type, Player player, ref int buffIndex) {
-        if (type != BuffID.Bewitched || !ServerConfig.Instance.BuffStationChanges) {
+        if (type != BuffID.WarTable || !ServerConfig.Instance.BuffStationChanges) {
             return;
         }
 
@@ -18,8 +22,8 @@ public class BewitchedGlobalBuff : GlobalBuff
     }
 
     public override void ModifyBuffText(int type, ref string buffName, ref string tip, ref int rare) {
-        if (type == BuffID.Bewitched && ServerConfig.Instance.BuffStationChanges) {
-            tip = Language.GetTextValue("Mods.YAQOLM.Buffs.Bewitched");
+        if (type == BuffID.WarTable && ServerConfig.Instance.BuffStationChanges) {
+            tip = Language.GetTextValue("Mods.YAQOLM.Buffs.WarTable");
         }
     }
 }

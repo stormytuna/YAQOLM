@@ -1,6 +1,8 @@
+# TODO: Go through this, use common tooltips provided by terraria where possible
+
 Mods: {
 	YAQOLM: {
-		Conditions.HardmodeForge: Hardmode Forge
+		Conditions.HardmodeForge: Pre-Hardmode Forge
 		SetBonuses.RainArmor: 8% increased damage and 5% increased critical strike chance
 
 		Items: {
@@ -13,17 +15,10 @@ Mods: {
 				Tooltip:
 					'''
 					Use to teleport somewhere
-					Right click to switch mode
 					Allows you to teleport to party members, NPCs and Pylons
 					Displays everything
 					'Can I interest you in everything, all of the time?'
 					'''
-				TooltipHome: Gaze into the mirror to return [c/{0}:home]
-				TooltipSpawn: Gaze into the mirror to return to [c/{0}:spawn]
-				TooltipGrave: Gaze into the mirror to return to [c/{0}:where you last died]
-				TooltipReturn: Gaze into the mirror to return [c/{0}:home and create a portal]
-				TooltipOcean: Gaze into the mirror to travel to [c/{0}:the ocean]
-				TooltipHell: Gaze into the mirror to travel to [c/{0}:the underworld]
 				DisplayName: Spiral Mirror
 			}
 
@@ -121,10 +116,11 @@ Mods: {
 			SharpeningStation.Tooltip: Right click to increase melee damage and melee swing speed by 12%
 			AmmoBox.Tooltip: Right click to increase ranged damage by 15% and reduce ammo usage by 40%
 			CrystalBall.Tooltip: Right click to increase magic damage by 10% and reduce mana usage by 8%
-			BewitchingTable.Tooltip: Right click to increase number of minions and sentries and increase summon damage by 15%
+			BewitchingTable.Tooltip: Right click to increase number of minions and increase summon damage by 5%
 			DiscountCard.Tooltip: Works while in your inventory or banks
 			Goggles.Tooltip: Grants Night Vision
 			LifeFruit.Tooltip: Permanently increases maximum life by 10
+			WarTable.Tooltip: Right click to increase number of sentries and increase summon damage by 5%
 
 			_CONFIG_WarpedMirror: {
 				Tooltip: ""
@@ -181,7 +177,8 @@ Mods: {
 			Sharpened: 12% increased melee damage and melee speed
 			AmmoBox: 15% increased ranged damage and 40% chance to not consume ammo
 			Clairvoyance: 10% increased magic damage and 8% reduced mana usage
-			Bewitched: Increased max number of minions and sentries and 10% increased summon damage
+			Bewitched: Increased max number of minions and 5% increased summon damage
+			WarTable: Increased max number of sentries and 5% increased summon damage
 		}
 
 		Configs: {
@@ -437,6 +434,59 @@ Mods: {
 					Label: "[i:353] Unlimited Potions With Debuffs"
 					Tooltip: ""
 				}
+
+				MagicMirror: {
+					Label: "[i:50] Magic Mirror"
+					Tooltip:
+						'''
+						10 Iron/Lead Bar
+						5 Glass
+						'''
+				}
+
+				Cascade: {
+					Label: "[i:3282] Cascade"
+					Tooltip:
+						'''
+						15 Hellstone Bar
+						1 Wood Yoyo
+						'''
+				}
+
+				Extractinator: {
+					Label: "[i:997] Extractinator"
+					Tooltip:
+						'''
+						25 Iron/Lead Bar
+						5 Gold/Platinum bar
+						1 Diamond
+						'''
+				}
+
+				CheaperActuators: {
+					Label: "[i:849] Cheaper actuators"
+					Tooltip: ""
+				}
+
+				CheaperDefendersForge: {
+					Label: "[i:3813] Cheaper defender's forge"
+					Tooltip: ""
+				}
+
+				LunarPillarRework: {
+					Label: "[i:3459] More fragments from Lunar Pillar"
+					Tooltip: Increases amount of fragments you get to 80-100 - Enough for both weapons and a full set of armour from 1 kill
+				}
+
+				TravellingMerchantKeepsGreyZapinator: {
+					Label: "[i:4347] Travelling Merchant sells Grey Zapinator when he sells Orange Zapinator"
+					Tooltip: ""
+				}
+
+				RadarEnemyMap: {
+					Label: "[i:3084] Radar shows nearby enemies on the map and minimap"
+					Tooltip: ""
+				}
 			}
 		}
 
@@ -450,6 +500,8 @@ Mods: {
 			SpiralMirrorGrave.DisplayName: Spiral Mirror Grave
 			SpiralMirrorHome.DisplayName: Spiral Mirror Home
 			RodOfDiscord.DisplayName: Rod Of Discord
+			SpiralMirrorOcean.DisplayName: Spiral Mirror Ocean
+			SpiralMirrorHell.DisplayName: Spiral Mirror Hell
 		}
 	}
 }

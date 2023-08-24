@@ -163,7 +163,6 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("NPCsAndDrops")]
-	[Header("NPCs and Drops")]
 	[Label("[i:3459] More fragments from Lunar Pillar")]
 	[Tooltip("Increases amount of fragments you get to 80-100 - Enough for both weapons and a full set of armour from 1 kill")]
 	[DefaultValue(true)]
