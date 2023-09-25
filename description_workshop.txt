@@ -104,13 +104,9 @@ Don't like something I've changed? That's fine, you can disable every single fea
 To give feedback, visit [url=https://steamcommunity.com/workshop/filedetails/discussion/2884878621/6226836983327172184/]this thread here[/url] and post a comment.
 To report bugs, either [url=https://steamcommunity.com/sharedfiles/filedetails/discussions/2884878621/?newdiscussion=1]start a new discussion here[/url] or let me know in the comments. If I don't reply to a bug report discussion within a few days I likely haven't seen it, feel free to comment here to notify me.
 
-[b]Latest Changes [i]v1.8.0[/i][/b]
+[b]Latest Changes [i]v1.8.1[/i][/b]
 [list]
-[*]1.4.4 release
-[*]Fixed angler quest reset not working
-[*]Removed extra sentry slot from Bewitching Table
-[*]Lowered Bewitching Table summon damage to 5%
-[*]Granted 5% increased summon damage to War Table
+[*]Fixed an issue with ammo not being consumed properly
 [/list]
 
 [url=https://steamcommunity.com/workshop/filedetails/discussion/2884878621/6226836983327140327/]See here[/url] for the full changelog

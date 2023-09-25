@@ -1,4 +1,4 @@
 displayName = YAQOLM - Yet Another Quality of Life Mod
 author = stormytuna
 homepage = https://github.com/stormytuna/YAQOLM
-version = 1.8.0
+version = 1.8.1
