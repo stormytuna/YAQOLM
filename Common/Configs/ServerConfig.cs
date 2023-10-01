@@ -79,26 +79,18 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool BottomlessBuckets { get; set; }
 
-	[Label("[i:50] Magic Mirror")]
-	[Tooltip("10 Iron/Lead Bar\n5 Glass")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool MagicMirror { get; set; }
 
-	[Label("[i:3282] Cascade")]
-	[Tooltip("15 Hellstone Bar\n1 Wood Yoyo")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool Cascade { get; set; }
 
-	[Label("[i:997] Extractinator")]
-	[Tooltip("25 Iron/Lead Bar\n5 Gold/Platinum bar\n1 Diamond")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool Extractinator { get; set; }
 
-	[Label("[i:3467] Moon Lord drops to Luminite Bars")]
-	[Tooltip("Any weapon -> 8 Luminite Bar\nAnything else -> 5 Luminite Bar")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool LuminiteSmeltingRecipes { get; set; }
@@ -135,18 +127,14 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool CheaperWire { get; set; }
 
-	[Label("[i:849] Cheaper actuators")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool CheaperActuators { get; set; }
 
-	[Label("[i:3813] Cheaper defender's forge")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool CheaperDefendersForge { get; set; }
 
-	[Label("[i:3111] Pink Gel is gel ammo")]
-	[Tooltip("Deals 20% more damage than regular gel")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool PinkGelIsAmmo { get; set; }
@@ -163,25 +151,19 @@ public class ServerConfig : ModConfig
 	/* ================ */
 
 	[Header("NPCsAndDrops")]
-	[Label("[i:3459] More fragments from Lunar Pillar")]
-	[Tooltip("Increases amount of fragments you get to 80-100 - Enough for both weapons and a full set of armour from 1 kill")]
 	[DefaultValue(true)]
 	public bool LunarPillarRework { get; set; }
 
-	[Label("[i:780] Steampunker sells all vanilla solutions")]
-	[Tooltip("Can't sell modded solutions here to avoid progression breaking with modded biomes")]
 	[DefaultValue(true)]
 	public bool SteampunkerSolutions { get; set; }
 
 	[DefaultValue(true)]
 	public bool DyeTraderSellsSusDyes { get; set; }
 
-	[Label("[i:4347] Travelling Merchant sells Grey Zapinator when he sells Orange Zapinator")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool TravellingMerchantKeepsGreyZapinator { get; set; }
 
-	[Label("[i:2294] More angler quest loot")]
 	[ReloadRequired]
 	[DefaultValue(true)]
 	public bool MoreAnglerLoot { get; set; }
@@ -234,11 +216,9 @@ public class ServerConfig : ModConfig
 	[DefaultValue(true)]
 	public bool SuperQuickRespawn { get; set; }
 
-	[Label("[i:3084] Radar shows nearby enemies on the map and minimap")]
 	[DefaultValue(true)]
 	public bool RadarEnemyMap { get; set; }
 
-	[Label("[i:292] Having 30 potions grants you that buff")]
 	[DefaultValue(false)]
 	public bool UnlimitedPotions { get; set; }
 
