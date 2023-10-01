@@ -9,22 +9,22 @@ namespace YAQOLM.Common.GlobalBuffs;
 
 public class AmmoBoxGlobalBuff : GlobalBuff
 {
-    public override void Update(int type, Player player, ref int buffIndex) {
-        if (type != BuffID.AmmoBox || !ServerConfig.Instance.BuffStationChanges) {
-            return;
-        }
+	public override void Update(int type, Player player, ref int buffIndex) {
+		if (type != BuffID.AmmoBox || !ServerConfig.Instance.BuffStationChanges) {
+			return;
+		}
 
-        // Undo what vanilla does
-        player.ammoBox = false;
+		// Undo what vanilla does
+		player.ammoBox = false;
 
-        // Do our stuff
-        player.GetDamage(DamageClass.Ranged) += 0.15f;
-        player.GetModPlayer<AmmoBoxPlayer>().ammoBox = true;
-    }
+		// Do our stuff
+		player.GetDamage(DamageClass.Ranged) += 0.15f;
+		player.GetModPlayer<AmmoBoxPlayer>().ammoBox = true;
+	}
 
-    public override void ModifyBuffText(int type, ref string buffName, ref string tip, ref int rare) {
-        if (type == BuffID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
-            tip = Language.GetTextValue("Mods.YAQOLM.Buffs.AmmoBox");
-        }
-    }
+	public override void ModifyBuffText(int type, ref string buffName, ref string tip, ref int rare) {
+		if (type == BuffID.AmmoBox && ServerConfig.Instance.BuffStationChanges) {
+			tip = Language.GetTextValue("Mods.YAQOLM.Buffs.AmmoBox");
+		}
+	}
 }

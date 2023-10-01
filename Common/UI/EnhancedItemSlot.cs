@@ -50,17 +50,17 @@ public class EnhancedItemSlot : UIElement
     /// </summary>
     protected Item storedItem;
 
-    private Item storedItemBeforeHandle;
+	private Item storedItemBeforeHandle;
 
     /// <summary>
     ///     Whether this item slot's bound item's type, stack and/or prefix have been changed
     /// </summary>
     public bool ItemChanged {
-        get {
-            Item item = storedItem;
-            return item != null && storedItemBeforeHandle != null && item.IsNotSameTypePrefixAndStack(storedItemBeforeHandle);
-        }
-    }
+		get {
+			Item item = storedItem;
+			return item != null && storedItemBeforeHandle != null && item.IsNotSameTypePrefixAndStack(storedItemBeforeHandle);
+		}
+	}
 
     /// <summary>
     ///     Whether this item slot's bound item's type has changed
@@ -92,74 +92,74 @@ public class EnhancedItemSlot : UIElement
     /// </summary>
     public readonly int slot;
 
-    private readonly Item[] dummy = new Item[11];
+	private readonly Item[] dummy = new Item[11];
 
-    public EnhancedItemSlot(int slot, int context = ItemSlot.Context.InventoryItem, float scale = 1f) {
-        this.slot = slot;
-        Context = context;
-        Scale = scale;
+	public EnhancedItemSlot(int slot, int context = ItemSlot.Context.InventoryItem, float scale = 1f) {
+		this.slot = slot;
+		Context = context;
+		Scale = scale;
 
-        storedItem = new Item();
-        storedItem.SetDefaults();
+		storedItem = new Item();
+		storedItem.SetDefaults();
 
-        Width.Set(TextureAssets.InventoryBack9.Value.Width * scale, 0f);
-        Height.Set(TextureAssets.InventoryBack9.Value.Height * scale, 0f);
-    }
+		Width.Set(TextureAssets.InventoryBack9.Value.Width * scale, 0f);
+		Height.Set(TextureAssets.InventoryBack9.Value.Height * scale, 0f);
+	}
 
-    protected override void DrawSelf(SpriteBatch spriteBatch) {
-        float oldScale = Main.inventoryScale;
-        Main.inventoryScale = Scale;
-        Rectangle rectangle = GetDimensions().ToRectangle();
+	protected override void DrawSelf(SpriteBatch spriteBatch) {
+		float oldScale = Main.inventoryScale;
+		Main.inventoryScale = Scale;
+		Rectangle rectangle = GetDimensions().ToRectangle();
 
-        //Lazy hardcoding lol
-        if (!IgnoreNextHandleAction && ContainsPoint(Main.MouseScreen) && !PlayerInput.IgnoreMouseInterface) {
-            Main.LocalPlayer.mouseInterface = true;
+		//Lazy hardcoding lol
+		if (!IgnoreNextHandleAction && ContainsPoint(Main.MouseScreen) && !PlayerInput.IgnoreMouseInterface) {
+			Main.LocalPlayer.mouseInterface = true;
 
-            if (Parent is UIDragablePanel panel2) {
-                panel2.Dragging = false;
-            }
+			if (Parent is UIDragablePanel panel2) {
+				panel2.Dragging = false;
+			}
 
-            if (ValidItemFunc == null || ValidItemFunc(Main.mouseItem)) {
-                bool oldLeft = Main.mouseLeft;
-                bool oldLeftRelease = Main.mouseLeftRelease;
-                bool oldRight = Main.mouseRight;
-                bool oldRightRelease = Main.mouseRightRelease;
+			if (ValidItemFunc == null || ValidItemFunc(Main.mouseItem)) {
+				bool oldLeft = Main.mouseLeft;
+				bool oldLeftRelease = Main.mouseLeftRelease;
+				bool oldRight = Main.mouseRight;
+				bool oldRightRelease = Main.mouseRightRelease;
 
-                if (IgnoreClicks) {
-                    Main.mouseLeft = Main.mouseLeftRelease = Main.mouseRight = Main.mouseRightRelease = false;
-                }
+				if (IgnoreClicks) {
+					Main.mouseLeft = Main.mouseLeftRelease = Main.mouseRight = Main.mouseRightRelease = false;
+				}
 
-                // Handle handles all the click and hover actions based on the context.
-                Item item = StoredItem;
-                storedItemBeforeHandle = item.Clone();
-                dummy[10] = item;
-                ItemSlot.Handle(dummy, Context, 10);
-                storedItem = dummy[10];
+				// Handle handles all the click and hover actions based on the context.
+				Item item = StoredItem;
+				storedItemBeforeHandle = item.Clone();
+				dummy[10] = item;
+				ItemSlot.Handle(dummy, Context, 10);
+				storedItem = dummy[10];
 
-                if (ItemChanged || ItemTypeChanged) {
-                    OnItemChanged?.Invoke(storedItemBeforeHandle);
-                }
+				if (ItemChanged || ItemTypeChanged) {
+					OnItemChanged?.Invoke(storedItemBeforeHandle);
+				}
 
-                Main.mouseLeft = oldLeft;
-                Main.mouseLeftRelease = oldLeftRelease;
-                Main.mouseRight = oldRight;
-                Main.mouseRightRelease = oldRightRelease;
-            }
-        }
+				Main.mouseLeft = oldLeft;
+				Main.mouseLeftRelease = oldLeftRelease;
+				Main.mouseRight = oldRight;
+				Main.mouseRightRelease = oldRightRelease;
+			}
+		}
 
-        IgnoreNextHandleAction = false;
+		IgnoreNextHandleAction = false;
 
-        // Draw draws the slot itself and Item. Depending on context, the color will change, as will drawing other things like stack counts.
-        dummy[10] = StoredItem;
-        ItemSlot.Draw(spriteBatch, dummy, Context, 10, rectangle.TopLeft());
+		// Draw draws the slot itself and Item. Depending on context, the color will change, as will drawing other things like stack counts.
+		dummy[10] = StoredItem;
+		ItemSlot.Draw(spriteBatch, dummy, Context, 10, rectangle.TopLeft());
 
-        Main.inventoryScale = oldScale;
-    }
+		Main.inventoryScale = oldScale;
+	}
 
-    public void SetItem(Item item, bool clone = false) => storedItem = clone ? item.Clone() : item;
+	public void SetItem(Item item, bool clone = false) => storedItem = clone ? item.Clone() : item;
 
-    public void SetItem(int itemType, int stack = 1) {
-        storedItem.SetDefaults(itemType);
-        storedItem.stack = stack;
-    }
+	public void SetItem(int itemType, int stack = 1) {
+		storedItem.SetDefaults(itemType);
+		storedItem.stack = stack;
+	}
 }

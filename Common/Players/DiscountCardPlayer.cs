@@ -7,11 +7,11 @@ namespace YAQOLM.Common.Players;
 
 public class DiscountCardPlayer : ModPlayer
 {
-    public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.DiscountCard;
+	public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.DiscountCard;
 
-    public override void UpdateEquips() {
-        if (Player.TryFindItem(ItemID.DiscountCard, out _, true, true, true)) {
-            Player.discountEquipped = true;
-        }
-    }
+	public override void UpdateEquips() {
+		if (Player.TryFindItem(ItemID.DiscountCard, out _, true, true, true)) {
+			Player.discountEquipped = true;
+		}
+	}
 }

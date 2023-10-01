@@ -16,28 +16,28 @@ public static class GeneralHelpers
     /// <param name="excludedNPCs">The whoAmI fields of any NPCs that are excluded from the search</param>
     /// <returns>Returns the closest NPC. Returns null if no NPC is found</returns>
     public static NPC GetClosestEnemy(Vector2 position, float range, bool careAboutLineOfSight, bool careAboutCanBeChased, List<int> excludedNPCs = null) {
-        NPC closestNPC = null;
-        float rangeSquared = range * range;
-        excludedNPCs ??= new List<int>();
+		NPC closestNPC = null;
+		float rangeSquared = range * range;
+		excludedNPCs ??= new List<int>();
 
-        for (int i = 0; i < Main.npc.Length; i++) {
-            NPC npc = Main.npc[i];
+		for (int i = 0; i < Main.npc.Length; i++) {
+			NPC npc = Main.npc[i];
 
-            if (!npc.active || npc.CountsAsACritter || npc.friendly || !npc.immortal || excludedNPCs.Contains(npc.whoAmI)) {
-                continue;
-            }
+			if (!npc.active || npc.CountsAsACritter || npc.friendly || !npc.immortal || excludedNPCs.Contains(npc.whoAmI)) {
+				continue;
+			}
 
-            float distanceSquared = Vector2.DistanceSquared(position, npc.Center);
-            bool canSee = !careAboutLineOfSight || Collision.CanHit(position, 1, 1, npc.position, npc.width, npc.height);
-            bool canBeChased = !careAboutCanBeChased || npc.chaseable;
-            if (distanceSquared < rangeSquared && canSee && canBeChased) {
-                closestNPC = npc;
-                rangeSquared = distanceSquared;
-            }
-        }
+			float distanceSquared = Vector2.DistanceSquared(position, npc.Center);
+			bool canSee = !careAboutLineOfSight || Collision.CanHit(position, 1, 1, npc.position, npc.width, npc.height);
+			bool canBeChased = !careAboutCanBeChased || npc.chaseable;
+			if (distanceSquared < rangeSquared && canSee && canBeChased) {
+				closestNPC = npc;
+				rangeSquared = distanceSquared;
+			}
+		}
 
-        return closestNPC;
-    }
+		return closestNPC;
+	}
 
     /// <summary>Adds an item to a shop</summary>
     /// <param name="shop">The <c>shop</c> parameter of <c>SetupShop</c></param>
@@ -46,9 +46,12 @@ public static class GeneralHelpers
     /// <param name="itemAfterType">The type of an item already in the shop that an item is inserted after</param>
     /// <param name="defaultIndex">The default index if an item with type <c>itemAfterType</c> isn't found</param>
     public static void AddToShop(ref Chest shop, ref int nextSlot, int itemType, int itemAfterType, int defaultIndex) {
-        bool pred(Item i) => i.type == itemAfterType;
-        AddToShop(ref shop, ref nextSlot, itemType, pred, defaultIndex);
-    }
+		bool pred(Item i) {
+			return i.type == itemAfterType;
+		}
+
+		AddToShop(ref shop, ref nextSlot, itemType, pred, defaultIndex);
+	}
 
     /// <summary>Adds an item to a shop</summary>
     /// <param name="shop">The <c>shop</c> parameter of <c>SetupShop</c></param>
@@ -57,34 +60,34 @@ public static class GeneralHelpers
     /// <param name="after">The predicate an Item must match for the added item to be inserted after it</param>
     /// <param name="defaultIndex">The default index if an item with type <c>itemAfterType</c> isn't found</param>
     public static void AddToShop(ref Chest shop, ref int nextSlot, int itemType, Predicate<Item> after, int defaultIndex) {
-        // Get our inventory as a list
-        List<Item> inventory = shop.item.ToList();
+		// Get our inventory as a list
+		List<Item> inventory = shop.item.ToList();
 
-        // Get our correct index
-        Item itemAfter = inventory.FirstOrDefault(after.Invoke);
-        int index = defaultIndex;
-        if (itemAfter != null) {
-            index = inventory.IndexOf(itemAfter) + 1;
-        }
+		// Get our correct index
+		Item itemAfter = inventory.FirstOrDefault(after.Invoke);
+		int index = defaultIndex;
+		if (itemAfter != null) {
+			index = inventory.IndexOf(itemAfter) + 1;
+		}
 
-        // Check itemType isn't already in our shop
-        Item item = inventory.FirstOrDefault(i => i.type == itemType);
-        if (item != null) {
-            // Move it if it is
-            inventory.Remove(item);
-            inventory.Insert(index, item);
+		// Check itemType isn't already in our shop
+		Item item = inventory.FirstOrDefault(i => i.type == itemType);
+		if (item != null) {
+			// Move it if it is
+			inventory.Remove(item);
+			inventory.Insert(index, item);
 
-            // Reassign our item array as ToList doesnt provide a reference
-            shop.item = inventory.ToArray();
+			// Reassign our item array as ToList doesnt provide a reference
+			shop.item = inventory.ToArray();
 
-            return;
-        }
+			return;
+		}
 
-        // Add our item since it isn't here
-        inventory.Insert(index, new Item(itemType));
-        inventory[index].isAShopItem = true;
-        nextSlot++;
+		// Add our item since it isn't here
+		inventory.Insert(index, new Item(itemType));
+		inventory[index].isAShopItem = true;
+		nextSlot++;
 
-        shop.item = inventory.ToArray();
-    }
+		shop.item = inventory.ToArray();
+	}
 }

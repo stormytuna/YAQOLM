@@ -9,28 +9,28 @@ namespace YAQOLM.Common.UI.SpiralMirror;
 
 public class SpiralMirrorButton : BetterUIImageButton
 {
-    private readonly Asset<Texture2D> faceTexture;
+	private readonly Asset<Texture2D> faceTexture;
 
-    public string Tooltip { get; set; }
+	public string Tooltip { get; set; }
 
-    public SpiralMirrorButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorButton")) {
-        SetHoverImage(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorButton_Hover"));
-        this.faceTexture = faceTexture;
-    }
+	public SpiralMirrorButton(Asset<Texture2D> faceTexture) : base(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorButton")) {
+		SetHoverImage(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorButton_Hover"));
+		this.faceTexture = faceTexture;
+	}
 
-    protected override void DrawSelf(SpriteBatch spriteBatch) {
-        base.DrawSelf(spriteBatch);
+	protected override void DrawSelf(SpriteBatch spriteBatch) {
+		base.DrawSelf(spriteBatch);
 
-        CalculatedStyle dimensions = GetDimensions();
-        spriteBatch.Draw(faceTexture.Value, dimensions.Position(), Color.White * (IsMouseHovering ? VisibilityActive : VisibilityInactive));
-    }
+		CalculatedStyle dimensions = GetDimensions();
+		spriteBatch.Draw(faceTexture.Value, dimensions.Position(), Color.White * (IsMouseHovering ? VisibilityActive : VisibilityInactive));
+	}
 
-    public override void Draw(SpriteBatch spriteBatch) {
-        base.Draw(spriteBatch);
+	public override void Draw(SpriteBatch spriteBatch) {
+		base.Draw(spriteBatch);
 
-        if (IsMouseHovering) {
-            Main.hoverItemName = Tooltip;
-            Main.mouseText = true;
-        }
-    }
+		if (IsMouseHovering) {
+			Main.hoverItemName = Tooltip;
+			Main.mouseText = true;
+		}
+	}
 }

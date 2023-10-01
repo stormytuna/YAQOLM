@@ -28,16 +28,16 @@ public class SpiralMirrorUiState : UIState
 		homeButton.Tooltip = "Teleport home";
 		mainPanel.Append(homeButton);
 
-        SpiralMirrorButton spawnButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorSpawn"));
-        spawnButton.Width.Set(40f, 0f);
-        spawnButton.Height.Set(40f, 0f);
-        spawnButton.HAlign = 0.65f;
-        spawnButton.VAlign = 0.35f;
-        spawnButton.OnLeftClick += SpawnButtonOnLeftClick;
-        spawnButton.Tooltip = "Teleport home";
-        mainPanel.Append(spawnButton);
+		SpiralMirrorButton spawnButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorSpawn"));
+		spawnButton.Width.Set(40f, 0f);
+		spawnButton.Height.Set(40f, 0f);
+		spawnButton.HAlign = 0.65f;
+		spawnButton.VAlign = 0.35f;
+		spawnButton.OnLeftClick += SpawnButtonOnLeftClick;
+		spawnButton.Tooltip = "Teleport home";
+		mainPanel.Append(spawnButton);
 
-        SpiralMirrorButton graveButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorGrave"));
+		SpiralMirrorButton graveButton = new(ModContent.Request<Texture2D>("YAQOLM/Assets/UI/SpiralMirrorGrave"));
 		graveButton.Width.Set(40f, 0f);
 		graveButton.Height.Set(40f, 0f);
 		graveButton.HAlign = 0.35f;
@@ -74,7 +74,7 @@ public class SpiralMirrorUiState : UIState
 		mainPanel.Append(hellButton);
 	}
 
-    private void HomeButtonOnLeftClick(UIMouseEvent evt, UIElement listeningelement) => SpiralButtonClick(0);
+	private void HomeButtonOnLeftClick(UIMouseEvent evt, UIElement listeningelement) => SpiralButtonClick(0);
 	private void SpawnButtonOnLeftClick(UIMouseEvent evt, UIElement listeningElement) => SpiralButtonClick(1);
 	private void GraveButtonOnLeftClick(UIMouseEvent evt, UIElement listeningelement) => SpiralButtonClick(2);
 	private void ReturnButtonOnLeftClick(UIMouseEvent evt, UIElement listeningelement) => SpiralButtonClick(3);

@@ -10,72 +10,72 @@ namespace YAQOLM.Common.Players;
 
 public class ConsumableCraftingStationsPlayer : ModPlayer
 {
-    private List<string> consumedCraftingStations = new();
+	private List<string> consumedCraftingStations = new();
 
-    public override void SaveData(TagCompound tag) {
-        consumedCraftingStations ??= new List<string>();
+	public override void SaveData(TagCompound tag) {
+		consumedCraftingStations ??= new List<string>();
 
-        if (consumedCraftingStations.Count != 0) {
-            tag["consumedCraftingStations"] = consumedCraftingStations;
-        }
-    }
+		if (consumedCraftingStations.Count != 0) {
+			tag["consumedCraftingStations"] = consumedCraftingStations;
+		}
+	}
 
-    public override void LoadData(TagCompound tag) {
-        consumedCraftingStations = new List<string>();
+	public override void LoadData(TagCompound tag) {
+		consumedCraftingStations = new List<string>();
 
-        if (tag.ContainsKey("consumedCraftingStations")) {
-            consumedCraftingStations = tag.GetList<string>("consumedCraftingStations").ToList();
-        }
-    }
+		if (tag.ContainsKey("consumedCraftingStations")) {
+			consumedCraftingStations = tag.GetList<string>("consumedCraftingStations").ToList();
+		}
+	}
 
-    public string GetFullNameFromItem(Item item) {
-        string name = ItemID.Search.GetName(item.type);
-        string mod = "Terraria";
-        if (item.ModItem != null) {
-            mod = item.ModItem.Mod.Name;
-        }
+	public string GetFullNameFromItem(Item item) {
+		string name = ItemID.Search.GetName(item.type);
+		string mod = "Terraria";
+		if (item.ModItem != null) {
+			mod = item.ModItem.Mod.Name;
+		}
 
-        string fullName = $"{mod}:{name}";
+		string fullName = $"{mod}:{name}";
 
-        return fullName;
-    }
+		return fullName;
+	}
 
-    public Item GetItemFromFullName(string name) {
-        int separater = name.IndexOf(":");
-        string item = name[(separater + 1)..];
-        return ItemID.Search.TryGetId(item, out int type) ? ContentSamples.ItemsByType[type] : null;
-    }
+	public Item GetItemFromFullName(string name) {
+		int separater = name.IndexOf(":");
+		string item = name[(separater + 1)..];
+		return ItemID.Search.TryGetId(item, out int type) ? ContentSamples.ItemsByType[type] : null;
+	}
 
-    public bool HasConsumedItem(Item item) => consumedCraftingStations.Contains(GetFullNameFromItem(item)) && ServerConfig.Instance.InventoryCraftingStations;
+	public bool HasConsumedItem(Item item) => consumedCraftingStations.Contains(GetFullNameFromItem(item)) && ServerConfig.Instance.InventoryCraftingStations;
 
-    public void ConsumeItem(Item item) => consumedCraftingStations.Add(GetFullNameFromItem(item));
+	public void ConsumeItem(Item item) => consumedCraftingStations.Add(GetFullNameFromItem(item));
 
-    public List<int> ConsumedItemTiles() {
-        List<int> tiles = new();
+	public List<int> ConsumedItemTiles() {
+		List<int> tiles = new();
 
-        foreach (string fullName in consumedCraftingStations) {
-            Item item = GetItemFromFullName(fullName);
-            if (item != null) {
-                if (!tiles.Contains(item.createTile)) {
-                    tiles.Add(item.createTile);
-                }
-            }
-        }
+		foreach (string fullName in consumedCraftingStations) {
+			Item item = GetItemFromFullName(fullName);
+			if (item != null) {
+				if (!tiles.Contains(item.createTile)) {
+					tiles.Add(item.createTile);
+				}
+			}
+		}
 
-        return tiles;
-    }
+		return tiles;
+	}
 }
 
 public class ConsumableCraftingStationsGlobalTile : GlobalTile
 {
-    public override int[] AdjTiles(int type) {
-        if (ServerConfig.Instance.InventoryCraftingStations) {
-            foreach (int entry in Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>().ConsumedItemTiles()) {
-                Main.LocalPlayer.adjTile[entry] = true;
-                Main.LocalPlayer.oldAdjTile[entry] = true;
-            }
-        }
+	public override int[] AdjTiles(int type) {
+		if (ServerConfig.Instance.InventoryCraftingStations) {
+			foreach (int entry in Main.LocalPlayer.GetModPlayer<ConsumableCraftingStationsPlayer>().ConsumedItemTiles()) {
+				Main.LocalPlayer.adjTile[entry] = true;
+				Main.LocalPlayer.oldAdjTile[entry] = true;
+			}
+		}
 
-        return base.AdjTiles(type);
-    }
+		return base.AdjTiles(type);
+	}
 }
