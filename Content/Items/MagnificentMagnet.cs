@@ -14,7 +14,7 @@ public class MagnificentMagnet : ModItem
 {
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.MagnificentMagnet;
 
-    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;// Tooltip.SetDefault("Increases pickup range for items while in your inventory\nUse to pull all items in the world to you");
+    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
     public override void SetDefaults() {
         Item.width = 26;

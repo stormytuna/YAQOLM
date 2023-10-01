@@ -10,10 +10,6 @@ public class NebulaPrefixHammer : ModItem
 {
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.PrefixHammers;
 
-    public override void SetStaticDefaults() {
-        // Tooltip.SetDefault("Right click with an accessory in your cursor to apply Warding to it\nOr, right click an accessory with this in your cursor");
-    }
-
     public override void SetDefaults() {
         Item.width = 26;
         Item.height = 24;

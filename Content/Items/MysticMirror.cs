@@ -11,7 +11,7 @@ public class MysticMirror : ModItem
 {
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.MysticMirror;
 
-    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;// Tooltip.SetDefault("Gaze into the mirror to return home and create a portal\nUse portal to return when you are done");
+    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
     public override void SetDefaults() {
         Item.useTurn = true;

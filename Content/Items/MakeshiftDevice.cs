@@ -9,7 +9,7 @@ namespace YAQOLM.Content.Items;
 
 public class MakeshiftDevice : ModItem
 {
-    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;// Tooltip.SetDefault("Place this in a Magic Storage Crafting Interface to access your consumed crafting stations");
+    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
     public override bool IsLoadingEnabled(Mod mod) => ModLoader.TryGetMod("MagicStorage", out _) && ServerConfig.Instance.InventoryCraftingStations;
 

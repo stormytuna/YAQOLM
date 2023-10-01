@@ -13,7 +13,7 @@ public class GoldenHorseshoeBalloon : ModItem
 {
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.GoldenHorseshoeBalloon;
 
-    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;// Tooltip.SetDefault("Doesn't allow the holder to double jump\nDoesn't increase jump height or negate fall damage");
+    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
     public override void SetDefaults() {
         Item.width = 28;

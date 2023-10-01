@@ -12,8 +12,6 @@ public class FlowerOfTheJungle : ModItem
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.FlowerOfTheJungle;
 
     public override void SetStaticDefaults() {
-        // DisplayName.SetDefault("Flower of the Jungle");
-        // Tooltip.SetDefault("Summons Plantera");
 
         CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 3;
         ItemID.Sets.SortingPriorityBossSpawns[Type] = 12;

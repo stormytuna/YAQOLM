@@ -13,7 +13,7 @@ public class WarpedMirror : ModItem
 {
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.WarpedMirror;
 
-    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;// Tooltip.SetDefault("Gaze into the mirror to return to where you last died");
+    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
     public override void SetDefaults() {
         Item.useTurn = true;

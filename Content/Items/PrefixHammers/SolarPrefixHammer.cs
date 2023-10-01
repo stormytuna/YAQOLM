@@ -10,10 +10,6 @@ public class SolarPrefixHammer : ModItem
 {
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.PrefixHammers;
 
-    public override void SetStaticDefaults() {
-        // Tooltip.SetDefault("Right click with a weapon in your cursor to apply the best prefix to it\nOr, right click a weapon with this in your cursor");
-    }
-
     public override void SetDefaults() {
         Item.width = 26;
         Item.height = 24;

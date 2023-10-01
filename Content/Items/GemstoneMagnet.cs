@@ -11,7 +11,6 @@ public class GemstoneMagnet : ModItem
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.GemstoneMagnet;
 
     public override void SetStaticDefaults() =>
-        // Tooltip.SetDefault("Increases pickup range for items while in your inventory");
         CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
     public override void SetDefaults() {

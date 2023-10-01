@@ -16,7 +16,7 @@ public class RunicMirror : ModItem
 {
     public override bool IsLoadingEnabled(Mod mod) => ServerConfig.Instance.RunicMirror;
 
-    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;// Tooltip.SetDefault("Allows you to teleport to party members, NPCs and Pylons");
+    public override void SetStaticDefaults() => CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
 
     public override void SetDefaults() {
         Item.useTurn = true;
